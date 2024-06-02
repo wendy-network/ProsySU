@@ -1,0 +1,47 @@
+正在与服务器建立连接
+建立连接成功
+更新Xray配置
+sed -i 's/echo/#echo/g' ~/.bashrc
+
+sed -i 's/echo/#echo/g' ~/.profile
+
+id -u
+0
+0. 检测系统环境
+检测CPU架构
+uname -m
+x86_64
+检测系统安装命令
+command -v apt
+
+command -v dnf
+
+command -v yum
+/usr/bin/yum
+检测Systemctl
+command -v systemctl
+/usr/bin/systemctl
+检测SELinux
+command -v getenforce
+/usr/sbin/getenforce
+getenforce
+Disabled
+1. 配置防火墙
+systemctl stop xray
+
+systemctl stop caddy
+
+释放被占用的端口
+lsof -n -P -i :80 | grep LISTEN
+
+lsof -n -P -i :443 | grep LISTEN
+ssr     31719 root    3u  IPv6  81817      0t0  TCP *:443 (LISTEN)
+systemctl stop ssr
+
+systemctl disable ssr
+
+pkill ssr
+
+lsof -n -P -i :5001 | grep LISTEN
+
+lsof -n -P -i :5002 | grep LISTEN

@@ -1,0 +1,49 @@
+正在与服务器建立连接
+建立连接成功
+sed -i 's/echo/#echo/g' ~/.bashrc
+
+sed -i 's/echo/#echo/g' ~/.profile
+
+id -u
+0
+上传自有证书
+检测系统环境
+检测CPU架构
+uname -m
+x86_64
+检测系统安装命令
+command -v apt
+
+command -v dnf
+
+command -v yum
+/usr/bin/yum
+检测Systemctl
+command -v systemctl
+/usr/bin/systemctl
+检测SELinux
+command -v getenforce
+/usr/sbin/getenforce
+getenforce
+Disabled
+正在上传文件
+mv /usr/local/etc/v2ray/ssl /usr/local/etc/v2ray/ssl_638458881357080868
+
+mkdir /usr/local/etc/v2ray/ssl
+
+unzip /usr/local/etc/v2ray/ssl/ssl.zip -d /usr/local/etc/v2ray/ssl
+Archive:  /usr/local/etc/v2ray/ssl/ssl.zip
+  inflating: /usr/local/etc/v2ray/ssl/wendy-ip.com.crt  
+  inflating: /usr/local/etc/v2ray/ssl/wendy-ip.com.key  
+find /usr/local/etc/v2ray/ssl/*.crt
+/usr/local/etc/v2ray/ssl/wendy-ip.com.crt
+find /usr/local/etc/v2ray/ssl/*.key
+/usr/local/etc/v2ray/ssl/wendy-ip.com.key
+mv /usr/local/etc/v2ray/ssl/wendy-ip.com.crt /usr/local/etc/v2ray/ssl/v2ray_ssl.crt
+
+mv /usr/local/etc/v2ray/ssl/wendy-ip.com.key /usr/local/etc/v2ray/ssl/v2ray_ssl.key
+
+重启V2ray服务
+systemctl restart v2ray
+
+上传证书完成

@@ -1,0 +1,437 @@
+正在与服务器建立连接
+建立连接成功
+sed -i 's/echo/#echo/g' ~/.bashrc
+
+sed -i 's/echo/#echo/g' ~/.profile
+
+id -u
+0
+if [[ -f /usr/local/bin/xray ]];then echo '1';else echo '0'; fi
+0
+1. 检测系统环境
+检测CPU架构
+uname -m
+x86_64
+检测系统安装命令
+command -v apt
+/usr/bin/apt
+检测Systemctl
+command -v systemctl
+/usr/bin/systemctl
+检测SELinux
+command -v getenforce
+
+2. 安装必要的系统工具
+更新安装包
+apt update -y
+Get:1 https://download.docker.com/linux/debian bookworm InRelease [43.3 kB]
+Get:2 https://download.docker.com/linux/debian bookworm/stable amd64 Packages [23.4 kB]
+Hit:3 http://mirrors.aliyun.com/debian bookworm InRelease
+Fetched 66.7 kB in 1s (107 kB/s)
+Reading package lists...
+Building dependency tree...
+Reading state information...
+1 package can be upgraded. Run 'apt list --upgradable' to see it.
+安装sudo工具
+command -v sudo
+/usr/bin/sudo
+安装curl工具
+command -v curl
+/usr/bin/curl
+安装wget工具
+command -v wget
+/usr/bin/wget
+安装ping工具
+command -v ping
+/usr/bin/ping
+安装unzip工具
+command -v unzip
+/usr/bin/unzip
+安装cron工具
+command -v cron
+/usr/sbin/cron
+安装lsof工具
+command -v lsof
+/usr/bin/lsof
+安装systemd工具
+command -v systemd
+/usr/bin/systemd
+3. 配置防火墙
+释放被占用的端口
+lsof -n -P -i :80 | grep LISTEN
+nginx   597 root   37u  IPv4  15020      0t0  TCP *:80 (LISTEN)
+nginx   598  www   37u  IPv4  15020      0t0  TCP *:80 (LISTEN)
+nginx   599  www   37u  IPv4  15020      0t0  TCP *:80 (LISTEN)
+systemctl stop nginx
+
+systemctl disable nginx
+
+pkill nginx
+
+lsof -n -P -i :443 | grep LISTEN
+
+开放需要的端口
+command -v firewall-cmd
+
+command -v ufw
+/usr/sbin/ufw
+ufw allow 22/tcp
+Skipping adding existing rule
+Skipping adding existing rule (v6)
+ufw allow 80/tcp
+Skipping adding existing rule
+Skipping adding existing rule (v6)
+ufw allow 80/udp
+
+ufw allow 443/tcp
+Skipping adding existing rule
+Skipping adding existing rule (v6)
+ufw allow 443/udp
+
+yes | ufw reload
+Firewall reloaded
+4. 检测网络环境
+检测IPv4
+curl -4 ip.sb
+8.222.181.119
+IPv4地址为8.222.181.119
+5. 同步系统和本地时间
+rm -f /etc/localtime
+
+ln -s /usr/share/zoneinfo/UTC /etc/localtime
+
+date +%s
+1717358736
+5. 安装Caddy服务器
+rm -rf caddy.tar.gz
+
+rm -rf /etc/caddy
+
+rm -rf /usr/share/caddy
+
+wget -O caddy.tar.gz https://github.com/caddyserver/caddy/releases/download/v2.4.3/caddy_2.4.3_linux_amd64.tar.gz
+
+mkdir /etc/caddy
+
+tar -zxvf caddy.tar.gz -C /etc/caddy
+LICENSE
+README.md
+caddy
+cp -rf /etc/caddy/caddy /usr/bin
+
+systemctl daemon-reload
+
+systemctl enable caddy
+
+mkdir /usr/share/caddy
+
+chmod 775 /usr/share/caddy
+
+if [[ -f /usr/bin/caddy ]];then echo '1';else echo '0'; fi
+1
+6. 安装Xray-Core
+开始安装Xray-Core
+bash -c "$(curl -L https://github.com/XTLS/Xray-install/raw/main/install-release.sh)" @ install
+info: Installing Xray v1.8.13 for x86_64
+Downloading Xray archive: https://github.com/XTLS/Xray-core/releases/download/v1.8.13/Xray-linux-64.zip
+ok.
+Downloading verification file for Xray archive: https://github.com/XTLS/Xray-core/releases/download/v1.8.13/Xray-linux-64.zip.dgst
+ok.
+info: Extract the Xray package to /tmp/tmp.XxZjIx1Q3E and prepare it for installation.
+info: Systemd service files have been installed successfully!
+warning: The following are the actual parameters for the xray service startup.
+warning: Please make sure the configuration file path is correctly set.
+# /etc/systemd/system/xray.service
+[Unit]
+Description=Xray Service
+Documentation=https://github.com/xtls
+After=network.target nss-lookup.target
+
+[Service]
+User=nobody
+CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
+AmbientCapabilities=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
+NoNewPrivileges=true
+ExecStart=/usr/local/bin/xray run -config /usr/local/etc/xray/config.json
+Restart=on-failure
+RestartPreventExitStatus=23
+LimitNPROC=10000
+LimitNOFILE=1000000
+
+[Install]
+WantedBy=multi-user.target
+
+# /etc/systemd/system/xray.service.d/10-donot_touch_single_conf.conf
+# In case you have a good reason to do so, duplicate this file in the same directory and make your customizes there.
+# Or all changes you made will be lost!  # Refer: https://www.freedesktop.org/software/systemd/man/systemd.unit.html
+[Service]
+ExecStart=
+ExecStart=/usr/local/bin/xray run -config /usr/local/etc/xray/config.json
+
+installed: /usr/local/bin/xray
+installed: /usr/local/share/xray/geoip.dat
+installed: /usr/local/share/xray/geosite.dat
+installed: /usr/local/etc/xray/config.json
+installed: /var/log/xray/
+installed: /var/log/xray/access.log
+installed: /var/log/xray/error.log
+installed: /etc/systemd/system/xray.service
+installed: /etc/systemd/system/xray@.service
+removed: /tmp/tmp.XxZjIx1Q3E
+info: Xray v1.8.13 is installed.
+You may need to execute a command to remove dependent software: apt purge curl unzip
+info: Enable and start the Xray service
+if [[ -f /usr/local/bin/xray ]];then echo '1';else echo '0'; fi
+1
+设置Xray-core权限
+sed -i 's/User=nobody/User=root/g' /etc/systemd/system/xray.service
+
+sed -i 's/CapabilityBoundingSet=/#CapabilityBoundingSet=/g' /etc/systemd/system/xray.service
+
+sed -i 's/AmbientCapabilities=/#AmbientCapabilities=/g' /etc/systemd/system/xray.service
+
+systemctl daemon-reload
+
+if [[ -f /usr/local/etc/xray/config.json ]];then echo '1';else echo '0'; fi
+1
+mv /usr/local/etc/xray/config.json /usr/local/etc/xray/config.json.1
+
+安装TLS证书
+安装Acme软件
+apt install -y socat
+Reading package lists...
+Building dependency tree...
+Reading state information...
+The following NEW packages will be installed:
+  socat
+0 upgraded, 1 newly installed, 0 to remove and 1 not upgraded.
+Need to get 375 kB of archives.
+After this operation, 1,551 kB of additional disk space will be used.
+Get:1 http://mirrors.aliyun.com/debian bookworm/main amd64 socat amd64 1.7.4.4-2 [375 kB]
+Fetched 375 kB in 6s (59.7 kB/s)
+Selecting previously unselected package socat.
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 63934 files and directories currently installed.)
+Preparing to unpack .../socat_1.7.4.4-2_amd64.deb ...
+Unpacking socat (1.7.4.4-2) ...
+Setting up socat (1.7.4.4-2) ...
+apt install -y automake autoconf libtool
+Reading package lists...
+Building dependency tree...
+Reading state information...
+automake is already the newest version (1:1.16.5-1.3).
+autoconf is already the newest version (2.71-3).
+libtool is already the newest version (2.4.7-5).
+0 upgraded, 0 newly installed, 0 to remove and 1 not upgraded.
+curl  https://get.acme.sh yes | sh
+[Sun Jun  2 08:06:12 PM UTC 2024] Installing from online archive.
+[Sun Jun  2 08:06:12 PM UTC 2024] Downloading https://github.com/acmesh-official/acme.sh/archive/master.tar.gz
+[Sun Jun  2 08:06:14 PM UTC 2024] Extracting master.tar.gz
+[Sun Jun  2 08:06:14 PM UTC 2024] Installing to /root/.acme.sh
+[Sun Jun  2 08:06:14 PM UTC 2024] Installed to /root/.acme.sh/acme.sh
+[Sun Jun  2 08:06:14 PM UTC 2024] Installing alias to '/root/.bashrc'
+[Sun Jun  2 08:06:14 PM UTC 2024] OK, Close and reopen your terminal to start using acme.sh
+[Sun Jun  2 08:06:14 PM UTC 2024] Installing cron job
+[Sun Jun  2 08:06:14 PM UTC 2024] Good, bash is found, so change the shebang to use bash as preferred.
+[Sun Jun  2 08:06:15 PM UTC 2024] OK
+[Sun Jun  2 08:06:15 PM UTC 2024] Install success!
+alias acme.sh=~/.acme.sh/acme.sh
+
+正在申请证书
+/root/.acme.sh/acme.sh --force --debug --issue  --standalone  -d xjpal.dddsip.cn  --pre-hook "systemctl stop caddy"  --post-hook  "systemctl start caddy" --server letsencrypt
+https://github.com/acmesh-official/acme.sh
+v3.0.8
+[Sun Jun  2 08:06:17 PM UTC 2024] Using CA: https://acme-v02.api.letsencrypt.org/directory
+[Sun Jun  2 08:06:17 PM UTC 2024] Run pre hook:'systemctl stop caddy'
+[Sun Jun  2 08:06:17 PM UTC 2024] Standalone mode.
+[Sun Jun  2 08:06:17 PM UTC 2024] Create account key ok.
+[Sun Jun  2 08:06:17 PM UTC 2024] Registering account: https://acme-v02.api.letsencrypt.org/directory
+[Sun Jun  2 08:06:19 PM UTC 2024] Registered
+[Sun Jun  2 08:06:19 PM UTC 2024] ACCOUNT_THUMBPRINT='R3MZJTi97c844E9mnapfdaFwpVccRtyATXgR8grrONw'
+[Sun Jun  2 08:06:19 PM UTC 2024] Creating domain key
+[Sun Jun  2 08:06:19 PM UTC 2024] The domain key is here: /root/.acme.sh/xjpal.dddsip.cn_ecc/xjpal.dddsip.cn.key
+[Sun Jun  2 08:06:19 PM UTC 2024] Single domain='xjpal.dddsip.cn'
+[Sun Jun  2 08:06:21 PM UTC 2024] Getting webroot for domain='xjpal.dddsip.cn'
+[Sun Jun  2 08:06:21 PM UTC 2024] Verifying: xjpal.dddsip.cn
+[Sun Jun  2 08:06:21 PM UTC 2024] Standalone mode server
+[Sun Jun  2 08:06:23 PM UTC 2024] Pending, The CA is processing your order, please just wait. (1/30)
+[Sun Jun  2 08:06:26 PM UTC 2024] Pending, The CA is processing your order, please just wait. (2/30)
+[Sun Jun  2 08:06:29 PM UTC 2024] Pending, The CA is processing your order, please just wait. (3/30)
+[Sun Jun  2 08:06:32 PM UTC 2024] Pending, The CA is processing your order, please just wait. (4/30)
+[Sun Jun  2 08:06:35 PM UTC 2024] Pending, The CA is processing your order, please just wait. (5/30)
+[Sun Jun  2 08:06:38 PM UTC 2024] Success
+[Sun Jun  2 08:06:38 PM UTC 2024] Verify finished, start to sign.
+[Sun Jun  2 08:06:38 PM UTC 2024] Lets finalize the order.
+[Sun Jun  2 08:06:38 PM UTC 2024] Le_OrderFinalize='https://acme-v02.api.letsencrypt.org/acme/finalize/1760046212/274875905472'
+[Sun Jun  2 08:06:40 PM UTC 2024] Downloading cert.
+[Sun Jun  2 08:06:40 PM UTC 2024] Le_LinkCert='https://acme-v02.api.letsencrypt.org/acme/cert/030dc202a9ae2d5927c98000b7223f4a282d'
+Certificate:
+    Data:
+        Version: 3 (0x2)
+        Serial Number:
+            03:0d:c2:02:a9:ae:2d:59:27:c9:80:00:b7:22:3f:4a:28:2d
+        Signature Algorithm: sha256WithRSAEncryption
+        Issuer: C = US, O = Let's Encrypt, CN = R3
+        Validity
+            Not Before: Jun  2 19:06:47 2024 GMT
+            Not After : Aug 31 19:06:46 2024 GMT
+        Subject: CN = xjpal.dddsip.cn
+        Subject Public Key Info:
+            Public Key Algorithm: id-ecPublicKey
+                Public-Key: (256 bit)
+                pub:
+                    04:0a:65:46:bb:1c:3e:17:73:ca:d0:28:e0:8c:4b:
+                    e0:fc:fe:ab:30:b2:af:4d:c3:48:9e:49:a0:99:30:
+                    63:8a:a6:e9:a6:96:8d:4e:fc:62:44:62:fa:7c:1a:
+                    5d:ce:3c:60:03:ea:42:31:32:f8:d9:b1:56:ba:1a:
+                    5d:90:87:41:4a
+                ASN1 OID: prime256v1
+                NIST CURVE: P-256
+        X509v3 extensions:
+            X509v3 Key Usage: critical
+                Digital Signature
+            X509v3 Extended Key Usage: 
+                TLS Web Server Authentication, TLS Web Client Authentication
+            X509v3 Basic Constraints: critical
+                CA:FALSE
+            X509v3 Subject Key Identifier: 
+                A8:73:D4:69:46:01:67:97:83:47:AA:DD:00:1C:B6:78:C6:1E:C3:87
+            X509v3 Authority Key Identifier: 
+                14:2E:B3:17:B7:58:56:CB:AE:50:09:40:E6:1F:AF:9D:8B:14:C2:C6
+            Authority Information Access: 
+                OCSP - URI:http://r3.o.lencr.org
+                CA Issuers - URI:http://r3.i.lencr.org/
+            X509v3 Subject Alternative Name: 
+                DNS:xjpal.dddsip.cn
+            X509v3 Certificate Policies: 
+                Policy: 2.23.140.1.2.1
+            CT Precertificate SCTs: 
+                Signed Certificate Timestamp:
+                    Version   : v1 (0x0)
+                    Log ID    : 48:B0:E3:6B:DA:A6:47:34:0F:E5:6A:02:FA:9D:30:EB:
+                                1C:52:01:CB:56:DD:2C:81:D9:BB:BF:AB:39:D8:84:73
+                    Timestamp : Jun  2 20:06:47.463 2024 GMT
+                    Extensions: none
+                    Signature : ecdsa-with-SHA256
+                                30:45:02:20:16:CE:57:56:D2:FF:9E:4F:0B:51:A2:44:
+                                46:1B:F5:06:87:AC:5F:1A:37:F0:C8:90:FE:4F:9A:1A:
+                                68:F9:27:FD:02:21:00:A5:E6:C6:C1:57:2C:33:BB:57:
+                                54:0B:3E:04:2F:1B:AA:A6:C4:55:B4:C5:84:BF:4A:DE:
+                                65:D9:6C:87:1B:00:0A
+                Signed Certificate Timestamp:
+                    Version   : v1 (0x0)
+                    Log ID    : 19:98:10:71:09:F0:D6:52:2E:30:80:D2:9E:3F:64:BB:
+                                83:6E:28:CC:F9:0F:52:8E:EE:DF:CE:4A:3F:16:B4:CA
+                    Timestamp : Jun  2 20:06:47.505 2024 GMT
+                    Extensions: none
+                    Signature : ecdsa-with-SHA256
+                                30:45:02:21:00:C9:61:B0:BF:6C:E1:EE:23:9A:41:F1:
+                                7D:BA:F1:F7:76:FE:94:75:8F:B7:4B:95:D0:69:76:8E:
+                                E0:E2:8B:56:0F:02:20:74:D4:3E:02:AB:C0:60:66:F7:
+                                D7:A6:F5:6D:41:AC:E1:C9:1C:2F:B3:31:8E:FE:60:7F:
+                                5C:50:A4:CC:5E:34:D1
+    Signature Algorithm: sha256WithRSAEncryption
+    Signature Value:
+        89:2f:05:e6:dc:dc:ae:e2:0d:e4:cb:d8:d2:97:31:0e:7b:ab:
+        04:f8:4e:0f:25:d7:95:a8:59:c4:3c:5d:f9:18:6f:93:b7:d5:
+        fb:0d:9d:14:f6:e3:00:d3:9f:cd:c9:f1:6c:58:7e:dd:bc:b8:
+        4b:47:08:47:5c:3b:26:72:95:30:35:11:84:3c:d4:18:05:04:
+        97:14:0c:1f:3b:7f:20:cc:ce:56:86:6f:c4:02:9a:0f:aa:05:
+        40:f2:fe:ab:d9:07:dd:68:da:76:63:77:ac:95:45:19:85:57:
+        e6:e8:25:21:b3:ec:7b:af:c1:0a:02:1a:38:07:61:63:1b:2e:
+        b4:fa:30:2f:72:dd:8f:74:32:52:ac:dd:85:af:62:83:5b:4e:
+        a6:2b:7b:4b:43:44:a1:38:9d:53:21:6f:28:cf:bb:39:4c:39:
+        e4:ec:66:5d:65:65:28:28:3f:21:b5:85:1d:49:cb:01:da:0f:
+        d2:df:a6:dc:5b:0f:fc:27:86:d5:93:86:68:1d:e0:74:bd:87:
+        3c:cf:2e:f2:6d:49:f4:ef:a1:23:bb:89:13:ea:1e:4d:5e:a2:
+        ab:44:68:40:cd:dd:3b:db:41:00:86:5a:d9:b1:cf:4b:e0:5b:
+        24:62:0b:fa:0d:9d:d5:c6:4f:5b:11:a9:5d:55:1e:02:75:78:
+        28:c8:79:39
+[Sun Jun  2 08:06:41 PM UTC 2024] Cert success.
+-----BEGIN CERTIFICATE-----
+MIIEIDCCAwigAwIBAgISAw3CAqmuLVknyYAAtyI/SigtMA0GCSqGSIb3DQEBCwUA
+MDIxCzAJBgNVBAYTAlVTMRYwFAYDVQQKEw1MZXQncyBFbmNyeXB0MQswCQYDVQQD
+EwJSMzAeFw0yNDA2MDIxOTA2NDdaFw0yNDA4MzExOTA2NDZaMBoxGDAWBgNVBAMT
+D3hqcGFsLmRkZHNpcC5jbjBZMBMGByqGSM49AgEGCCqGSM49AwEHA0IABAplRrsc
+PhdzytAo4IxL4Pz+qzCyr03DSJ5JoJkwY4qm6aaWjU78YkRi+nwaXc48YAPqQjEy
++NmxVroaXZCHQUqjggIRMIICDTAOBgNVHQ8BAf8EBAMCB4AwHQYDVR0lBBYwFAYI
+KwYBBQUHAwEGCCsGAQUFBwMCMAwGA1UdEwEB/wQCMAAwHQYDVR0OBBYEFKhz1GlG
+AWeXg0eq3QActnjGHsOHMB8GA1UdIwQYMBaAFBQusxe3WFbLrlAJQOYfr52LFMLG
+MFUGCCsGAQUFBwEBBEkwRzAhBggrBgEFBQcwAYYVaHR0cDovL3IzLm8ubGVuY3Iu
+b3JnMCIGCCsGAQUFBzAChhZodHRwOi8vcjMuaS5sZW5jci5vcmcvMBoGA1UdEQQT
+MBGCD3hqcGFsLmRkZHNpcC5jbjATBgNVHSAEDDAKMAgGBmeBDAECATCCAQQGCisG
+AQQB1nkCBAIEgfUEgfIA8AB2AEiw42vapkc0D+VqAvqdMOscUgHLVt0sgdm7v6s5
+2IRzAAABj9qPyacAAAQDAEcwRQIgFs5XVtL/nk8LUaJERhv1BoesXxo38MiQ/k+a
+Gmj5J/0CIQCl5sbBVywzu1dUCz4ELxuqpsRVtMWEv0reZdlshxsACgB2ABmYEHEJ
+8NZSLjCA0p4/ZLuDbijM+Q9Sju7fzko/FrTKAAABj9qPydEAAAQDAEcwRQIhAMlh
+sL9s4e4jmkHxfbrx93b+lHWPt0uV0Gl2juDii1YPAiB01D4Cq8BgZvfXpvVtQazh
+yRwvszGO/mB/XFCkzF400TANBgkqhkiG9w0BAQsFAAOCAQEAiS8F5tzcruIN5MvY
+0pcxDnurBPhODyXXlahZxDxd+Rhvk7fV+w2dFPbjANOfzcnxbFh+3by4S0cIR1w7
+JnKVMDURhDzUGAUElxQMHzt/IMzOVoZvxAKaD6oFQPL+q9kH3WjadmN3rJVFGYVX
+5uglIbPse6/BCgIaOAdhYxsutPowL3Ldj3QyUqzdha9ig1tOpit7S0NEoTidUyFv
+KM+7OUw55OxmXWVlKCg/IbWFHUnLAdoP0t+m3FsP/CeG1ZOGaB3gdL2HPM8u8m1J
+9O+hI7uJE+oeTV6iq0RoQM3dO9tBAIZa2bHPS+BbJGIL+g2d1cZPWxGpXVUeAnV4
+KMh5OQ==
+-----END CERTIFICATE-----
+[Sun Jun  2 08:06:41 PM UTC 2024] Your cert is in: /root/.acme.sh/xjpal.dddsip.cn_ecc/xjpal.dddsip.cn.cer
+[Sun Jun  2 08:06:41 PM UTC 2024] Your cert key is in: /root/.acme.sh/xjpal.dddsip.cn_ecc/xjpal.dddsip.cn.key
+[Sun Jun  2 08:06:41 PM UTC 2024] The intermediate CA cert is in: /root/.acme.sh/xjpal.dddsip.cn_ecc/ca.cer
+[Sun Jun  2 08:06:41 PM UTC 2024] And the full chain certs is there: /root/.acme.sh/xjpal.dddsip.cn_ecc/fullchain.cer
+[Sun Jun  2 08:06:41 PM UTC 2024] Run post hook:'systemctl start caddy'
+申请证书成功
+安装TLS证书
+mkdir -p /usr/local/etc/xray/ssl
+
+/root/.acme.sh/acme.sh  --installcert  -d xjpal.dddsip.cn  --certpath /usr/local/etc/xray/ssl/xray_ssl.crt --keypath /usr/local/etc/xray/ssl/xray_ssl.key  --capath /usr/local/etc/xray/ssl/xray_ssl.crt
+[Sun Jun  2 08:06:42 PM UTC 2024] The domain 'xjpal.dddsip.cn' seems to have a ECC cert already, lets use ecc cert.
+[Sun Jun  2 08:06:42 PM UTC 2024] Installing cert to: /usr/local/etc/xray/ssl/xray_ssl.crt
+[Sun Jun  2 08:06:42 PM UTC 2024] Installing CA to: /usr/local/etc/xray/ssl/xray_ssl.crt
+[Sun Jun  2 08:06:42 PM UTC 2024] Installing key to: /usr/local/etc/xray/ssl/xray_ssl.key
+if [ ! -f "/usr/local/etc/xray/ssl/xray_ssl.key" ]; then echo "0"; else echo "1"; fi | head -n 1
+1
+安装证书成功
+chmod 755 /usr/local/etc/xray/ssl
+
+生成Xray服务器配置文件
+7. 上传Web服务器配置
+if [[ -f /etc/caddy/Caddyfile ]];then echo '1';else echo '0'; fi
+1
+mv /etc/caddy/Caddyfile /etc/caddy/Caddyfile.back
+
+8. 启动BBR
+检查系统是否满足启动BBR条件
+uname -r
+6.1.0-18-amd64
+sysctl net.ipv4.tcp_congestion_control | grep bbr
+
+bash -c 'echo "net.core.default_qdisc=fq" >> /etc/sysctl.conf'
+
+bash -c 'echo "net.ipv4.tcp_congestion_control=bbr" >> /etc/sysctl.conf'
+
+sysctl -p
+vm.max_map_count = 2000000
+fs.file-max = 1000000
+fs.inotify.max_user_instances = 8192
+net.ipv4.tcp_syncookies = 1
+net.ipv4.tcp_fin_timeout = 30
+net.ipv4.tcp_tw_reuse = 1
+net.ipv4.ip_local_port_range = 1024 65000
+net.ipv4.tcp_max_syn_backlog = 16384
+net.ipv4.tcp_max_tw_buckets = 6000
+net.ipv4.route.gc_timeout = 100
+net.ipv4.tcp_syn_retries = 1
+net.ipv4.tcp_synack_retries = 1
+net.core.somaxconn = 32768
+net.core.netdev_max_backlog = 32768
+net.ipv4.tcp_timestamps = 0
+net.ipv4.tcp_max_orphans = 32768
+net.ipv4.ip_forward = 1
+net.core.default_qdisc = fq
+net.ipv4.tcp_congestion_control = bbr
+启动BBR成功
+重启Xray服务
+systemctl restart caddy
+
+systemctl restart xray
+
+安装成功
+

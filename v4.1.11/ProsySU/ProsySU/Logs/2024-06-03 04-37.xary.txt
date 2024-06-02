@@ -1,0 +1,66 @@
+正在与服务器建立连接
+建立连接成功
+更新Xray配置
+sed -i 's/echo/#echo/g' ~/.bashrc
+
+sed -i 's/echo/#echo/g' ~/.profile
+
+id -u
+0
+0. 检测系统环境
+检测CPU架构
+uname -m
+x86_64
+检测系统安装命令
+command -v apt
+/usr/bin/apt
+检测Systemctl
+command -v systemctl
+/usr/bin/systemctl
+检测SELinux
+command -v getenforce
+
+1. 配置防火墙
+systemctl stop xray
+
+systemctl stop caddy
+
+释放被占用的端口
+lsof -n -P -i :80 | grep LISTEN
+
+lsof -n -P -i :443 | grep LISTEN
+
+开放需要的端口
+command -v firewall-cmd
+
+command -v ufw
+/usr/sbin/ufw
+ufw allow 22/tcp
+Skipping adding existing rule
+Skipping adding existing rule (v6)
+ufw allow 80/tcp
+Skipping adding existing rule
+Skipping adding existing rule (v6)
+ufw allow 80/udp
+Skipping adding existing rule
+Rule added (v6)
+ufw allow 443/tcp
+Skipping adding existing rule
+Skipping adding existing rule (v6)
+ufw allow 443/udp
+Skipping adding existing rule
+Rule added (v6)
+yes | ufw reload
+Firewall reloaded
+2. 上传Xray配置文件
+3. 上传Caddy配置文件
+if [[ -f /etc/caddy/Caddyfile ]];then echo '1';else echo '0'; fi
+1
+mv /etc/caddy/Caddyfile /etc/caddy/Caddyfile.back
+
+4. 重启xray服务
+systemctl restart caddy
+
+systemctl restart xray
+
+更新配置成功

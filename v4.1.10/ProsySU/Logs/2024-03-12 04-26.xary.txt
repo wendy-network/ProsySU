@@ -1,0 +1,1169 @@
+正在与服务器建立连接
+建立连接成功
+sed -i 's/echo/#echo/g' ~/.bashrc
+
+sed -i 's/echo/#echo/g' ~/.profile
+
+id -u
+0
+if [[ -f /usr/local/bin/xray ]];then echo '1';else echo '0'; fi
+1
+1. 检测系统环境
+检测CPU架构
+uname -m
+x86_64
+检测系统安装命令
+command -v apt
+
+command -v dnf
+
+command -v yum
+/usr/bin/yum
+检测Systemctl
+command -v systemctl
+/usr/bin/systemctl
+检测SELinux
+command -v getenforce
+/usr/sbin/getenforce
+getenforce
+Disabled
+2. 安装必要的系统工具
+更新安装包
+yum update -y
+已加载插件：copr, fastestmirror
+Loading mirror speeds from cached hostfile
+No packages marked for update
+安装sudo工具
+command -v sudo
+/usr/bin/sudo
+安装curl工具
+command -v curl
+/usr/bin/curl
+安装wget工具
+command -v wget
+/usr/bin/wget
+安装ping工具
+command -v ping
+/usr/bin/ping
+安装unzip工具
+command -v unzip
+/usr/bin/unzip
+安装cron工具
+command -v cron
+
+yum install -y cron
+已加载插件：copr, fastestmirror
+Loading mirror speeds from cached hostfile
+没有可用软件包 cron。
+安装lsof工具
+command -v lsof
+/usr/sbin/lsof
+安装systemd工具
+command -v systemd
+
+yum install -y systemd
+已加载插件：copr, fastestmirror
+Loading mirror speeds from cached hostfile
+软件包 systemd-219-78.el7_9.9.x86_64 已安装并且是最新版本
+无须任何处理
+3. 配置防火墙
+释放被占用的端口
+lsof -n -P -i :80 | grep LISTEN
+
+lsof -n -P -i :443 | grep LISTEN
+
+lsof -n -P -i :5001 | grep LISTEN
+
+lsof -n -P -i :5002 | grep LISTEN
+
+lsof -n -P -i :6001 | grep LISTEN
+
+lsof -n -P -i :6002 | grep LISTEN
+
+lsof -n -P -i :4001 | grep LISTEN
+v2ray   985 root   15u  IPv6  26178      0t0  TCP *:4001 (LISTEN)
+systemctl stop v2ray
+
+systemctl disable v2ray
+
+pkill v2ray
+
+lsof -n -P -i :5003 | grep LISTEN
+
+开放需要的端口
+command -v firewall-cmd
+/usr/bin/firewall-cmd
+firewall-cmd --state
+
+systemctl restart firewalld
+
+firewall-cmd --add-port=22/tcp --permanent
+
+firewall-cmd --add-port=80/tcp --permanent
+
+firewall-cmd --add-port=80/udp --permanent
+
+firewall-cmd --add-port=443/tcp --permanent
+
+firewall-cmd --add-port=443/udp --permanent
+
+firewall-cmd --add-port=5001/tcp --permanent
+
+firewall-cmd --add-port=5001/udp --permanent
+
+firewall-cmd --add-port=5002/tcp --permanent
+
+firewall-cmd --add-port=5002/udp --permanent
+
+firewall-cmd --add-port=6001/tcp --permanent
+
+firewall-cmd --add-port=6001/udp --permanent
+
+firewall-cmd --add-port=6002/tcp --permanent
+
+firewall-cmd --add-port=6002/udp --permanent
+
+firewall-cmd --add-port=4001/tcp --permanent
+
+firewall-cmd --add-port=4001/udp --permanent
+
+firewall-cmd --add-port=5003/tcp --permanent
+
+firewall-cmd --add-port=5003/udp --permanent
+
+yes | firewall-cmd --reload
+
+4. 检测网络环境
+检测IPv4
+curl -4 ip.sb
+103.117.138.122
+IPv4地址为103.117.138.122
+5. 同步系统和本地时间
+rm -f /etc/localtime
+
+ln -s /usr/share/zoneinfo/UTC /etc/localtime
+
+date +%s
+1710230988
+5. 安装Caddy服务器
+rm -rf caddy.tar.gz
+
+rm -rf /etc/caddy
+
+rm -rf /usr/share/caddy
+
+wget -O caddy.tar.gz https://github.com/caddyserver/caddy/releases/download/v2.4.3/caddy_2.4.3_linux_amd64.tar.gz
+
+mkdir /etc/caddy
+
+tar -zxvf caddy.tar.gz -C /etc/caddy
+LICENSE
+README.md
+caddy
+cp -rf /etc/caddy/caddy /usr/bin
+
+systemctl daemon-reload
+
+systemctl enable caddy
+
+mkdir /usr/share/caddy
+
+chmod 775 /usr/share/caddy
+
+if [[ -f /usr/bin/caddy ]];then echo '1';else echo '0'; fi
+1
+6. 安装Xray-Core
+开始安装Xray-Core
+bash -c "$(curl -L https://github.com/XTLS/Xray-install/raw/main/install-release.sh)" @ install
+info: No new version. The current version of Xray is v1.8.9 .
+if [[ -f /usr/local/bin/xray ]];then echo '1';else echo '0'; fi
+1
+设置Xray-core权限
+sed -i 's/User=nobody/User=root/g' /etc/systemd/system/xray.service
+
+sed -i 's/CapabilityBoundingSet=/#CapabilityBoundingSet=/g' /etc/systemd/system/xray.service
+
+sed -i 's/AmbientCapabilities=/#AmbientCapabilities=/g' /etc/systemd/system/xray.service
+
+systemctl daemon-reload
+
+if [[ -f /usr/local/etc/xray/config.json ]];then echo '1';else echo '0'; fi
+0
+生成Xray服务器配置文件
+sed -i 's/echo/#echo/g' ~/.bashrc
+
+sed -i 's/echo/#echo/g' ~/.profile
+
+id -u
+0
+if [[ -f /usr/local/bin/xray ]];then echo '1';else echo '0'; fi
+1
+1. 检测系统环境
+检测CPU架构
+uname -m
+x86_64
+检测系统安装命令
+检测Systemctl
+command -v systemctl
+/usr/bin/systemctl
+检测SELinux
+command -v getenforce
+/usr/sbin/getenforce
+getenforce
+Disabled
+2. 安装必要的系统工具
+更新安装包
+yum update -y
+已加载插件：copr, fastestmirror
+Loading mirror speeds from cached hostfile
+No packages marked for update
+安装sudo工具
+command -v sudo
+/usr/bin/sudo
+安装curl工具
+command -v curl
+/usr/bin/curl
+安装wget工具
+command -v wget
+/usr/bin/wget
+安装ping工具
+command -v ping
+/usr/bin/ping
+安装unzip工具
+command -v unzip
+/usr/bin/unzip
+安装cron工具
+command -v cron
+
+yum install -y cron
+已加载插件：copr, fastestmirror
+Loading mirror speeds from cached hostfile
+没有可用软件包 cron。
+安装lsof工具
+command -v lsof
+/usr/sbin/lsof
+安装systemd工具
+command -v systemd
+
+yum install -y systemd
+已加载插件：copr, fastestmirror
+Loading mirror speeds from cached hostfile
+软件包 systemd-219-78.el7_9.9.x86_64 已安装并且是最新版本
+无须任何处理
+3. 配置防火墙
+释放被占用的端口
+lsof -n -P -i :80 | grep LISTEN
+
+lsof -n -P -i :443 | grep LISTEN
+
+lsof -n -P -i :5001 | grep LISTEN
+
+lsof -n -P -i :5002 | grep LISTEN
+
+lsof -n -P -i :6001 | grep LISTEN
+
+lsof -n -P -i :6002 | grep LISTEN
+
+lsof -n -P -i :4001 | grep LISTEN
+
+lsof -n -P -i :5003 | grep LISTEN
+
+开放需要的端口
+command -v firewall-cmd
+/usr/bin/firewall-cmd
+firewall-cmd --state
+
+systemctl restart firewalld
+
+firewall-cmd --add-port=22/tcp --permanent
+
+firewall-cmd --add-port=80/tcp --permanent
+
+firewall-cmd --add-port=80/udp --permanent
+
+firewall-cmd --add-port=443/tcp --permanent
+
+firewall-cmd --add-port=443/udp --permanent
+
+firewall-cmd --add-port=5001/tcp --permanent
+
+firewall-cmd --add-port=5001/udp --permanent
+
+firewall-cmd --add-port=5002/tcp --permanent
+
+firewall-cmd --add-port=5002/udp --permanent
+
+firewall-cmd --add-port=6001/tcp --permanent
+
+firewall-cmd --add-port=6001/udp --permanent
+
+firewall-cmd --add-port=6002/tcp --permanent
+
+firewall-cmd --add-port=6002/udp --permanent
+
+firewall-cmd --add-port=4001/tcp --permanent
+
+firewall-cmd --add-port=4001/udp --permanent
+
+firewall-cmd --add-port=5003/tcp --permanent
+
+firewall-cmd --add-port=5003/udp --permanent
+
+yes | firewall-cmd --reload
+
+4. 检测网络环境
+检测IPv4
+curl -4 ip.sb
+103.117.138.122
+IPv4地址为103.117.138.122
+5. 同步系统和本地时间
+rm -f /etc/localtime
+
+ln -s /usr/share/zoneinfo/UTC /etc/localtime
+
+date +%s
+1710231162
+5. 安装Caddy服务器
+rm -rf caddy.tar.gz
+
+rm -rf /etc/caddy
+
+rm -rf /usr/share/caddy
+
+wget -O caddy.tar.gz https://github.com/caddyserver/caddy/releases/download/v2.4.3/caddy_2.4.3_linux_amd64.tar.gz
+sed -i 's/echo/#echo/g' ~/.bashrc
+
+sed -i 's/echo/#echo/g' ~/.profile
+
+id -u
+0
+1. 检测系统环境
+检测系统环境
+检测CPU架构
+uname -m
+x86_64
+检测系统安装命令
+检测Systemctl
+command -v systemctl
+/usr/bin/systemctl
+检测SELinux
+command -v getenforce
+/usr/sbin/getenforce
+getenforce
+Disabled
+2. 卸载Caddy服务
+关闭Caddy服务
+systemctl stop caddy
+
+systemctl disable caddy
+
+彻底删除Caddy文件
+rm -rf /etc/systemd/system/caddy.service
+
+rm -rf /usr/bin/caddy
+
+rm -rf /usr/share/caddy
+
+rm -rf /etc/caddy
+
+3. 卸载Xray服务
+关闭Xray服务
+systemctl stop xray
+
+systemctl disable xray
+
+卸载Xray
+bash -c "$(curl -L https://github.com/XTLS/Xray-install/raw/main/install-release.sh)" @ remove
+removed: /usr/local/bin/xray
+removed: /etc/systemd/system/xray.service
+removed: /etc/systemd/system/xray@.service
+removed: /etc/systemd/system/xray.service.d
+removed: /etc/systemd/system/xray@.service.d
+removed: /usr/local/share/xray
+You may need to execute a command to remove dependent software: yum remove curl unzip
+info: Xray has been removed.
+info: If necessary, manually delete the configuration and log files.
+info: e.g., /usr/local/etc/xray and /var/log/xray/ ...
+4. 卸载Acme证书申请服务
+卸载 acme.sh
+acme.sh --uninstall
+
+删除 acme.sh 相关文件
+rm -rf ~/.acme.sh
+
+5. 重置防火墙端口
+command -v firewall-cmd
+/usr/bin/firewall-cmd
+firewall-cmd --state
+
+systemctl restart firewalld
+
+firewall-cmd --remove-port=80/tcp --permanent
+
+firewall-cmd --remove-port=80/udp --permanent
+
+firewall-cmd --remove-port=443/tcp --permanent
+
+firewall-cmd --remove-port=443/udp --permanent
+
+firewall-cmd --remove-port=5001/tcp --permanent
+
+firewall-cmd --remove-port=5001/udp --permanent
+
+firewall-cmd --remove-port=5002/tcp --permanent
+
+firewall-cmd --remove-port=5002/udp --permanent
+
+firewall-cmd --remove-port=6001/tcp --permanent
+
+firewall-cmd --remove-port=6001/udp --permanent
+
+firewall-cmd --remove-port=6002/tcp --permanent
+
+firewall-cmd --remove-port=6002/udp --permanent
+
+firewall-cmd --remove-port=4001/tcp --permanent
+
+firewall-cmd --remove-port=4001/udp --permanent
+
+firewall-cmd --remove-port=5003/tcp --permanent
+
+firewall-cmd --remove-port=5003/udp --permanent
+
+yes | firewall-cmd --reload
+
+卸载完成
+卸载完成
+sed -i 's/echo/#echo/g' ~/.bashrc
+
+sed -i 's/echo/#echo/g' ~/.profile
+
+id -u
+0
+if [[ -f /usr/local/bin/xray ]];then echo '1';else echo '0'; fi
+0
+1. 检测系统环境
+检测CPU架构
+uname -m
+x86_64
+检测系统安装命令
+检测Systemctl
+command -v systemctl
+/usr/bin/systemctl
+检测SELinux
+command -v getenforce
+/usr/sbin/getenforce
+getenforce
+Disabled
+2. 安装必要的系统工具
+更新安装包
+yum update -y
+已加载插件：copr, fastestmirror
+Loading mirror speeds from cached hostfile
+No packages marked for update
+安装sudo工具
+command -v sudo
+/usr/bin/sudo
+安装curl工具
+command -v curl
+/usr/bin/curl
+安装wget工具
+command -v wget
+/usr/bin/wget
+安装ping工具
+command -v ping
+/usr/bin/ping
+安装unzip工具
+command -v unzip
+/usr/bin/unzip
+安装cron工具
+command -v cron
+
+yum install -y cron
+已加载插件：copr, fastestmirror
+Loading mirror speeds from cached hostfile
+没有可用软件包 cron。
+安装lsof工具
+command -v lsof
+/usr/sbin/lsof
+安装systemd工具
+command -v systemd
+
+yum install -y systemd
+已加载插件：copr, fastestmirror
+Loading mirror speeds from cached hostfile
+软件包 systemd-219-78.el7_9.9.x86_64 已安装并且是最新版本
+无须任何处理
+3. 配置防火墙
+释放被占用的端口
+lsof -n -P -i :80 | grep LISTEN
+
+lsof -n -P -i :443 | grep LISTEN
+
+lsof -n -P -i :5001 | grep LISTEN
+
+lsof -n -P -i :5002 | grep LISTEN
+
+lsof -n -P -i :6001 | grep LISTEN
+
+lsof -n -P -i :6002 | grep LISTEN
+
+lsof -n -P -i :4001 | grep LISTEN
+
+lsof -n -P -i :5003 | grep LISTEN
+
+开放需要的端口
+command -v firewall-cmd
+/usr/bin/firewall-cmd
+firewall-cmd --state
+
+systemctl restart firewalld
+
+firewall-cmd --add-port=22/tcp --permanent
+
+firewall-cmd --add-port=80/tcp --permanent
+
+firewall-cmd --add-port=80/udp --permanent
+
+firewall-cmd --add-port=443/tcp --permanent
+
+firewall-cmd --add-port=443/udp --permanent
+
+firewall-cmd --add-port=5001/tcp --permanent
+
+firewall-cmd --add-port=5001/udp --permanent
+
+firewall-cmd --add-port=5002/tcp --permanent
+
+firewall-cmd --add-port=5002/udp --permanent
+
+firewall-cmd --add-port=6001/tcp --permanent
+
+firewall-cmd --add-port=6001/udp --permanent
+
+firewall-cmd --add-port=6002/tcp --permanent
+
+firewall-cmd --add-port=6002/udp --permanent
+
+firewall-cmd --add-port=4001/tcp --permanent
+
+firewall-cmd --add-port=4001/udp --permanent
+
+firewall-cmd --add-port=5003/tcp --permanent
+
+firewall-cmd --add-port=5003/udp --permanent
+
+yes | firewall-cmd --reload
+
+4. 检测网络环境
+检测IPv4
+curl -4 ip.sb
+103.117.138.122
+IPv4地址为103.117.138.122
+5. 同步系统和本地时间
+rm -f /etc/localtime
+
+ln -s /usr/share/zoneinfo/UTC /etc/localtime
+
+date +%s
+1710231230
+5. 安装Caddy服务器
+rm -rf caddy.tar.gz
+
+rm -rf /etc/caddy
+
+rm -rf /usr/share/caddy
+
+wget -O caddy.tar.gz https://github.com/caddyserver/caddy/releases/download/v2.4.3/caddy_2.4.3_linux_amd64.tar.gz
+
+mkdir /etc/caddy
+
+tar -zxvf caddy.tar.gz -C /etc/caddy
+LICENSE
+README.md
+caddy
+cp -rf /etc/caddy/caddy /usr/bin
+
+systemctl daemon-reload
+
+systemctl enable caddy
+
+mkdir /usr/share/caddy
+
+chmod 775 /usr/share/caddy
+
+if [[ -f /usr/bin/caddy ]];then echo '1';else echo '0'; fi
+1
+6. 安装Xray-Core
+开始安装Xray-Core
+bash -c "$(curl -L https://github.com/XTLS/Xray-install/raw/main/install-release.sh)" @ install
+
+mkdir /etc/caddy
+
+tar -zxvf caddy.tar.gz -C /etc/caddy
+LICENSE
+README.md
+caddy
+cp -rf /etc/caddy/caddy /usr/bin
+
+systemctl daemon-reload
+
+systemctl enable caddy
+
+mkdir /usr/share/caddy
+
+chmod 775 /usr/share/caddy
+
+if [[ -f /usr/bin/caddy ]];then echo '1';else echo '0'; fi
+1
+6. 安装Xray-Core
+开始安装Xray-Core
+bash -c "$(curl -L https://github.com/XTLS/Xray-install/raw/main/install-release.sh)" @ install
+info: Installing Xray v1.8.9 for x86_64
+Downloading Xray archive: https://github.com/XTLS/Xray-core/releases/download/v1.8.9/Xray-linux-64.zip
+ok.
+Downloading verification file for Xray archive: https://github.com/XTLS/Xray-core/releases/download/v1.8.9/Xray-linux-64.zip.dgst
+ok.
+info: Extract the Xray package to /tmp/tmp.OXH7aAB0Rz and prepare it for installation.
+info: Systemd service files have been installed successfully!
+warning: The following are the actual parameters for the xray service startup.
+warning: Please make sure the configuration file path is correctly set.
+~~~~~~~~~~~~~~~~
+[Unit]
+Description=Xray Service
+Documentation=https://github.com/xtls
+After=network.target nss-lookup.target
+
+[Service]
+User=nobody
+CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
+AmbientCapabilities=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
+NoNewPrivileges=true
+ExecStart=/usr/local/bin/xray run -config /usr/local/etc/xray/config.json
+Restart=on-failure
+RestartPreventExitStatus=23
+LimitNPROC=10000
+LimitNOFILE=1000000
+
+[Install]
+WantedBy=multi-user.target
+# In case you have a good reason to do so, duplicate this file in the same directory and make your customizes there.
+# Or all changes you made will be lost!  # Refer: https://www.freedesktop.org/software/systemd/man/systemd.unit.html
+[Service]
+ExecStart=
+ExecStart=/usr/local/bin/xray run -config /usr/local/etc/xray/config.json
+~~~~~~~~~~~~~~~~
+warning: The systemd version on the current operating system is too low.
+warning: Please consider to upgrade the systemd or the operating system.
+
+installed: /usr/local/bin/xray
+installed: /usr/local/share/xray/geoip.dat
+installed: /usr/local/share/xray/geosite.dat
+installed: /usr/local/etc/xray/config.json
+installed: /var/log/xray/
+installed: /var/log/xray/access.log
+installed: /var/log/xray/error.log
+installed: /etc/systemd/system/xray.service
+installed: /etc/systemd/system/xray@.service
+removed: /tmp/tmp.OXH7aAB0Rz
+info: Xray v1.8.9 is installed.
+You may need to execute a command to remove dependent software: yum remove curl unzip
+info: Enable and start the Xray service
+if [[ -f /usr/local/bin/xray ]];then echo '1';else echo '0'; fi
+1
+设置Xray-core权限
+sed -i 's/User=nobody/User=root/g' /etc/systemd/system/xray.service
+
+sed -i 's/CapabilityBoundingSet=/#CapabilityBoundingSet=/g' /etc/systemd/system/xray.service
+
+sed -i 's/AmbientCapabilities=/#AmbientCapabilities=/g' /etc/systemd/system/xray.service
+
+systemctl daemon-reload
+
+if [[ -f /usr/local/etc/xray/config.json ]];then echo '1';else echo '0'; fi
+1
+mv /usr/local/etc/xray/config.json /usr/local/etc/xray/config.json.1
+
+生成Xray服务器配置文件
+7. 上传Web服务器配置
+if [[ -f /etc/caddy/Caddyfile ]];then echo '1';else echo '0'; fi
+1
+mv /etc/caddy/Caddyfile /etc/caddy/Caddyfile.back
+
+8. 启动BBR
+检查系统是否满足启动BBR条件
+uname -r
+3.10.0-1160.108.1.el7.x86_64
+sysctl net.ipv4.tcp_congestion_control | grep bbr
+
+系统不满足启用BBR条件，启动失败。
+重启Xray服务
+systemctl restart caddy
+
+systemctl restart xray
+
+安装成功
+
+安装成功，请上传您的 TLS 证书。
+sed -i 's/echo/#echo/g' ~/.bashrc
+
+sed -i 's/echo/#echo/g' ~/.profile
+
+id -u
+0
+上传自有证书
+检测系统环境
+检测CPU架构
+uname -m
+x86_64
+检测系统安装命令
+检测Systemctl
+command -v systemctl
+/usr/bin/systemctl
+检测SELinux
+command -v getenforce
+/usr/sbin/getenforce
+getenforce
+Disabled
+正在上传文件
+mv /usr/local/etc/xray/ssl /usr/local/etc/xray/ssl_638458570168717740
+
+mkdir /usr/local/etc/xray/ssl
+
+unzip /usr/local/etc/xray/ssl/ssl.zip -d /usr/local/etc/xray/ssl
+Archive:  /usr/local/etc/xray/ssl/ssl.zip
+  inflating: /usr/local/etc/xray/ssl/wendy-ip.com.crt  
+  inflating: /usr/local/etc/xray/ssl/wendy-ip.com.key  
+find /usr/local/etc/xray/ssl/*.crt
+/usr/local/etc/xray/ssl/wendy-ip.com.crt
+find /usr/local/etc/xray/ssl/*.key
+/usr/local/etc/xray/ssl/wendy-ip.com.key
+mv /usr/local/etc/xray/ssl/wendy-ip.com.crt /usr/local/etc/xray/ssl/xray_ssl.crt
+
+mv /usr/local/etc/xray/ssl/wendy-ip.com.key /usr/local/etc/xray/ssl/xray_ssl.key
+
+重启Xray服务
+systemctl restart xray
+
+上传证书完成
+info: Installing Xray v1.8.9 for x86_64
+Downloading Xray archive: https://github.com/XTLS/Xray-core/releases/download/v1.8.9/Xray-linux-64.zip
+ok.
+Downloading verification file for Xray archive: https://github.com/XTLS/Xray-core/releases/download/v1.8.9/Xray-linux-64.zip.dgst
+ok.
+info: Extract the Xray package to /tmp/tmp.yASwWouEi2 and prepare it for installation.
+info: Stop the Xray service.
+info: Systemd service files have been installed successfully!
+warning: The following are the actual parameters for the xray service startup.
+warning: Please make sure the configuration file path is correctly set.
+~~~~~~~~~~~~~~~~
+[Unit]
+Description=Xray Service
+Documentation=https://github.com/xtls
+After=network.target nss-lookup.target
+
+[Service]
+User=nobody
+CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
+AmbientCapabilities=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
+NoNewPrivileges=true
+ExecStart=/usr/local/bin/xray run -config /usr/local/etc/xray/config.json
+Restart=on-failure
+RestartPreventExitStatus=23
+LimitNPROC=10000
+LimitNOFILE=1000000
+
+[Install]
+WantedBy=multi-user.target
+# In case you have a good reason to do so, duplicate this file in the same directory and make your customizes there.
+# Or all changes you made will be lost!  # Refer: https://www.freedesktop.org/software/systemd/man/systemd.unit.html
+[Service]
+ExecStart=
+ExecStart=/usr/local/bin/xray run -config /usr/local/etc/xray/config.json
+~~~~~~~~~~~~~~~~
+warning: The systemd version on the current operating system is too low.
+warning: Please consider to upgrade the systemd or the operating system.
+
+installed: /usr/local/bin/xray
+installed: /usr/local/share/xray/geoip.dat
+installed: /usr/local/share/xray/geosite.dat
+installed: /etc/systemd/system/xray.service
+installed: /etc/systemd/system/xray@.service
+removed: /tmp/tmp.yASwWouEi2
+info: Xray v1.8.9 is installed.
+You may need to execute a command to remove dependent software: yum remove curl unzip
+info: Enable and start the Xray service
+if [[ -f /usr/local/bin/xray ]];then echo '1';else echo '0'; fi
+1
+设置Xray-core权限
+sed -i 's/User=nobody/User=root/g' /etc/systemd/system/xray.service
+
+sed -i 's/CapabilityBoundingSet=/#CapabilityBoundingSet=/g' /etc/systemd/system/xray.service
+
+sed -i 's/AmbientCapabilities=/#AmbientCapabilities=/g' /etc/systemd/system/xray.service
+
+systemctl daemon-reload
+
+if [[ -f /usr/local/etc/xray/config.json ]];then echo '1';else echo '0'; fi
+1
+mv /usr/local/etc/xray/config.json /usr/local/etc/xray/config.json.1
+
+生成Xray服务器配置文件
+7. 上传Web服务器配置
+if [[ -f /etc/caddy/Caddyfile ]];then echo '1';else echo '0'; fi
+1
+mv /etc/caddy/Caddyfile /etc/caddy/Caddyfile.back
+
+8. 启动BBR
+检查系统是否满足启动BBR条件
+uname -r
+3.10.0-1160.108.1.el7.x86_64
+sysctl net.ipv4.tcp_congestion_control | grep bbr
+
+系统不满足启用BBR条件，启动失败。
+重启Xray服务
+systemctl restart caddy
+
+systemctl restart xray
+
+安装成功
+
+安装成功，请上传您的 TLS 证书。
+sed -i 's/echo/#echo/g' ~/.bashrc
+
+sed -i 's/echo/#echo/g' ~/.profile
+
+id -u
+0
+上传自有证书
+检测系统环境
+检测CPU架构
+uname -m
+x86_64
+检测系统安装命令
+检测Systemctl
+command -v systemctl
+/usr/bin/systemctl
+检测SELinux
+command -v getenforce
+/usr/sbin/getenforce
+getenforce
+Disabled
+正在上传文件
+mv /usr/local/etc/xray/ssl /usr/local/etc/xray/ssl_638458570822347218
+
+mkdir /usr/local/etc/xray/ssl
+
+unzip /usr/local/etc/xray/ssl/ssl.zip -d /usr/local/etc/xray/ssl
+Archive:  /usr/local/etc/xray/ssl/ssl.zip
+  inflating: /usr/local/etc/xray/ssl/wendy-ip.com.crt  
+  inflating: /usr/local/etc/xray/ssl/wendy-ip.com.key  
+find /usr/local/etc/xray/ssl/*.crt
+/usr/local/etc/xray/ssl/wendy-ip.com.crt
+find /usr/local/etc/xray/ssl/*.key
+/usr/local/etc/xray/ssl/wendy-ip.com.key
+mv /usr/local/etc/xray/ssl/wendy-ip.com.crt /usr/local/etc/xray/ssl/xray_ssl.crt
+
+mv /usr/local/etc/xray/ssl/wendy-ip.com.key /usr/local/etc/xray/ssl/xray_ssl.key
+
+重启Xray服务
+systemctl restart xray
+
+上传证书完成
+更新Xray配置
+sed -i 's/echo/#echo/g' ~/.bashrc
+
+sed -i 's/echo/#echo/g' ~/.profile
+
+id -u
+0
+0. 检测系统环境
+检测CPU架构
+uname -m
+x86_64
+检测系统安装命令
+检测Systemctl
+command -v systemctl
+/usr/bin/systemctl
+检测SELinux
+command -v getenforce
+/usr/sbin/getenforce
+getenforce
+Disabled
+1. 配置防火墙
+systemctl stop xray
+
+systemctl stop caddy
+
+释放被占用的端口
+lsof -n -P -i :80 | grep LISTEN
+
+lsof -n -P -i :443 | grep LISTEN
+
+lsof -n -P -i :5001 | grep LISTEN
+
+lsof -n -P -i :5002 | grep LISTEN
+
+lsof -n -P -i :6001 | grep LISTEN
+
+lsof -n -P -i :6002 | grep LISTEN
+
+lsof -n -P -i :4001 | grep LISTEN
+
+lsof -n -P -i :5003 | grep LISTEN
+
+开放需要的端口
+command -v firewall-cmd
+/usr/bin/firewall-cmd
+firewall-cmd --state
+
+systemctl restart firewalld
+
+firewall-cmd --add-port=22/tcp --permanent
+
+firewall-cmd --add-port=80/tcp --permanent
+
+firewall-cmd --add-port=80/udp --permanent
+
+firewall-cmd --add-port=443/tcp --permanent
+
+firewall-cmd --add-port=443/udp --permanent
+
+firewall-cmd --add-port=5001/tcp --permanent
+
+firewall-cmd --add-port=5001/udp --permanent
+
+firewall-cmd --add-port=5002/tcp --permanent
+
+firewall-cmd --add-port=5002/udp --permanent
+
+firewall-cmd --add-port=6001/tcp --permanent
+
+firewall-cmd --add-port=6001/udp --permanent
+
+firewall-cmd --add-port=6002/tcp --permanent
+
+firewall-cmd --add-port=6002/udp --permanent
+
+firewall-cmd --add-port=4001/tcp --permanent
+
+firewall-cmd --add-port=4001/udp --permanent
+
+firewall-cmd --add-port=5003/tcp --permanent
+
+firewall-cmd --add-port=5003/udp --permanent
+
+yes | firewall-cmd --reload
+
+2. 上传Xray配置文件
+3. 上传Caddy配置文件
+if [[ -f /etc/caddy/Caddyfile ]];then echo '1';else echo '0'; fi
+1
+mv /etc/caddy/Caddyfile /etc/caddy/Caddyfile.back
+
+4. 重启xray服务
+systemctl restart caddy
+
+systemctl restart xray
+
+更新配置成功
+更新Xray配置
+sed -i 's/echo/#echo/g' ~/.bashrc
+
+sed -i 's/echo/#echo/g' ~/.profile
+
+id -u
+0
+0. 检测系统环境
+检测CPU架构
+uname -m
+x86_64
+检测系统安装命令
+检测Systemctl
+command -v systemctl
+/usr/bin/systemctl
+检测SELinux
+command -v getenforce
+/usr/sbin/getenforce
+getenforce
+Disabled
+1. 配置防火墙
+systemctl stop xray
+
+systemctl stop caddy
+
+释放被占用的端口
+lsof -n -P -i :80 | grep LISTEN
+
+lsof -n -P -i :443 | grep LISTEN
+
+lsof -n -P -i :5001 | grep LISTEN
+
+lsof -n -P -i :5002 | grep LISTEN
+
+lsof -n -P -i :6001 | grep LISTEN
+
+lsof -n -P -i :6002 | grep LISTEN
+
+lsof -n -P -i :4001 | grep LISTEN
+
+lsof -n -P -i :5003 | grep LISTEN
+
+开放需要的端口
+command -v firewall-cmd
+/usr/bin/firewall-cmd
+firewall-cmd --state
+
+systemctl restart firewalld
+
+firewall-cmd --add-port=22/tcp --permanent
+
+firewall-cmd --add-port=80/tcp --permanent
+
+firewall-cmd --add-port=80/udp --permanent
+
+firewall-cmd --add-port=443/tcp --permanent
+
+firewall-cmd --add-port=443/udp --permanent
+
+firewall-cmd --add-port=5001/tcp --permanent
+
+firewall-cmd --add-port=5001/udp --permanent
+
+firewall-cmd --add-port=5002/tcp --permanent
+
+firewall-cmd --add-port=5002/udp --permanent
+
+firewall-cmd --add-port=6001/tcp --permanent
+
+firewall-cmd --add-port=6001/udp --permanent
+
+firewall-cmd --add-port=6002/tcp --permanent
+
+firewall-cmd --add-port=6002/udp --permanent
+
+firewall-cmd --add-port=4001/tcp --permanent
+
+firewall-cmd --add-port=4001/udp --permanent
+
+firewall-cmd --add-port=5003/tcp --permanent
+
+firewall-cmd --add-port=5003/udp --permanent
+
+yes | firewall-cmd --reload
+
+2. 上传Xray配置文件
+3. 上传Caddy配置文件
+if [[ -f /etc/caddy/Caddyfile ]];then echo '1';else echo '0'; fi
+1
+mv /etc/caddy/Caddyfile /etc/caddy/Caddyfile.back
+
+4. 重启xray服务
+systemctl restart caddy
+
+systemctl restart xray
+
+更新配置成功
+sed -i 's/echo/#echo/g' ~/.bashrc
+
+sed -i 's/echo/#echo/g' ~/.profile
+
+id -u
+0
+1. 检测系统环境
+检测系统环境
+检测CPU架构
+uname -m
+x86_64
+检测系统安装命令
+检测Systemctl
+command -v systemctl
+/usr/bin/systemctl
+检测SELinux
+command -v getenforce
+/usr/sbin/getenforce
+getenforce
+Disabled
+2. 卸载Caddy服务
+关闭Caddy服务
+systemctl stop caddy
+
+systemctl disable caddy
+
+彻底删除Caddy文件
+rm -rf /etc/systemd/system/caddy.service
+
+rm -rf /usr/bin/caddy
+
+rm -rf /usr/share/caddy
+
+rm -rf /etc/caddy
+
+3. 卸载Xray服务
+关闭Xray服务
+systemctl stop xray
+
+systemctl disable xray
+
+卸载Xray
+bash -c "$(curl -L https://github.com/XTLS/Xray-install/raw/main/install-release.sh)" @ remove
+removed: /usr/local/bin/xray
+removed: /etc/systemd/system/xray.service
+removed: /etc/systemd/system/xray@.service
+removed: /etc/systemd/system/xray.service.d
+removed: /etc/systemd/system/xray@.service.d
+removed: /usr/local/share/xray
+You may need to execute a command to remove dependent software: yum remove curl unzip
+info: Xray has been removed.
+info: If necessary, manually delete the configuration and log files.
+info: e.g., /usr/local/etc/xray and /var/log/xray/ ...
+4. 卸载Acme证书申请服务
+卸载 acme.sh
+acme.sh --uninstall
+
+删除 acme.sh 相关文件
+rm -rf ~/.acme.sh
+
+5. 重置防火墙端口
+command -v firewall-cmd
+/usr/bin/firewall-cmd
+firewall-cmd --state
+
+systemctl restart firewalld
+
+firewall-cmd --remove-port=80/tcp --permanent
+
+firewall-cmd --remove-port=80/udp --permanent
+
+firewall-cmd --remove-port=443/tcp --permanent
+
+firewall-cmd --remove-port=443/udp --permanent
+
+firewall-cmd --remove-port=5001/tcp --permanent
+
+firewall-cmd --remove-port=5001/udp --permanent
+
+firewall-cmd --remove-port=5002/tcp --permanent
+
+firewall-cmd --remove-port=5002/udp --permanent
+
+firewall-cmd --remove-port=6001/tcp --permanent
+
+firewall-cmd --remove-port=6001/udp --permanent
+
+firewall-cmd --remove-port=6002/tcp --permanent
+
+firewall-cmd --remove-port=6002/udp --permanent
+
+firewall-cmd --remove-port=4001/tcp --permanent
+
+firewall-cmd --remove-port=4001/udp --permanent
+
+firewall-cmd --remove-port=5003/tcp --permanent
+
+firewall-cmd --remove-port=5003/udp --permanent
+
+yes | firewall-cmd --reload
+
+卸载完成
+卸载完成

@@ -1,0 +1,1549 @@
+正在与服务器建立连接
+建立连接成功
+sed -i 's/echo/#echo/g' ~/.bashrc
+
+sed -i 's/echo/#echo/g' ~/.profile
+
+id -u
+0
+if [[ -f /usr/local/bin/xray ]];then echo '1';else echo '0'; fi
+0
+1. 检测系统环境
+检测CPU架构
+uname -m
+x86_64
+检测系统安装命令
+command -v apt
+
+command -v dnf
+
+command -v yum
+/usr/bin/yum
+检测Systemctl
+command -v systemctl
+/usr/bin/systemctl
+检测SELinux
+command -v getenforce
+/usr/sbin/getenforce
+getenforce
+Disabled
+2. 安装必要的系统工具
+更新安装包
+yum update -y
+已加载插件：copr, fastestmirror
+Loading mirror speeds from cached hostfile
+正在解决依赖关系
+--> 正在检查事务
+---> 软件包 GeoIP.x86_64.0.1.5.0-13.el7 将被 升级
+---> 软件包 GeoIP.x86_64.0.1.5.0-14.el7 将被 更新
+--> 正在处理依赖关系 geoipupdate，它被软件包 GeoIP-1.5.0-14.el7.x86_64 需要
+---> 软件包 NetworkManager.x86_64.1.1.12.0-6.el7 将被 升级
+---> 软件包 NetworkManager.x86_64.1.1.18.8-2.el7_9 将被 更新
+---> 软件包 NetworkManager-libnm.x86_64.1.1.12.0-6.el7 将被 升级
+---> 软件包 NetworkManager-libnm.x86_64.1.1.18.8-2.el7_9 将被 更新
+---> 软件包 NetworkManager-team.x86_64.1.1.12.0-6.el7 将被 升级
+---> 软件包 NetworkManager-team.x86_64.1.1.18.8-2.el7_9 将被 更新
+---> 软件包 NetworkManager-tui.x86_64.1.1.12.0-6.el7 将被 升级
+---> 软件包 NetworkManager-tui.x86_64.1.1.18.8-2.el7_9 将被 更新
+---> 软件包 NetworkManager-wifi.x86_64.1.1.12.0-6.el7 将被 升级
+---> 软件包 NetworkManager-wifi.x86_64.1.1.18.8-2.el7_9 将被 更新
+---> 软件包 acl.x86_64.0.2.2.51-14.el7 将被 升级
+---> 软件包 acl.x86_64.0.2.2.51-15.el7 将被 更新
+---> 软件包 alsa-lib.x86_64.0.1.1.6-2.el7 将被 升级
+---> 软件包 alsa-lib.x86_64.0.1.1.8-1.el7 将被 更新
+---> 软件包 bash.x86_64.0.4.2.46-31.el7 将被 升级
+---> 软件包 bash.x86_64.0.4.2.46-35.el7_9 将被 更新
+---> 软件包 binutils.x86_64.0.2.27-34.base.el7 将被 升级
+---> 软件包 binutils.x86_64.0.2.27-44.base.el7_9.1 将被 更新
+---> 软件包 biosdevname.x86_64.0.0.7.3-1.el7 将被 升级
+---> 软件包 biosdevname.x86_64.0.0.7.3-2.el7 将被 更新
+---> 软件包 ca-certificates.noarch.0.2018.2.22-70.0.el7_5 将被 升级
+---> 软件包 ca-certificates.noarch.0.2023.2.60_v7.0.306-72.el7_9 将被 更新
+---> 软件包 centos-release.x86_64.0.7-6.1810.2.el7.centos 将被 升级
+---> 软件包 centos-release.x86_64.0.7-9.2009.1.el7.centos 将被 更新
+---> 软件包 chkconfig.x86_64.0.1.7.4-1.el7 将被 升级
+---> 软件包 chkconfig.x86_64.0.1.7.6-1.el7 将被 更新
+---> 软件包 coreutils.x86_64.0.8.22-23.el7 将被 升级
+---> 软件包 coreutils.x86_64.0.8.22-24.el7_9.2 将被 更新
+---> 软件包 cpio.x86_64.0.2.11-27.el7 将被 升级
+---> 软件包 cpio.x86_64.0.2.11-28.el7 将被 更新
+---> 软件包 cryptsetup-libs.x86_64.0.2.0.3-3.el7 将被 升级
+---> 软件包 cryptsetup-libs.x86_64.0.2.0.3-6.el7 将被 更新
+---> 软件包 cyrus-sasl-lib.x86_64.0.2.1.26-23.el7 将被 升级
+---> 软件包 cyrus-sasl-lib.x86_64.0.2.1.26-24.el7_9 将被 更新
+---> 软件包 dbus.x86_64.1.1.10.24-12.el7 将被 升级
+---> 软件包 dbus.x86_64.1.1.10.24-15.el7 将被 更新
+---> 软件包 dbus-libs.x86_64.1.1.10.24-12.el7 将被 升级
+---> 软件包 dbus-libs.x86_64.1.1.10.24-15.el7 将被 更新
+---> 软件包 device-mapper.x86_64.7.1.02.149-8.el7 将被 升级
+---> 软件包 device-mapper.x86_64.7.1.02.170-6.el7_9.5 将被 更新
+---> 软件包 device-mapper-event.x86_64.7.1.02.149-8.el7 将被 升级
+---> 软件包 device-mapper-event.x86_64.7.1.02.170-6.el7_9.5 将被 更新
+---> 软件包 device-mapper-event-libs.x86_64.7.1.02.149-8.el7 将被 升级
+---> 软件包 device-mapper-event-libs.x86_64.7.1.02.170-6.el7_9.5 将被 更新
+---> 软件包 device-mapper-libs.x86_64.7.1.02.149-8.el7 将被 升级
+---> 软件包 device-mapper-libs.x86_64.7.1.02.170-6.el7_9.5 将被 更新
+---> 软件包 device-mapper-persistent-data.x86_64.0.0.7.3-3.el7 将被 升级
+---> 软件包 device-mapper-persistent-data.x86_64.0.0.8.5-3.el7_9.2 将被 更新
+---> 软件包 diffutils.x86_64.0.3.3-4.el7 将被 升级
+---> 软件包 diffutils.x86_64.0.3.3-6.el7_9 将被 更新
+---> 软件包 dmidecode.x86_64.1.3.1-2.el7 将被 升级
+---> 软件包 dmidecode.x86_64.1.3.2-5.el7_9.1 将被 更新
+---> 软件包 dracut.x86_64.0.033-554.el7 将被 升级
+---> 软件包 dracut.x86_64.0.033-572.el7 将被 更新
+---> 软件包 dracut-config-rescue.x86_64.0.033-554.el7 将被 升级
+---> 软件包 dracut-config-rescue.x86_64.0.033-572.el7 将被 更新
+---> 软件包 dracut-network.x86_64.0.033-554.el7 将被 升级
+---> 软件包 dracut-network.x86_64.0.033-572.el7 将被 更新
+---> 软件包 e2fsprogs.x86_64.0.1.42.9-13.el7 将被 升级
+---> 软件包 e2fsprogs.x86_64.0.1.42.9-19.el7 将被 更新
+---> 软件包 e2fsprogs-libs.x86_64.0.1.42.9-13.el7 将被 升级
+---> 软件包 e2fsprogs-libs.x86_64.0.1.42.9-19.el7 将被 更新
+---> 软件包 elfutils-default-yama-scope.noarch.0.0.172-2.el7 将被 升级
+---> 软件包 elfutils-default-yama-scope.noarch.0.0.176-5.el7 将被 更新
+---> 软件包 elfutils-libelf.x86_64.0.0.172-2.el7 将被 升级
+---> 软件包 elfutils-libelf.x86_64.0.0.176-5.el7 将被 更新
+---> 软件包 elfutils-libs.x86_64.0.0.172-2.el7 将被 升级
+---> 软件包 elfutils-libs.x86_64.0.0.176-5.el7 将被 更新
+---> 软件包 expat.x86_64.0.2.1.0-10.el7_3 将被 升级
+---> 软件包 expat.x86_64.0.2.1.0-15.el7_9 将被 更新
+---> 软件包 file.x86_64.0.5.11-35.el7 将被 升级
+---> 软件包 file.x86_64.0.5.11-37.el7 将被 更新
+---> 软件包 file-libs.x86_64.0.5.11-35.el7 将被 升级
+---> 软件包 file-libs.x86_64.0.5.11-37.el7 将被 更新
+---> 软件包 firewalld.noarch.0.0.5.3-5.el7 将被 升级
+---> 软件包 firewalld.noarch.0.0.6.3-13.el7_9 将被 更新
+---> 软件包 firewalld-filesystem.noarch.0.0.5.3-5.el7 将被 升级
+---> 软件包 firewalld-filesystem.noarch.0.0.6.3-13.el7_9 将被 更新
+---> 软件包 freetype.x86_64.0.2.8-12.el7 将被 升级
+---> 软件包 freetype.x86_64.0.2.8-14.el7_9.1 将被 更新
+---> 软件包 gettext.x86_64.0.0.19.8.1-2.el7 将被 升级
+---> 软件包 gettext.x86_64.0.0.19.8.1-3.el7 将被 更新
+---> 软件包 gettext-libs.x86_64.0.0.19.8.1-2.el7 将被 升级
+---> 软件包 gettext-libs.x86_64.0.0.19.8.1-3.el7 将被 更新
+---> 软件包 glib2.x86_64.0.2.56.1-2.el7 将被 升级
+---> 软件包 glib2.x86_64.0.2.56.1-9.el7_9 将被 更新
+---> 软件包 grub2.x86_64.1.2.02-0.76.el7.centos 将被 升级
+---> 软件包 grub2.x86_64.1.2.02-0.87.0.2.el7.centos.11 将被 更新
+---> 软件包 grub2-common.noarch.1.2.02-0.76.el7.centos 将被 升级
+---> 软件包 grub2-common.noarch.1.2.02-0.87.0.2.el7.centos.11 将被 更新
+---> 软件包 grub2-pc.x86_64.1.2.02-0.76.el7.centos 将被 升级
+---> 软件包 grub2-pc.x86_64.1.2.02-0.87.0.2.el7.centos.11 将被 更新
+---> 软件包 grub2-pc-modules.noarch.1.2.02-0.76.el7.centos 将被 升级
+---> 软件包 grub2-pc-modules.noarch.1.2.02-0.87.0.2.el7.centos.11 将被 更新
+---> 软件包 grub2-tools.x86_64.1.2.02-0.76.el7.centos 将被 升级
+---> 软件包 grub2-tools.x86_64.1.2.02-0.87.0.2.el7.centos.11 将被 更新
+---> 软件包 grub2-tools-extra.x86_64.1.2.02-0.76.el7.centos 将被 升级
+---> 软件包 grub2-tools-extra.x86_64.1.2.02-0.87.0.2.el7.centos.11 将被 更新
+---> 软件包 grub2-tools-minimal.x86_64.1.2.02-0.76.el7.centos 将被 升级
+---> 软件包 grub2-tools-minimal.x86_64.1.2.02-0.87.0.2.el7.centos.11 将被 更新
+---> 软件包 grubby.x86_64.0.8.28-25.el7 将被 升级
+---> 软件包 grubby.x86_64.0.8.28-26.el7 将被 更新
+---> 软件包 gzip.x86_64.0.1.5-10.el7 将被 升级
+---> 软件包 gzip.x86_64.0.1.5-11.el7_9 将被 更新
+---> 软件包 hostname.x86_64.0.3.13-3.el7 将被 升级
+---> 软件包 hostname.x86_64.0.3.13-3.el7_7.1 将被 更新
+---> 软件包 hwdata.x86_64.0.0.252-9.1.el7 将被 升级
+---> 软件包 hwdata.x86_64.0.0.252-9.7.el7 将被 更新
+---> 软件包 initscripts.x86_64.0.9.49.46-1.el7 将被 升级
+---> 软件包 initscripts.x86_64.0.9.49.53-1.el7_9.1 将被 更新
+--> 正在处理依赖关系 bc，它被软件包 initscripts-9.49.53-1.el7_9.1.x86_64 需要
+---> 软件包 iprutils.x86_64.0.2.4.16.1-1.el7 将被 升级
+---> 软件包 iprutils.x86_64.0.2.4.17.1-3.el7_7 将被 更新
+---> 软件包 irqbalance.x86_64.3.1.0.7-11.el7 将被 升级
+---> 软件包 irqbalance.x86_64.3.1.0.7-12.el7 将被 更新
+---> 软件包 iwl100-firmware.noarch.0.39.31.5.1-69.el7 将被 升级
+---> 软件包 iwl100-firmware.noarch.0.39.31.5.1-82.el7_9 将被 更新
+---> 软件包 iwl1000-firmware.noarch.1.39.31.5.1-69.el7 将被 升级
+---> 软件包 iwl1000-firmware.noarch.1.39.31.5.1-82.el7_9 将被 更新
+---> 软件包 iwl105-firmware.noarch.0.18.168.6.1-69.el7 将被 升级
+---> 软件包 iwl105-firmware.noarch.0.18.168.6.1-82.el7_9 将被 更新
+---> 软件包 iwl135-firmware.noarch.0.18.168.6.1-69.el7 将被 升级
+---> 软件包 iwl135-firmware.noarch.0.18.168.6.1-82.el7_9 将被 更新
+---> 软件包 iwl2000-firmware.noarch.0.18.168.6.1-69.el7 将被 升级
+---> 软件包 iwl2000-firmware.noarch.0.18.168.6.1-82.el7_9 将被 更新
+---> 软件包 iwl2030-firmware.noarch.0.18.168.6.1-69.el7 将被 升级
+---> 软件包 iwl2030-firmware.noarch.0.18.168.6.1-82.el7_9 将被 更新
+---> 软件包 iwl3160-firmware.noarch.0.22.0.7.0-69.el7 将被 升级
+---> 软件包 iwl3160-firmware.noarch.0.25.30.13.0-82.el7_9 将被 更新
+---> 软件包 iwl3945-firmware.noarch.0.15.32.2.9-69.el7 将被 升级
+---> 软件包 iwl3945-firmware.noarch.0.15.32.2.9-82.el7_9 将被 更新
+---> 软件包 iwl4965-firmware.noarch.0.228.61.2.24-69.el7 将被 升级
+---> 软件包 iwl4965-firmware.noarch.0.228.61.2.24-82.el7_9 将被 更新
+---> 软件包 iwl5000-firmware.noarch.0.8.83.5.1_1-69.el7 将被 升级
+---> 软件包 iwl5000-firmware.noarch.0.8.83.5.1_1-82.el7_9 将被 更新
+---> 软件包 iwl5150-firmware.noarch.0.8.24.2.2-69.el7 将被 升级
+---> 软件包 iwl5150-firmware.noarch.0.8.24.2.2-82.el7_9 将被 更新
+---> 软件包 iwl6000-firmware.noarch.0.9.221.4.1-69.el7 将被 升级
+---> 软件包 iwl6000-firmware.noarch.0.9.221.4.1-82.el7_9 将被 更新
+---> 软件包 iwl6000g2a-firmware.noarch.0.17.168.5.3-69.el7 将被 升级
+---> 软件包 iwl6000g2a-firmware.noarch.0.18.168.6.1-82.el7_9 将被 更新
+---> 软件包 iwl6000g2b-firmware.noarch.0.17.168.5.2-69.el7 将被 升级
+---> 软件包 iwl6000g2b-firmware.noarch.0.18.168.6.1-82.el7_9 将被 更新
+---> 软件包 iwl6050-firmware.noarch.0.41.28.5.1-69.el7 将被 升级
+---> 软件包 iwl6050-firmware.noarch.0.41.28.5.1-82.el7_9 将被 更新
+---> 软件包 iwl7260-firmware.noarch.0.22.0.7.0-69.el7 将被 升级
+---> 软件包 iwl7260-firmware.noarch.0.25.30.13.0-82.el7_9 将被 舍弃
+---> 软件包 iwl7265-firmware.noarch.0.22.0.7.0-69.el7 将被 取代
+---> 软件包 kbd.x86_64.0.1.15.5-15.el7 将被 升级
+---> 软件包 kbd.x86_64.0.1.15.5-16.el7_9 将被 更新
+---> 软件包 kbd-legacy.noarch.0.1.15.5-15.el7 将被 升级
+---> 软件包 kbd-legacy.noarch.0.1.15.5-16.el7_9 将被 更新
+---> 软件包 kbd-misc.noarch.0.1.15.5-15.el7 将被 升级
+---> 软件包 kbd-misc.noarch.0.1.15.5-16.el7_9 将被 更新
+---> 软件包 kernel.x86_64.0.3.10.0-1160.108.1.el7 将被 安装
+---> 软件包 kernel-tools.x86_64.0.3.10.0-957.el7 将被 升级
+---> 软件包 kernel-tools.x86_64.0.3.10.0-1160.108.1.el7 将被 更新
+---> 软件包 kernel-tools-libs.x86_64.0.3.10.0-957.el7 将被 升级
+---> 软件包 kernel-tools-libs.x86_64.0.3.10.0-1160.108.1.el7 将被 更新
+---> 软件包 kexec-tools.x86_64.0.2.0.15-21.el7 将被 升级
+---> 软件包 kexec-tools.x86_64.0.2.0.15-51.el7_9.3 将被 更新
+---> 软件包 kmod.x86_64.0.20-23.el7 将被 升级
+---> 软件包 kmod.x86_64.0.20-28.el7 将被 更新
+---> 软件包 kmod-libs.x86_64.0.20-23.el7 将被 升级
+---> 软件包 kmod-libs.x86_64.0.20-28.el7 将被 更新
+---> 软件包 kpartx.x86_64.0.0.4.9-123.el7 将被 升级
+---> 软件包 kpartx.x86_64.0.0.4.9-136.el7_9 将被 更新
+---> 软件包 krb5-libs.x86_64.0.1.15.1-34.el7 将被 升级
+---> 软件包 krb5-libs.x86_64.0.1.15.1-55.el7_9 将被 更新
+---> 软件包 libacl.x86_64.0.2.2.51-14.el7 将被 升级
+---> 软件包 libacl.x86_64.0.2.2.51-15.el7 将被 更新
+---> 软件包 libcap.x86_64.0.2.22-9.el7 将被 升级
+---> 软件包 libcap.x86_64.0.2.22-11.el7 将被 更新
+---> 软件包 libcom_err.x86_64.0.1.42.9-13.el7 将被 升级
+---> 软件包 libcom_err.x86_64.0.1.42.9-19.el7 将被 更新
+---> 软件包 libcroco.x86_64.0.0.6.12-4.el7 将被 升级
+---> 软件包 libcroco.x86_64.0.0.6.12-6.el7_9 将被 更新
+---> 软件包 libdb.x86_64.0.5.3.21-24.el7 将被 升级
+---> 软件包 libdb.x86_64.0.5.3.21-25.el7 将被 更新
+---> 软件包 libdb-utils.x86_64.0.5.3.21-24.el7 将被 升级
+---> 软件包 libdb-utils.x86_64.0.5.3.21-25.el7 将被 更新
+---> 软件包 libdrm.x86_64.0.2.4.91-3.el7 将被 升级
+---> 软件包 libdrm.x86_64.0.2.4.97-2.el7 将被 更新
+---> 软件包 libffi.x86_64.0.3.0.13-18.el7 将被 升级
+---> 软件包 libffi.x86_64.0.3.0.13-19.el7 将被 更新
+---> 软件包 libndp.x86_64.0.1.2-7.el7 将被 升级
+---> 软件包 libndp.x86_64.0.1.2-9.el7 将被 更新
+---> 软件包 libpng.x86_64.2.1.5.13-7.el7_2 将被 升级
+---> 软件包 libpng.x86_64.2.1.5.13-8.el7 将被 更新
+---> 软件包 libss.x86_64.0.1.42.9-13.el7 将被 升级
+---> 软件包 libss.x86_64.0.1.42.9-19.el7 将被 更新
+---> 软件包 libstdc++.x86_64.0.4.8.5-36.el7 将被 升级
+---> 软件包 libstdc++.x86_64.0.4.8.5-44.el7 将被 更新
+---> 软件包 libteam.x86_64.0.1.27-5.el7 将被 升级
+---> 软件包 libteam.x86_64.0.1.29-3.el7 将被 更新
+---> 软件包 libxml2.x86_64.0.2.9.1-6.el7_2.3 将被 升级
+---> 软件包 libxml2.x86_64.0.2.9.1-6.el7_9.6 将被 更新
+---> 软件包 linux-firmware.noarch.0.20180911-69.git85c5d90.el7 将被 升级
+---> 软件包 linux-firmware.noarch.0.20200421-82.git78c0348.el7_9 将被 更新
+---> 软件包 logrotate.x86_64.0.3.8.6-17.el7 将被 升级
+---> 软件包 logrotate.x86_64.0.3.8.6-19.el7 将被 更新
+---> 软件包 lvm2.x86_64.7.2.02.180-8.el7 将被 升级
+---> 软件包 lvm2.x86_64.7.2.02.187-6.el7_9.5 将被 更新
+---> 软件包 lvm2-libs.x86_64.7.2.02.180-8.el7 将被 升级
+---> 软件包 lvm2-libs.x86_64.7.2.02.187-6.el7_9.5 将被 更新
+---> 软件包 lz4.x86_64.0.1.7.5-2.el7 将被 升级
+---> 软件包 lz4.x86_64.0.1.8.3-1.el7 将被 更新
+---> 软件包 mariadb-libs.x86_64.1.5.5.60-1.el7_5 将被 升级
+---> 软件包 mariadb-libs.x86_64.1.5.5.68-1.el7 将被 更新
+---> 软件包 microcode_ctl.x86_64.2.2.1-47.el7 将被 升级
+---> 软件包 microcode_ctl.x86_64.2.2.1-73.20.el7_9 将被 更新
+---> 软件包 nss-pem.x86_64.0.1.0.3-5.el7 将被 升级
+---> 软件包 nss-pem.x86_64.0.1.0.3-7.el7_9.1 将被 更新
+---> 软件包 numactl-libs.x86_64.0.2.0.9-7.el7 将被 升级
+---> 软件包 numactl-libs.x86_64.0.2.0.12-5.el7 将被 更新
+---> 软件包 openldap.x86_64.0.2.4.44-20.el7 将被 升级
+---> 软件包 openldap.x86_64.0.2.4.44-25.el7_9 将被 更新
+---> 软件包 openssh.x86_64.0.7.4p1-16.el7 将被 升级
+---> 软件包 openssh.x86_64.0.7.4p1-23.el7_9 将被 更新
+---> 软件包 openssh-clients.x86_64.0.7.4p1-16.el7 将被 升级
+---> 软件包 openssh-clients.x86_64.0.7.4p1-23.el7_9 将被 更新
+---> 软件包 openssh-server.x86_64.0.7.4p1-16.el7 将被 升级
+---> 软件包 openssh-server.x86_64.0.7.4p1-23.el7_9 将被 更新
+---> 软件包 parted.x86_64.0.3.1-29.el7 将被 升级
+---> 软件包 parted.x86_64.0.3.1-32.el7 将被 更新
+---> 软件包 passwd.x86_64.0.0.79-4.el7 将被 升级
+---> 软件包 passwd.x86_64.0.0.79-6.el7 将被 更新
+---> 软件包 plymouth.x86_64.0.0.8.9-0.31.20140113.el7.centos 将被 升级
+---> 软件包 plymouth.x86_64.0.0.8.9-0.34.20140113.el7.centos 将被 更新
+---> 软件包 plymouth-core-libs.x86_64.0.0.8.9-0.31.20140113.el7.centos 将被 升级
+---> 软件包 plymouth-core-libs.x86_64.0.0.8.9-0.34.20140113.el7.centos 将被 更新
+---> 软件包 plymouth-scripts.x86_64.0.0.8.9-0.31.20140113.el7.centos 将被 升级
+---> 软件包 plymouth-scripts.x86_64.0.0.8.9-0.34.20140113.el7.centos 将被 更新
+---> 软件包 polkit.x86_64.0.0.112-18.el7 将被 升级
+---> 软件包 polkit.x86_64.0.0.112-26.el7_9.1 将被 更新
+---> 软件包 postfix.x86_64.2.2.10.1-7.el7 将被 升级
+---> 软件包 postfix.x86_64.2.2.10.1-9.el7 将被 更新
+---> 软件包 procps-ng.x86_64.0.3.3.10-23.el7 将被 升级
+---> 软件包 procps-ng.x86_64.0.3.3.10-28.el7 将被 更新
+---> 软件包 python.x86_64.0.2.7.5-76.el7 将被 升级
+---> 软件包 python.x86_64.0.2.7.5-94.el7_9 将被 更新
+---> 软件包 python-firewall.noarch.0.0.5.3-5.el7 将被 升级
+---> 软件包 python-firewall.noarch.0.0.6.3-13.el7_9 将被 更新
+---> 软件包 python-libs.x86_64.0.2.7.5-76.el7 将被 升级
+---> 软件包 python-libs.x86_64.0.2.7.5-94.el7_9 将被 更新
+---> 软件包 python-linux-procfs.noarch.0.0.4.9-4.el7 将被 升级
+---> 软件包 python-linux-procfs.noarch.0.0.4.11-4.el7 将被 更新
+---> 软件包 python-perf.x86_64.0.3.10.0-957.el7 将被 升级
+---> 软件包 python-perf.x86_64.0.3.10.0-1160.108.1.el7 将被 更新
+---> 软件包 python-urlgrabber.noarch.0.3.10-9.el7 将被 升级
+---> 软件包 python-urlgrabber.noarch.0.3.10-10.el7 将被 更新
+---> 软件包 readline.x86_64.0.6.2-10.el7 将被 升级
+---> 软件包 readline.x86_64.0.6.2-11.el7 将被 更新
+---> 软件包 rpm.x86_64.0.4.11.3-35.el7 将被 升级
+---> 软件包 rpm.x86_64.0.4.11.3-48.el7_9 将被 更新
+---> 软件包 rpm-build-libs.x86_64.0.4.11.3-35.el7 将被 升级
+---> 软件包 rpm-build-libs.x86_64.0.4.11.3-48.el7_9 将被 更新
+---> 软件包 rpm-libs.x86_64.0.4.11.3-35.el7 将被 升级
+---> 软件包 rpm-libs.x86_64.0.4.11.3-48.el7_9 将被 更新
+---> 软件包 rpm-python.x86_64.0.4.11.3-35.el7 将被 升级
+---> 软件包 rpm-python.x86_64.0.4.11.3-48.el7_9 将被 更新
+---> 软件包 rsyslog.x86_64.0.8.24.0-34.el7 将被 升级
+---> 软件包 rsyslog.x86_64.0.8.24.0-57.el7_9.3 将被 更新
+---> 软件包 selinux-policy.noarch.0.3.13.1-229.el7 将被 升级
+---> 软件包 selinux-policy.noarch.0.3.13.1-268.el7_9.2 将被 更新
+---> 软件包 selinux-policy-targeted.noarch.0.3.13.1-229.el7 将被 升级
+---> 软件包 selinux-policy-targeted.noarch.0.3.13.1-268.el7_9.2 将被 更新
+---> 软件包 setup.noarch.0.2.8.71-10.el7 将被 升级
+---> 软件包 setup.noarch.0.2.8.71-11.el7 将被 更新
+---> 软件包 shadow-utils.x86_64.2.4.1.5.1-25.el7 将被 升级
+---> 软件包 shadow-utils.x86_64.2.4.6-5.el7 将被 更新
+---> 软件包 shared-mime-info.x86_64.0.1.8-4.el7 将被 升级
+---> 软件包 shared-mime-info.x86_64.0.1.8-5.el7 将被 更新
+---> 软件包 sqlite.x86_64.0.3.7.17-8.el7 将被 升级
+---> 软件包 sqlite.x86_64.0.3.7.17-8.el7_7.1 将被 更新
+---> 软件包 sudo.x86_64.0.1.8.23-3.el7 将被 升级
+---> 软件包 sudo.x86_64.0.1.8.23-10.el7_9.3 将被 更新
+---> 软件包 teamd.x86_64.0.1.27-5.el7 将被 升级
+---> 软件包 teamd.x86_64.0.1.29-3.el7 将被 更新
+---> 软件包 tuned.noarch.0.2.10.0-6.el7 将被 升级
+---> 软件包 tuned.noarch.0.2.11.0-12.el7_9 将被 更新
+---> 软件包 tzdata.noarch.0.2018e-3.el7 将被 升级
+---> 软件包 tzdata.noarch.0.2024a-1.el7 将被 更新
+---> 软件包 vim-minimal.x86_64.2.7.4.160-5.el7 将被 升级
+---> 软件包 vim-minimal.x86_64.2.7.4.629-8.el7_9 将被 更新
+---> 软件包 virt-what.x86_64.0.1.18-4.el7 将被 升级
+---> 软件包 virt-what.x86_64.0.1.18-4.el7_9.1 将被 更新
+---> 软件包 wpa_supplicant.x86_64.1.2.6-12.el7 将被 升级
+---> 软件包 wpa_supplicant.x86_64.1.2.6-12.el7_9.2 将被 更新
+---> 软件包 xfsprogs.x86_64.0.4.5.0-18.el7 将被 升级
+---> 软件包 xfsprogs.x86_64.0.4.5.0-22.el7 将被 更新
+---> 软件包 yum.noarch.0.3.4.3-161.el7.centos 将被 升级
+---> 软件包 yum.noarch.0.3.4.3-168.el7.centos 将被 更新
+---> 软件包 yum-plugin-fastestmirror.noarch.0.1.1.31-50.el7 将被 升级
+---> 软件包 yum-plugin-fastestmirror.noarch.0.1.1.31-54.el7_8 将被 更新
+---> 软件包 zlib.x86_64.0.1.2.7-18.el7 将被 升级
+---> 软件包 zlib.x86_64.0.1.2.7-21.el7_9 将被 更新
+--> 正在检查事务
+---> 软件包 bc.x86_64.0.1.06.95-13.el7 将被 安装
+---> 软件包 geoipupdate.x86_64.0.2.5.0-2.el7 将被 安装
+--> 解决依赖关系完成
+
+依赖关系解决
+
+================================================================================
+ Package                    架构   版本                           源       大小
+================================================================================
+正在安装:
+ iwl7260-firmware           noarch 25.30.13.0-82.el7_9            updates 6.1 M
+      替换  iwl7265-firmware.noarch 22.0.7.0-69.el7
+ kernel                     x86_64 3.10.0-1160.108.1.el7          updates  52 M
+正在更新:
+ GeoIP                      x86_64 1.5.0-14.el7                   os      1.5 M
+ NetworkManager             x86_64 1:1.18.8-2.el7_9               updates 1.9 M
+ NetworkManager-libnm       x86_64 1:1.18.8-2.el7_9               updates 1.7 M
+ NetworkManager-team        x86_64 1:1.18.8-2.el7_9               updates 165 k
+ NetworkManager-tui         x86_64 1:1.18.8-2.el7_9               updates 329 k
+ NetworkManager-wifi        x86_64 1:1.18.8-2.el7_9               updates 202 k
+ acl                        x86_64 2.2.51-15.el7                  os       81 k
+ alsa-lib                   x86_64 1.1.8-1.el7                    os      425 k
+ bash                       x86_64 4.2.46-35.el7_9                updates 1.0 M
+ binutils                   x86_64 2.27-44.base.el7_9.1           updates 5.9 M
+ biosdevname                x86_64 0.7.3-2.el7                    os       38 k
+ ca-certificates            noarch 2023.2.60_v7.0.306-72.el7_9    updates 923 k
+ centos-release             x86_64 7-9.2009.1.el7.centos          updates  27 k
+ chkconfig                  x86_64 1.7.6-1.el7                    os      182 k
+ coreutils                  x86_64 8.22-24.el7_9.2                updates 3.3 M
+ cpio                       x86_64 2.11-28.el7                    os      211 k
+ cryptsetup-libs            x86_64 2.0.3-6.el7                    os      339 k
+ cyrus-sasl-lib             x86_64 2.1.26-24.el7_9                updates 156 k
+ dbus                       x86_64 1:1.10.24-15.el7               os      245 k
+ dbus-libs                  x86_64 1:1.10.24-15.el7               os      169 k
+ device-mapper              x86_64 7:1.02.170-6.el7_9.5           updates 297 k
+ device-mapper-event        x86_64 7:1.02.170-6.el7_9.5           updates 192 k
+ device-mapper-event-libs   x86_64 7:1.02.170-6.el7_9.5           updates 192 k
+ device-mapper-libs         x86_64 7:1.02.170-6.el7_9.5           updates 325 k
+ device-mapper-persistent-data
+                            x86_64 0.8.5-3.el7_9.2                updates 423 k
+ diffutils                  x86_64 3.3-6.el7_9                    updates 322 k
+ dmidecode                  x86_64 1:3.2-5.el7_9.1                updates  82 k
+ dracut                     x86_64 033-572.el7                    os      329 k
+ dracut-config-rescue       x86_64 033-572.el7                    os       61 k
+ dracut-network             x86_64 033-572.el7                    os      103 k
+ e2fsprogs                  x86_64 1.42.9-19.el7                  os      701 k
+ e2fsprogs-libs             x86_64 1.42.9-19.el7                  os      168 k
+ elfutils-default-yama-scope
+                            noarch 0.176-5.el7                    os       33 k
+ elfutils-libelf            x86_64 0.176-5.el7                    os      195 k
+ elfutils-libs              x86_64 0.176-5.el7                    os      291 k
+ expat                      x86_64 2.1.0-15.el7_9                 updates  83 k
+ file                       x86_64 5.11-37.el7                    os       57 k
+ file-libs                  x86_64 5.11-37.el7                    os      340 k
+ firewalld                  noarch 0.6.3-13.el7_9                 updates 449 k
+ firewalld-filesystem       noarch 0.6.3-13.el7_9                 updates  51 k
+ freetype                   x86_64 2.8-14.el7_9.1                 updates 380 k
+ gettext                    x86_64 0.19.8.1-3.el7                 os      1.0 M
+ gettext-libs               x86_64 0.19.8.1-3.el7                 os      502 k
+ glib2                      x86_64 2.56.1-9.el7_9                 updates 2.5 M
+ grub2                      x86_64 1:2.02-0.87.0.2.el7.centos.11  updates  34 k
+ grub2-common               noarch 1:2.02-0.87.0.2.el7.centos.11  updates 733 k
+ grub2-pc                   x86_64 1:2.02-0.87.0.2.el7.centos.11  updates  34 k
+ grub2-pc-modules           noarch 1:2.02-0.87.0.2.el7.centos.11  updates 860 k
+ grub2-tools                x86_64 1:2.02-0.87.0.2.el7.centos.11  updates 1.8 M
+ grub2-tools-extra          x86_64 1:2.02-0.87.0.2.el7.centos.11  updates 1.0 M
+ grub2-tools-minimal        x86_64 1:2.02-0.87.0.2.el7.centos.11  updates 177 k
+ grubby                     x86_64 8.28-26.el7                    os       71 k
+ gzip                       x86_64 1.5-11.el7_9                   updates 130 k
+ hostname                   x86_64 3.13-3.el7_7.1                 os       17 k
+ hwdata                     x86_64 0.252-9.7.el7                  os      2.5 M
+ initscripts                x86_64 9.49.53-1.el7_9.1              updates 440 k
+ iprutils                   x86_64 2.4.17.1-3.el7_7               updates 243 k
+ irqbalance                 x86_64 3:1.0.7-12.el7                 os       45 k
+ iwl100-firmware            noarch 39.31.5.1-82.el7_9             updates 156 k
+ iwl1000-firmware           noarch 1:39.31.5.1-82.el7_9           updates 215 k
+ iwl105-firmware            noarch 18.168.6.1-82.el7_9            updates 235 k
+ iwl135-firmware            noarch 18.168.6.1-82.el7_9            updates 243 k
+ iwl2000-firmware           noarch 18.168.6.1-82.el7_9            updates 237 k
+ iwl2030-firmware           noarch 18.168.6.1-82.el7_9            updates 245 k
+ iwl3160-firmware           noarch 25.30.13.0-82.el7_9            updates 1.5 M
+ iwl3945-firmware           noarch 15.32.2.9-82.el7_9             updates  96 k
+ iwl4965-firmware           noarch 228.61.2.24-82.el7_9           updates 109 k
+ iwl5000-firmware           noarch 8.83.5.1_1-82.el7_9            updates 290 k
+ iwl5150-firmware           noarch 8.24.2.2-82.el7_9              updates 152 k
+ iwl6000-firmware           noarch 9.221.4.1-82.el7_9             updates 171 k
+ iwl6000g2a-firmware        noarch 18.168.6.1-82.el7_9            updates 305 k
+ iwl6000g2b-firmware        noarch 18.168.6.1-82.el7_9            updates 305 k
+ iwl6050-firmware           noarch 41.28.5.1-82.el7_9             updates 242 k
+ kbd                        x86_64 1.15.5-16.el7_9                updates 347 k
+ kbd-legacy                 noarch 1.15.5-16.el7_9                updates 466 k
+ kbd-misc                   noarch 1.15.5-16.el7_9                updates 1.4 M
+ kernel-tools               x86_64 3.10.0-1160.108.1.el7          updates 8.2 M
+ kernel-tools-libs          x86_64 3.10.0-1160.108.1.el7          updates 8.1 M
+ kexec-tools                x86_64 2.0.15-51.el7_9.3              updates 351 k
+ kmod                       x86_64 20-28.el7                      os      123 k
+ kmod-libs                  x86_64 20-28.el7                      os       51 k
+ kpartx                     x86_64 0.4.9-136.el7_9                updates  81 k
+ krb5-libs                  x86_64 1.15.1-55.el7_9                updates 810 k
+ libacl                     x86_64 2.2.51-15.el7                  os       27 k
+ libcap                     x86_64 2.22-11.el7                    os       47 k
+ libcom_err                 x86_64 1.42.9-19.el7                  os       42 k
+ libcroco                   x86_64 0.6.12-6.el7_9                 updates 105 k
+ libdb                      x86_64 5.3.21-25.el7                  os      720 k
+ libdb-utils                x86_64 5.3.21-25.el7                  os      132 k
+ libdrm                     x86_64 2.4.97-2.el7                   os      151 k
+ libffi                     x86_64 3.0.13-19.el7                  os       30 k
+ libndp                     x86_64 1.2-9.el7                      os       32 k
+ libpng                     x86_64 2:1.5.13-8.el7                 os      213 k
+ libss                      x86_64 1.42.9-19.el7                  os       47 k
+ libstdc++                  x86_64 4.8.5-44.el7                   os      306 k
+ libteam                    x86_64 1.29-3.el7                     os       50 k
+ libxml2                    x86_64 2.9.1-6.el7_9.6                updates 668 k
+ linux-firmware             noarch 20200421-82.git78c0348.el7_9   updates  80 M
+ logrotate                  x86_64 3.8.6-19.el7                   os       70 k
+ lvm2                       x86_64 7:2.02.187-6.el7_9.5           updates 1.3 M
+ lvm2-libs                  x86_64 7:2.02.187-6.el7_9.5           updates 1.1 M
+ lz4                        x86_64 1.8.3-1.el7                    os       85 k
+ mariadb-libs               x86_64 1:5.5.68-1.el7                 os      760 k
+ microcode_ctl              x86_64 2:2.1-73.20.el7_9              updates 6.8 M
+ nss-pem                    x86_64 1.0.3-7.el7_9.1                updates  75 k
+ numactl-libs               x86_64 2.0.12-5.el7                   os       30 k
+ openldap                   x86_64 2.4.44-25.el7_9                updates 356 k
+ openssh                    x86_64 7.4p1-23.el7_9                 updates 510 k
+ openssh-clients            x86_64 7.4p1-23.el7_9                 updates 655 k
+ openssh-server             x86_64 7.4p1-23.el7_9                 updates 459 k
+ parted                     x86_64 3.1-32.el7                     os      609 k
+ passwd                     x86_64 0.79-6.el7                     os      106 k
+ plymouth                   x86_64 0.8.9-0.34.20140113.el7.centos os      116 k
+ plymouth-core-libs         x86_64 0.8.9-0.34.20140113.el7.centos os      108 k
+ plymouth-scripts           x86_64 0.8.9-0.34.20140113.el7.centos os       39 k
+ polkit                     x86_64 0.112-26.el7_9.1               updates 170 k
+ postfix                    x86_64 2:2.10.1-9.el7                 os      2.4 M
+ procps-ng                  x86_64 3.3.10-28.el7                  os      291 k
+ python                     x86_64 2.7.5-94.el7_9                 updates  97 k
+ python-firewall            noarch 0.6.3-13.el7_9                 updates 355 k
+ python-libs                x86_64 2.7.5-94.el7_9                 updates 5.6 M
+ python-linux-procfs        noarch 0.4.11-4.el7                   os       33 k
+ python-perf                x86_64 3.10.0-1160.108.1.el7          updates 8.2 M
+ python-urlgrabber          noarch 3.10-10.el7                    os      108 k
+ readline                   x86_64 6.2-11.el7                     os      193 k
+ rpm                        x86_64 4.11.3-48.el7_9                updates 1.2 M
+ rpm-build-libs             x86_64 4.11.3-48.el7_9                updates 108 k
+ rpm-libs                   x86_64 4.11.3-48.el7_9                updates 279 k
+ rpm-python                 x86_64 4.11.3-48.el7_9                updates  84 k
+ rsyslog                    x86_64 8.24.0-57.el7_9.3              updates 622 k
+ selinux-policy             noarch 3.13.1-268.el7_9.2             updates 498 k
+ selinux-policy-targeted    noarch 3.13.1-268.el7_9.2             updates 7.0 M
+ setup                      noarch 2.8.71-11.el7                  os      166 k
+ shadow-utils               x86_64 2:4.6-5.el7                    os      1.2 M
+ shared-mime-info           x86_64 1.8-5.el7                      os      312 k
+ sqlite                     x86_64 3.7.17-8.el7_7.1               os      394 k
+ sudo                       x86_64 1.8.23-10.el7_9.3              updates 844 k
+ teamd                      x86_64 1.29-3.el7                     os      116 k
+ tuned                      noarch 2.11.0-12.el7_9                updates 270 k
+ tzdata                     noarch 2024a-1.el7                    updates 497 k
+ vim-minimal                x86_64 2:7.4.629-8.el7_9              updates 443 k
+ virt-what                  x86_64 1.18-4.el7_9.1                 updates  30 k
+ wpa_supplicant             x86_64 1:2.6-12.el7_9.2               updates 1.2 M
+ xfsprogs                   x86_64 4.5.0-22.el7                   os      897 k
+ yum                        noarch 3.4.3-168.el7.centos           os      1.2 M
+ yum-plugin-fastestmirror   noarch 1.1.31-54.el7_8                os       34 k
+ zlib                       x86_64 1.2.7-21.el7_9                 updates  90 k
+为依赖而安装:
+ bc                         x86_64 1.06.95-13.el7                 os      115 k
+ geoipupdate                x86_64 2.5.0-2.el7                    updates  35 k
+
+事务概要
+================================================================================
+安装    2 软件包 (+2 依赖软件包)
+升级  147 软件包
+
+总下载量：249 M
+Downloading packages:
+Delta RPMs disabled because /usr/bin/applydeltarpm not installed.
+--------------------------------------------------------------------------------
+总计                                               3.4 MB/s | 249 MB  01:13     
+Running transaction check
+Running transaction test
+Transaction test succeeded
+Running transaction
+  正在更新    : bash-4.2.46-35.el7_9.x86_64                               1/300 
+  正在更新    : zlib-1.2.7-21.el7_9.x86_64                                2/300 
+  正在更新    : libacl-2.2.51-15.el7.x86_64                               3/300 
+  正在更新    : libdb-5.3.21-25.el7.x86_64                                4/300 
+  正在更新    : readline-6.2-11.el7.x86_64                                5/300 
+  正在更新    : libcom_err-1.42.9-19.el7.x86_64                           6/300 
+  正在更新    : elfutils-libelf-0.176-5.el7.x86_64                        7/300 
+  正在更新    : cpio-2.11-28.el7.x86_64                                   8/300 
+  正在更新    : libcap-2.22-11.el7.x86_64                                 9/300 
+  正在更新    : coreutils-8.22-24.el7_9.2.x86_64                         10/300 
+  正在更新    : 1:grub2-common-2.02-0.87.0.2.el7.centos.11.noarch        11/300 
+  正在更新    : libxml2-2.9.1-6.el7_9.6.x86_64                           12/300 
+  正在更新    : chkconfig-1.7.6-1.el7.x86_64                             13/300 
+  正在更新    : expat-2.1.0-15.el7_9.x86_64                              14/300 
+  正在更新    : centos-release-7-9.2009.1.el7.centos.x86_64              15/300 
+  正在更新    : krb5-libs-1.15.1-55.el7_9.x86_64                         16/300 
+  正在更新    : gzip-1.5-11.el7_9.x86_64                                 17/300 
+  正在更新    : file-libs-5.11-37.el7.x86_64                             18/300 
+  正在更新    : file-5.11-37.el7.x86_64                                  19/300 
+  正在更新    : libstdc++-4.8.5-44.el7.x86_64                            20/300 
+  正在更新    : 1:dbus-libs-1.10.24-15.el7.x86_64                        21/300 
+  正在更新    : 1:wpa_supplicant-2.6-12.el7_9.2.x86_64                   22/300 
+  正在更新    : cyrus-sasl-lib-2.1.26-24.el7_9.x86_64                    23/300 
+  正在更新    : 7:device-mapper-libs-1.02.170-6.el7_9.5.x86_64           24/300 
+  正在更新    : 7:device-mapper-1.02.170-6.el7_9.5.x86_64                25/300 
+  正在更新    : 7:device-mapper-event-libs-1.02.170-6.el7_9.5.x86_64     26/300 
+  正在更新    : diffutils-3.3-6.el7_9.x86_64                             27/300 
+  正在更新    : libffi-3.0.13-19.el7.x86_64                              28/300 
+  正在更新    : glib2-2.56.1-9.el7_9.x86_64                              29/300 
+  正在更新    : shared-mime-info-1.8-5.el7.x86_64                        30/300 
+  正在更新    : 1:NetworkManager-libnm-1.18.8-2.el7_9.x86_64             31/300 
+  正在更新    : libcroco-0.6.12-6.el7_9.x86_64                           32/300 
+  正在更新    : procps-ng-3.3.10-28.el7.x86_64                           33/300 
+  正在更新    : gettext-libs-0.19.8.1-3.el7.x86_64                       34/300 
+  正在更新    : 7:device-mapper-event-1.02.170-6.el7_9.5.x86_64          35/300 
+  正在更新    : 7:lvm2-libs-2.02.187-6.el7_9.5.x86_64                    36/300 
+  正在更新    : kpartx-0.4.9-136.el7_9.x86_64                            37/300 
+  正在更新    : 1:mariadb-libs-5.5.68-1.el7.x86_64                       38/300 
+  正在更新    : device-mapper-persistent-data-0.8.5-3.el7_9.2.x86_64     39/300 
+  正在更新    : grubby-8.28-26.el7.x86_64                                40/300 
+  正在更新    : setup-2.8.71-11.el7.noarch                               41/300 
+warning: /etc/shadow created as /etc/shadow.rpmnew
+  正在更新    : 2:shadow-utils-4.6-5.el7.x86_64                          42/300 
+  正在更新    : 1:dbus-1.10.24-15.el7.x86_64                             43/300 
+  正在更新    : polkit-0.112-26.el7_9.1.x86_64                           44/300 
+  正在更新    : binutils-2.27-44.base.el7_9.1.x86_64                     45/300 
+  正在更新    : dracut-033-572.el7.x86_64                                46/300 
+  正在更新    : kmod-20-28.el7.x86_64                                    47/300 
+  正在更新    : dracut-network-033-572.el7.x86_64                        48/300 
+  正在更新    : 1:grub2-pc-modules-2.02-0.87.0.2.el7.centos.11.noarch    49/300 
+  正在更新    : selinux-policy-3.13.1-268.el7_9.2.noarch                 50/300 
+  正在更新    : logrotate-3.8.6-19.el7.x86_64                            51/300 
+  正在更新    : e2fsprogs-libs-1.42.9-19.el7.x86_64                      52/300 
+  正在更新    : libss-1.42.9-19.el7.x86_64                               53/300 
+  正在安装    : bc-1.06.95-13.el7.x86_64                                 54/300 
+  正在更新    : sqlite-3.7.17-8.el7_7.1.x86_64                           55/300 
+  正在更新    : python-libs-2.7.5-94.el7_9.x86_64                        56/300 
+  正在更新    : python-2.7.5-94.el7_9.x86_64                             57/300 
+  正在更新    : gettext-0.19.8.1-3.el7.x86_64                            58/300 
+  正在更新    : 1:grub2-tools-minimal-2.02-0.87.0.2.el7.centos.11.x86    59/300 
+  正在更新    : python-firewall-0.6.3-13.el7_9.noarch                    60/300 
+  正在更新    : python-urlgrabber-3.10-10.el7.noarch                     61/300 
+  正在更新    : python-linux-procfs-0.4.11-4.el7.noarch                  62/300 
+  正在更新    : python-perf-3.10.0-1160.108.1.el7.x86_64                 63/300 
+  正在更新    : libdb-utils-5.3.21-25.el7.x86_64                         64/300 
+  正在更新    : rpm-libs-4.11.3-48.el7_9.x86_64                          65/300 
+  正在更新    : rpm-4.11.3-48.el7_9.x86_64                               66/300 
+  正在更新    : openldap-2.4.44-25.el7_9.x86_64                          67/300 
+  正在更新    : openssh-7.4p1-23.el7_9.x86_64                            68/300 
+  正在更新    : 1:grub2-tools-2.02-0.87.0.2.el7.centos.11.x86_64         69/300 
+  正在更新    : rpm-build-libs-4.11.3-48.el7_9.x86_64                    70/300 
+  正在更新    : rpm-python-4.11.3-48.el7_9.x86_64                        71/300 
+  正在更新    : yum-plugin-fastestmirror-1.1.31-54.el7_8.noarch          72/300 
+  正在更新    : yum-3.4.3-168.el7.centos.noarch                          73/300 
+  正在更新    : 2:vim-minimal-7.4.629-8.el7_9.x86_64                     74/300 
+  正在安装    : geoipupdate-2.5.0-2.el7.x86_64                           75/300 
+  正在更新    : 2:libpng-1.5.13-8.el7.x86_64                             76/300 
+  正在更新    : freetype-2.8-14.el7_9.1.x86_64                           77/300 
+  正在更新    : 1:grub2-tools-extra-2.02-0.87.0.2.el7.centos.11.x86_6    78/300 
+  正在更新    : 1:grub2-pc-2.02-0.87.0.2.el7.centos.11.x86_64            79/300 
+  正在更新    : elfutils-default-yama-scope-0.176-5.el7.noarch           80/300 
+  正在更新    : elfutils-libs-0.176-5.el7.x86_64                         81/300 
+  正在更新    : linux-firmware-20200421-82.git78c0348.el7_9.noarch       82/300 
+  正在更新    : numactl-libs-2.0.12-5.el7.x86_64                         83/300 
+  正在更新    : libndp-1.2-9.el7.x86_64                                  84/300 
+  正在更新    : 1:NetworkManager-1.18.8-2.el7_9.x86_64                   85/300 
+  正在更新    : firewalld-filesystem-0.6.3-13.el7_9.noarch               86/300 
+  正在更新    : libteam-1.29-3.el7.x86_64                                87/300 
+  正在更新    : teamd-1.29-3.el7.x86_64                                  88/300 
+  正在更新    : kbd-misc-1.15.5-16.el7_9.noarch                          89/300 
+  正在更新    : kernel-tools-libs-3.10.0-1160.108.1.el7.x86_64           90/300 
+  正在更新    : hostname-3.13-3.el7_7.1.x86_64                           91/300 
+  正在更新    : initscripts-9.49.53-1.el7_9.1.x86_64                     92/300 
+  正在更新    : kbd-legacy-1.15.5-16.el7_9.noarch                        93/300 
+  正在更新    : libdrm-2.4.97-2.el7.x86_64                               94/300 
+  正在更新    : plymouth-core-libs-0.8.9-0.34.20140113.el7.centos.x86    95/300 
+  正在更新    : plymouth-scripts-0.8.9-0.34.20140113.el7.centos.x86_6    96/300 
+  正在更新    : plymouth-0.8.9-0.34.20140113.el7.centos.x86_64           97/300 
+  正在更新    : 1:dmidecode-3.2-5.el7_9.1.x86_64                         98/300 
+  正在更新    : virt-what-1.18-4.el7_9.1.x86_64                          99/300 
+  正在更新    : tuned-2.11.0-12.el7_9.noarch                            100/300 
+  正在更新    : kbd-1.15.5-16.el7_9.x86_64                              101/300 
+  正在安装    : kernel-3.10.0-1160.108.1.el7.x86_64                     102/300 
+  正在更新    : kernel-tools-3.10.0-1160.108.1.el7.x86_64               103/300 
+  正在更新    : 1:NetworkManager-team-1.18.8-2.el7_9.x86_64             104/300 
+  正在更新    : firewalld-0.6.3-13.el7_9.noarch                         105/300 
+  正在更新    : 1:NetworkManager-tui-1.18.8-2.el7_9.x86_64              106/300 
+  正在更新    : 1:NetworkManager-wifi-1.18.8-2.el7_9.x86_64             107/300 
+  正在更新    : 3:irqbalance-1.0.7-12.el7.x86_64                        108/300 
+  正在更新    : kexec-tools-2.0.15-51.el7_9.3.x86_64                    109/300 
+  正在更新    : 1:grub2-2.02-0.87.0.2.el7.centos.11.x86_64              110/300 
+  正在更新    : GeoIP-1.5.0-14.el7.x86_64                               111/300 
+  正在更新    : sudo-1.8.23-10.el7_9.3.x86_64                           112/300 
+  正在更新    : openssh-server-7.4p1-23.el7_9.x86_64                    113/300 
+  正在更新    : openssh-clients-7.4p1-23.el7_9.x86_64                   114/300 
+  正在更新    : 2:postfix-2.10.1-9.el7.x86_64                           115/300 
+  正在更新    : e2fsprogs-1.42.9-19.el7.x86_64                          116/300 
+  正在更新    : rsyslog-8.24.0-57.el7_9.3.x86_64                        117/300 
+  正在更新    : selinux-policy-targeted-3.13.1-268.el7_9.2.noarch       118/300 
+  正在更新    : 7:lvm2-2.02.187-6.el7_9.5.x86_64                        119/300 
+  正在更新    : dracut-config-rescue-033-572.el7.x86_64                 120/300 
+  正在更新    : passwd-0.79-6.el7.x86_64                                121/300 
+  正在更新    : cryptsetup-libs-2.0.3-6.el7.x86_64                      122/300 
+  正在更新    : parted-3.1-32.el7.x86_64                                123/300 
+  正在更新    : 2:microcode_ctl-2.1-73.20.el7_9.x86_64                  124/300 
+  正在更新    : alsa-lib-1.1.8-1.el7.x86_64                             125/300 
+  正在更新    : xfsprogs-4.5.0-22.el7.x86_64                            126/300 
+  正在更新    : acl-2.2.51-15.el7.x86_64                                127/300 
+  正在更新    : biosdevname-0.7.3-2.el7.x86_64                          128/300 
+  正在更新    : kmod-libs-20-28.el7.x86_64                              129/300 
+  正在更新    : iprutils-2.4.17.1-3.el7_7.x86_64                        130/300 
+  正在更新    : hwdata-0.252-9.7.el7.x86_64                             131/300 
+  正在更新    : ca-certificates-2023.2.60_v7.0.306-72.el7_9.noarch      132/300 
+  正在更新    : iwl6000g2b-firmware-18.168.6.1-82.el7_9.noarch          133/300 
+  正在更新    : iwl6000g2a-firmware-18.168.6.1-82.el7_9.noarch          134/300 
+  正在更新    : iwl2030-firmware-18.168.6.1-82.el7_9.noarch             135/300 
+  正在更新    : iwl5000-firmware-8.83.5.1_1-82.el7_9.noarch             136/300 
+  正在更新    : iwl2000-firmware-18.168.6.1-82.el7_9.noarch             137/300 
+  正在更新    : lz4-1.8.3-1.el7.x86_64                                  138/300 
+  正在更新    : tzdata-2024a-1.el7.noarch                               139/300 
+  正在安装    : iwl7260-firmware-25.30.13.0-82.el7_9.noarch             140/300 
+  正在更新    : iwl105-firmware-18.168.6.1-82.el7_9.noarch              141/300 
+  正在更新    : iwl100-firmware-39.31.5.1-82.el7_9.noarch               142/300 
+  正在更新    : iwl135-firmware-18.168.6.1-82.el7_9.noarch              143/300 
+  正在更新    : iwl6050-firmware-41.28.5.1-82.el7_9.noarch              144/300 
+  正在更新    : iwl4965-firmware-228.61.2.24-82.el7_9.noarch            145/300 
+  正在更新    : iwl5150-firmware-8.24.2.2-82.el7_9.noarch               146/300 
+  正在更新    : iwl3945-firmware-15.32.2.9-82.el7_9.noarch              147/300 
+  正在更新    : 1:iwl1000-firmware-39.31.5.1-82.el7_9.noarch            148/300 
+  正在更新    : nss-pem-1.0.3-7.el7_9.1.x86_64                          149/300 
+  正在更新    : iwl6000-firmware-9.221.4.1-82.el7_9.noarch              150/300 
+  正在更新    : iwl3160-firmware-25.30.13.0-82.el7_9.noarch             151/300 
+  清理        : tuned-2.10.0-6.el7.noarch                               152/300 
+  清理        : plymouth-0.8.9-0.31.20140113.el7.centos.x86_64          153/300 
+  清理        : plymouth-scripts-0.8.9-0.31.20140113.el7.centos.x86_6   154/300 
+  清理        : firewalld-0.5.3-5.el7.noarch                            155/300 
+  清理        : selinux-policy-targeted-3.13.1-229.el7.noarch           156/300 
+  清理        : selinux-policy-3.13.1-229.el7.noarch                    157/300 
+  清理        : 1:grub2-2.02-0.76.el7.centos.x86_64                     158/300 
+  清理        : 1:grub2-pc-2.02-0.76.el7.centos.x86_64                  159/300 
+  清理        : dracut-config-rescue-033-554.el7.x86_64                 160/300 
+  清理        : 1:grub2-pc-modules-2.02-0.76.el7.centos.noarch          161/300 
+  清理        : python-firewall-0.5.3-5.el7.noarch                      162/300 
+  清理        : python-linux-procfs-0.4.9-4.el7.noarch                  163/300 
+  清理        : yum-3.4.3-161.el7.centos.noarch                         164/300 
+  清理        : yum-plugin-fastestmirror-1.1.31-50.el7.noarch           165/300 
+  清理        : python-urlgrabber-3.10-9.el7.noarch                     166/300 
+  清理        : linux-firmware-20180911-69.git85c5d90.el7.noarch        167/300 
+  清理        : ca-certificates-2018.2.22-70.0.el7_5.noarch             168/300 
+  清理        : hwdata-0.252-9.1.el7.x86_64                             169/300 
+  清理        : firewalld-filesystem-0.5.3-5.el7.noarch                 170/300 
+  清理        : iwl6000g2b-firmware-17.168.5.2-69.el7.noarch            171/300 
+  清理        : iwl6000g2a-firmware-17.168.5.3-69.el7.noarch            172/300 
+  清理        : iwl2030-firmware-18.168.6.1-69.el7.noarch               173/300 
+  清理        : iwl5000-firmware-8.83.5.1_1-69.el7.noarch               174/300 
+  清理        : iwl2000-firmware-18.168.6.1-69.el7.noarch               175/300 
+  清理        : tzdata-2018e-3.el7.noarch                               176/300 
+  正在删除    : iwl7265-firmware-22.0.7.0-69.el7.noarch                 177/300 
+  清理        : iwl7260-firmware-22.0.7.0-69.el7.noarch                 178/300 
+  清理        : iwl105-firmware-18.168.6.1-69.el7.noarch                179/300 
+  清理        : iwl100-firmware-39.31.5.1-69.el7.noarch                 180/300 
+  清理        : iwl135-firmware-18.168.6.1-69.el7.noarch                181/300 
+  清理        : iwl6050-firmware-41.28.5.1-69.el7.noarch                182/300 
+  清理        : iwl4965-firmware-228.61.2.24-69.el7.noarch              183/300 
+  清理        : iwl5150-firmware-8.24.2.2-69.el7.noarch                 184/300 
+  清理        : iwl3945-firmware-15.32.2.9-69.el7.noarch                185/300 
+  清理        : 1:iwl1000-firmware-39.31.5.1-69.el7.noarch              186/300 
+  清理        : iwl6000-firmware-9.221.4.1-69.el7.noarch                187/300 
+  清理        : iwl3160-firmware-22.0.7.0-69.el7.noarch                 188/300 
+  清理        : rpm-python-4.11.3-35.el7.x86_64                         189/300 
+  清理        : rpm-build-libs-4.11.3-35.el7.x86_64                     190/300 
+  清理        : 1:grub2-tools-extra-2.02-0.76.el7.centos.x86_64         191/300 
+  清理        : 1:grub2-tools-2.02-0.76.el7.centos.x86_64               192/300 
+  清理        : 7:lvm2-2.02.180-8.el7.x86_64                            193/300 
+  清理        : kexec-tools-2.0.15-21.el7.x86_64                        194/300 
+  清理        : 2:postfix-2.10.1-7.el7.x86_64                           195/300 
+  清理        : openssh-server-7.4p1-16.el7.x86_64                      196/300 
+  清理        : openssh-clients-7.4p1-16.el7.x86_64                     197/300 
+  清理        : 1:grub2-tools-minimal-2.02-0.76.el7.centos.x86_64       198/300 
+  清理        : gettext-0.19.8.1-2.el7.x86_64                           199/300 
+  清理        : gettext-libs-0.19.8.1-2.el7.x86_64                      200/300 
+  清理        : sudo-1.8.23-3.el7.x86_64                                201/300 
+  清理        : 1:NetworkManager-tui-1.12.0-6.el7.x86_64                202/300 
+  清理        : e2fsprogs-1.42.9-13.el7.x86_64                          203/300 
+  清理        : kbd-1.15.5-15.el7.x86_64                                204/300 
+  清理        : initscripts-9.49.46-1.el7.x86_64                        205/300 
+  清理        : openssh-7.4p1-16.el7.x86_64                             206/300 
+  清理        : openldap-2.4.44-20.el7.x86_64                           207/300 
+  清理        : rpm-libs-4.11.3-35.el7.x86_64                           208/300 
+  清理        : rpm-4.11.3-35.el7.x86_64                                209/300 
+  清理        : cyrus-sasl-lib-2.1.26-23.el7.x86_64                     210/300 
+  清理        : krb5-libs-1.15.1-34.el7.x86_64                          211/300 
+  清理        : elfutils-libs-0.172-2.el7.x86_64                        212/300 
+  清理        : 7:lvm2-libs-2.02.180-8.el7.x86_64                       213/300 
+  清理        : 7:device-mapper-event-1.02.149-8.el7.x86_64             214/300 
+  清理        : freetype-2.8-12.el7.x86_64                              215/300 
+  清理        : 3:irqbalance-1.0.7-11.el7.x86_64                        216/300 
+  清理        : parted-3.1-29.el7.x86_64                                217/300 
+  清理        : rsyslog-8.24.0-34.el7.x86_64                            218/300 
+  清理        : logrotate-3.8.6-17.el7.x86_64                           219/300 
+  清理        : 1:NetworkManager-wifi-1.12.0-6.el7.x86_64               220/300 
+  清理        : 1:NetworkManager-team-1.12.0-6.el7.x86_64               221/300 
+  清理        : dracut-network-033-554.el7.x86_64                       222/300 
+  清理        : 1:NetworkManager-1.12.0-6.el7.x86_64                    223/300 
+  清理        : dracut-033-554.el7.x86_64                               224/300 
+  清理        : kmod-20-23.el7.x86_64                                   225/300 
+  清理        : polkit-0.112-18.el7.x86_64                              226/300 
+  清理        : 1:dbus-1.10.24-12.el7.x86_64                            227/300 
+  清理        : binutils-2.27-34.base.el7.x86_64                        228/300 
+  清理        : 2:shadow-utils-4.1.5.1-25.el7.x86_64                    229/300 
+  清理        : teamd-1.27-5.el7.x86_64                                 230/300 
+  清理        : gzip-1.5-10.el7.x86_64                                  231/300 
+  清理        : 1:wpa_supplicant-2.6-12.el7.x86_64                      232/300 
+  清理        : libcroco-0.6.12-4.el7.x86_64                            233/300 
+  清理        : 1:mariadb-libs-5.5.60-1.el7_5.x86_64                    234/300 
+  清理        : device-mapper-persistent-data-0.7.3-3.el7.x86_64        235/300 
+  清理        : file-5.11-35.el7.x86_64                                 236/300 
+  清理        : python-perf-3.10.0-957.el7.x86_64                       237/300 
+  清理        : virt-what-1.18-4.el7.x86_64                             238/300 
+  清理        : kernel-tools-3.10.0-957.el7.x86_64                      239/300 
+  清理        : xfsprogs-4.5.0-18.el7.x86_64                            240/300 
+  清理        : iprutils-2.4.16.1-1.el7.x86_64                          241/300 
+  清理        : grubby-8.28-25.el7.x86_64                               242/300 
+  清理        : setup-2.8.71-10.el7.noarch                              243/300 
+  清理        : centos-release-7-6.1810.2.el7.centos.x86_64             244/300 
+  清理        : elfutils-default-yama-scope-0.172-2.el7.noarch          245/300 
+  清理        : python-2.7.5-76.el7.x86_64                              246/300 
+  清理        : python-libs-2.7.5-76.el7.x86_64                         247/300 
+  清理        : sqlite-3.7.17-8.el7.x86_64                              248/300 
+  清理        : readline-6.2-10.el7.x86_64                              249/300 
+  清理        : file-libs-5.11-35.el7.x86_64                            250/300 
+  清理        : chkconfig-1.7.4-1.el7.x86_64                            251/300 
+  清理        : cpio-2.11-27.el7.x86_64                                 252/300 
+  清理        : diffutils-3.3-4.el7.x86_64                              253/300 
+  清理        : kpartx-0.4.9-123.el7.x86_64                             254/300 
+  清理        : 1:NetworkManager-libnm-1.12.0-6.el7.x86_64              255/300 
+  清理        : 2:libpng-1.5.13-7.el7_2.x86_64                          256/300 
+  清理        : 7:device-mapper-event-libs-1.02.149-8.el7.x86_64        257/300 
+  清理        : elfutils-libelf-0.172-2.el7.x86_64                      258/300 
+  清理        : libdb-utils-5.3.21-24.el7.x86_64                        259/300 
+  清理        : e2fsprogs-libs-1.42.9-13.el7.x86_64                     260/300 
+  清理        : libss-1.42.9-13.el7.x86_64                              261/300 
+  清理        : 2:vim-minimal-7.4.160-5.el7.x86_64                      262/300 
+  清理        : alsa-lib-1.1.6-2.el7.x86_64                             263/300 
+  清理        : passwd-0.79-4.el7.x86_64                                264/300 
+  清理        : shared-mime-info-1.8-4.el7.x86_64                       265/300 
+  清理        : glib2-2.56.1-2.el7.x86_64                               266/300 
+  清理        : coreutils-8.22-23.el7.x86_64                            267/300 
+  清理        : libxml2-2.9.1-6.el7_2.3.x86_64                          268/300 
+  清理        : cryptsetup-libs-2.0.3-3.el7.x86_64                      269/300 
+  清理        : 7:device-mapper-1.02.149-8.el7.x86_64                   270/300 
+  清理        : 7:device-mapper-libs-1.02.149-8.el7.x86_64              271/300 
+  清理        : GeoIP-1.5.0-13.el7.x86_64                               272/300 
+  清理        : 2:microcode_ctl-2.1-47.el7.x86_64                       273/300 
+  清理        : kmod-libs-20-23.el7.x86_64                              274/300 
+  清理        : acl-2.2.51-14.el7.x86_64                                275/300 
+  清理        : biosdevname-0.7.3-1.el7.x86_64                          276/300 
+  清理        : kbd-legacy-1.15.5-15.el7.noarch                         277/300 
+  清理        : kbd-misc-1.15.5-15.el7.noarch                           278/300 
+  清理        : 1:grub2-common-2.02-0.76.el7.centos.noarch              279/300 
+  清理        : zlib-1.2.7-18.el7.x86_64                                280/300 
+  清理        : libacl-2.2.51-14.el7.x86_64                             281/300 
+  清理        : bash-4.2.46-31.el7.x86_64                               282/300 
+  清理        : libcap-2.22-9.el7.x86_64                                283/300 
+  清理        : libffi-3.0.13-18.el7.x86_64                             284/300 
+  清理        : libcom_err-1.42.9-13.el7.x86_64                         285/300 
+  清理        : libdb-5.3.21-24.el7.x86_64                              286/300 
+  清理        : expat-2.1.0-10.el7_3.x86_64                             287/300 
+  清理        : kernel-tools-libs-3.10.0-957.el7.x86_64                 288/300 
+  清理        : 1:dmidecode-3.1-2.el7.x86_64                            289/300 
+  清理        : libstdc++-4.8.5-36.el7.x86_64                           290/300 
+  清理        : 1:dbus-libs-1.10.24-12.el7.x86_64                       291/300 
+  清理        : libteam-1.27-5.el7.x86_64                               292/300 
+  清理        : procps-ng-3.3.10-23.el7.x86_64                          293/300 
+  清理        : libndp-1.2-7.el7.x86_64                                 294/300 
+  清理        : numactl-libs-2.0.9-7.el7.x86_64                         295/300 
+  清理        : hostname-3.13-3.el7.x86_64                              296/300 
+  清理        : libdrm-2.4.91-3.el7.x86_64                              297/300 
+  清理        : plymouth-core-libs-0.8.9-0.31.20140113.el7.centos.x86   298/300 
+  清理        : lz4-1.7.5-2.el7.x86_64                                  299/300 
+  清理        : nss-pem-1.0.3-5.el7.x86_64                              300/300 
+  验证中      : 7:device-mapper-event-1.02.170-6.el7_9.5.x86_64           1/300 
+  验证中      : iwl3160-firmware-25.30.13.0-82.el7_9.noarch               2/300 
+  验证中      : libdb-utils-5.3.21-25.el7.x86_64                          3/300 
+  验证中      : biosdevname-0.7.3-2.el7.x86_64                            4/300 
+  验证中      : iwl6000-firmware-9.221.4.1-82.el7_9.noarch                5/300 
+  验证中      : selinux-policy-3.13.1-268.el7_9.2.noarch                  6/300 
+  验证中      : bc-1.06.95-13.el7.x86_64                                  7/300 
+  验证中      : acl-2.2.51-15.el7.x86_64                                  8/300 
+  验证中      : readline-6.2-11.el7.x86_64                                9/300 
+  验证中      : sqlite-3.7.17-8.el7_7.1.x86_64                           10/300 
+  验证中      : centos-release-7-9.2009.1.el7.centos.x86_64              11/300 
+  验证中      : firewalld-0.6.3-13.el7_9.noarch                          12/300 
+  验证中      : grubby-8.28-26.el7.x86_64                                13/300 
+  验证中      : nss-pem-1.0.3-7.el7_9.1.x86_64                           14/300 
+  验证中      : openssh-7.4p1-23.el7_9.x86_64                            15/300 
+  验证中      : 1:mariadb-libs-5.5.68-1.el7.x86_64                       16/300 
+  验证中      : libacl-2.2.51-15.el7.x86_64                              17/300 
+  验证中      : 1:iwl1000-firmware-39.31.5.1-82.el7_9.noarch             18/300 
+  验证中      : 1:NetworkManager-libnm-1.18.8-2.el7_9.x86_64             19/300 
+  验证中      : iwl3945-firmware-15.32.2.9-82.el7_9.noarch               20/300 
+  验证中      : kmod-libs-20-28.el7.x86_64                               21/300 
+  验证中      : 1:dmidecode-3.2-5.el7_9.1.x86_64                         22/300 
+  验证中      : kbd-1.15.5-16.el7_9.x86_64                               23/300 
+  验证中      : 2:microcode_ctl-2.1-73.20.el7_9.x86_64                   24/300 
+  验证中      : iwl5150-firmware-8.24.2.2-82.el7_9.noarch                25/300 
+  验证中      : procps-ng-3.3.10-28.el7.x86_64                           26/300 
+  验证中      : openldap-2.4.44-25.el7_9.x86_64                          27/300 
+  验证中      : gettext-0.19.8.1-3.el7.x86_64                            28/300 
+  验证中      : 1:grub2-tools-2.02-0.87.0.2.el7.centos.11.x86_64         29/300 
+  验证中      : plymouth-core-libs-0.8.9-0.34.20140113.el7.centos.x86    30/300 
+  验证中      : 7:device-mapper-1.02.170-6.el7_9.5.x86_64                31/300 
+  验证中      : python-firewall-0.6.3-13.el7_9.noarch                    32/300 
+  验证中      : freetype-2.8-14.el7_9.1.x86_64                           33/300 
+  验证中      : 1:grub2-common-2.02-0.87.0.2.el7.centos.11.noarch        34/300 
+  验证中      : libxml2-2.9.1-6.el7_9.6.x86_64                           35/300 
+  验证中      : setup-2.8.71-11.el7.noarch                               36/300 
+  验证中      : hwdata-0.252-9.7.el7.x86_64                              37/300 
+  验证中      : chkconfig-1.7.6-1.el7.x86_64                             38/300 
+  验证中      : e2fsprogs-1.42.9-19.el7.x86_64                           39/300 
+  验证中      : binutils-2.27-44.base.el7_9.1.x86_64                     40/300 
+  验证中      : elfutils-default-yama-scope-0.176-5.el7.noarch           41/300 
+  验证中      : gettext-libs-0.19.8.1-3.el7.x86_64                       42/300 
+  验证中      : dracut-033-572.el7.x86_64                                43/300 
+  验证中      : 1:dbus-libs-1.10.24-15.el7.x86_64                        44/300 
+  验证中      : zlib-1.2.7-21.el7_9.x86_64                               45/300 
+  验证中      : yum-plugin-fastestmirror-1.1.31-54.el7_8.noarch          46/300 
+  验证中      : GeoIP-1.5.0-14.el7.x86_64                                47/300 
+  验证中      : cryptsetup-libs-2.0.3-6.el7.x86_64                       48/300 
+  验证中      : initscripts-9.49.53-1.el7_9.1.x86_64                     49/300 
+  验证中      : geoipupdate-2.5.0-2.el7.x86_64                           50/300 
+  验证中      : passwd-0.79-6.el7.x86_64                                 51/300 
+  验证中      : plymouth-scripts-0.8.9-0.34.20140113.el7.centos.x86_6    52/300 
+  验证中      : kernel-3.10.0-1160.108.1.el7.x86_64                      53/300 
+  验证中      : dracut-config-rescue-033-572.el7.x86_64                  54/300 
+  验证中      : openssh-server-7.4p1-23.el7_9.x86_64                     55/300 
+  验证中      : e2fsprogs-libs-1.42.9-19.el7.x86_64                      56/300 
+  验证中      : bash-4.2.46-35.el7_9.x86_64                              57/300 
+  验证中      : python-2.7.5-94.el7_9.x86_64                             58/300 
+  验证中      : iprutils-2.4.17.1-3.el7_7.x86_64                         59/300 
+  验证中      : plymouth-0.8.9-0.34.20140113.el7.centos.x86_64           60/300 
+  验证中      : kpartx-0.4.9-136.el7_9.x86_64                            61/300 
+  验证中      : iwl4965-firmware-228.61.2.24-82.el7_9.noarch             62/300 
+  验证中      : 2:vim-minimal-7.4.629-8.el7_9.x86_64                     63/300 
+  验证中      : iwl6050-firmware-41.28.5.1-82.el7_9.noarch               64/300 
+  验证中      : iwl135-firmware-18.168.6.1-82.el7_9.noarch               65/300 
+  验证中      : teamd-1.29-3.el7.x86_64                                  66/300 
+  验证中      : libcap-2.22-11.el7.x86_64                                67/300 
+  验证中      : iwl100-firmware-39.31.5.1-82.el7_9.noarch                68/300 
+  验证中      : file-5.11-37.el7.x86_64                                  69/300 
+  验证中      : 1:NetworkManager-tui-1.18.8-2.el7_9.x86_64               70/300 
+  验证中      : 2:shadow-utils-4.6-5.el7.x86_64                          71/300 
+  验证中      : 1:NetworkManager-team-1.18.8-2.el7_9.x86_64              72/300 
+  验证中      : 7:device-mapper-libs-1.02.170-6.el7_9.5.x86_64           73/300 
+  验证中      : 2:postfix-2.10.1-9.el7.x86_64                            74/300 
+  验证中      : 1:dbus-1.10.24-15.el7.x86_64                             75/300 
+  验证中      : xfsprogs-4.5.0-22.el7.x86_64                             76/300 
+  验证中      : libdrm-2.4.97-2.el7.x86_64                               77/300 
+  验证中      : 1:grub2-tools-extra-2.02-0.87.0.2.el7.centos.11.x86_6    78/300 
+  验证中      : kbd-legacy-1.15.5-16.el7_9.noarch                        79/300 
+  验证中      : hostname-3.13-3.el7_7.1.x86_64                           80/300 
+  验证中      : iwl105-firmware-18.168.6.1-82.el7_9.noarch               81/300 
+  验证中      : libdb-5.3.21-25.el7.x86_64                               82/300 
+  验证中      : 1:NetworkManager-wifi-1.18.8-2.el7_9.x86_64              83/300 
+  验证中      : krb5-libs-1.15.1-55.el7_9.x86_64                         84/300 
+  验证中      : kexec-tools-2.0.15-51.el7_9.3.x86_64                     85/300 
+  验证中      : file-libs-5.11-37.el7.x86_64                             86/300 
+  验证中      : gzip-1.5-11.el7_9.x86_64                                 87/300 
+  验证中      : selinux-policy-targeted-3.13.1-268.el7_9.2.noarch        88/300 
+  验证中      : kmod-20-28.el7.x86_64                                    89/300 
+  验证中      : coreutils-8.22-24.el7_9.2.x86_64                         90/300 
+  验证中      : 2:libpng-1.5.13-8.el7.x86_64                             91/300 
+  验证中      : expat-2.1.0-15.el7_9.x86_64                              92/300 
+  验证中      : rpm-libs-4.11.3-48.el7_9.x86_64                          93/300 
+  验证中      : 1:wpa_supplicant-2.6-12.el7_9.2.x86_64                   94/300 
+  验证中      : iwl7260-firmware-25.30.13.0-82.el7_9.noarch              95/300 
+  验证中      : kernel-tools-libs-3.10.0-1160.108.1.el7.x86_64           96/300 
+  验证中      : 7:lvm2-2.02.187-6.el7_9.5.x86_64                         97/300 
+  验证中      : ca-certificates-2023.2.60_v7.0.306-72.el7_9.noarch       98/300 
+  验证中      : libstdc++-4.8.5-44.el7.x86_64                            99/300 
+  验证中      : 1:grub2-2.02-0.87.0.2.el7.centos.11.x86_64              100/300 
+  验证中      : linux-firmware-20200421-82.git78c0348.el7_9.noarch      101/300 
+  验证中      : logrotate-3.8.6-19.el7.x86_64                           102/300 
+  验证中      : device-mapper-persistent-data-0.8.5-3.el7_9.2.x86_64    103/300 
+  验证中      : tuned-2.11.0-12.el7_9.noarch                            104/300 
+  验证中      : tzdata-2024a-1.el7.noarch                               105/300 
+  验证中      : diffutils-3.3-6.el7_9.x86_64                            106/300 
+  验证中      : lz4-1.8.3-1.el7.x86_64                                  107/300 
+  验证中      : virt-what-1.18-4.el7_9.1.x86_64                         108/300 
+  验证中      : 1:grub2-tools-minimal-2.02-0.87.0.2.el7.centos.11.x86   109/300 
+  验证中      : iwl2000-firmware-18.168.6.1-82.el7_9.noarch             110/300 
+  验证中      : rpm-4.11.3-48.el7_9.x86_64                              111/300 
+  验证中      : 1:grub2-pc-2.02-0.87.0.2.el7.centos.11.x86_64           112/300 
+  验证中      : python-urlgrabber-3.10-10.el7.noarch                    113/300 
+  验证中      : openssh-clients-7.4p1-23.el7_9.x86_64                   114/300 
+  验证中      : python-linux-procfs-0.4.11-4.el7.noarch                 115/300 
+  验证中      : iwl5000-firmware-8.83.5.1_1-82.el7_9.noarch             116/300 
+  验证中      : iwl2030-firmware-18.168.6.1-82.el7_9.noarch             117/300 
+  验证中      : glib2-2.56.1-9.el7_9.x86_64                             118/300 
+  验证中      : sudo-1.8.23-10.el7_9.3.x86_64                           119/300 
+  验证中      : kbd-misc-1.15.5-16.el7_9.noarch                         120/300 
+  验证中      : libcom_err-1.42.9-19.el7.x86_64                         121/300 
+  验证中      : libteam-1.29-3.el7.x86_64                               122/300 
+  验证中      : shared-mime-info-1.8-5.el7.x86_64                       123/300 
+  验证中      : firewalld-filesystem-0.6.3-13.el7_9.noarch              124/300 
+  验证中      : 1:NetworkManager-1.18.8-2.el7_9.x86_64                  125/300 
+  验证中      : dracut-network-033-572.el7.x86_64                       126/300 
+  验证中      : alsa-lib-1.1.8-1.el7.x86_64                             127/300 
+  验证中      : rsyslog-8.24.0-57.el7_9.3.x86_64                        128/300 
+  验证中      : 7:lvm2-libs-2.02.187-6.el7_9.5.x86_64                   129/300 
+  验证中      : iwl6000g2a-firmware-18.168.6.1-82.el7_9.noarch          130/300 
+  验证中      : libndp-1.2-9.el7.x86_64                                 131/300 
+  验证中      : parted-3.1-32.el7.x86_64                                132/300 
+  验证中      : 1:grub2-pc-modules-2.02-0.87.0.2.el7.centos.11.noarch   133/300 
+  验证中      : 7:device-mapper-event-libs-1.02.170-6.el7_9.5.x86_64    134/300 
+  验证中      : libss-1.42.9-19.el7.x86_64                              135/300 
+  验证中      : cpio-2.11-28.el7.x86_64                                 136/300 
+  验证中      : 3:irqbalance-1.0.7-12.el7.x86_64                        137/300 
+  验证中      : libcroco-0.6.12-6.el7_9.x86_64                          138/300 
+  验证中      : rpm-python-4.11.3-48.el7_9.x86_64                       139/300 
+  验证中      : yum-3.4.3-168.el7.centos.noarch                         140/300 
+  验证中      : iwl6000g2b-firmware-18.168.6.1-82.el7_9.noarch          141/300 
+  验证中      : numactl-libs-2.0.12-5.el7.x86_64                        142/300 
+  验证中      : cyrus-sasl-lib-2.1.26-24.el7_9.x86_64                   143/300 
+  验证中      : python-perf-3.10.0-1160.108.1.el7.x86_64                144/300 
+  验证中      : python-libs-2.7.5-94.el7_9.x86_64                       145/300 
+  验证中      : kernel-tools-3.10.0-1160.108.1.el7.x86_64               146/300 
+  验证中      : elfutils-libs-0.176-5.el7.x86_64                        147/300 
+  验证中      : elfutils-libelf-0.176-5.el7.x86_64                      148/300 
+  验证中      : polkit-0.112-26.el7_9.1.x86_64                          149/300 
+  验证中      : rpm-build-libs-4.11.3-48.el7_9.x86_64                   150/300 
+  验证中      : libffi-3.0.13-19.el7.x86_64                             151/300 
+  验证中      : device-mapper-persistent-data-0.7.3-3.el7.x86_64        152/300 
+  验证中      : python-2.7.5-76.el7.x86_64                              153/300 
+  验证中      : rpm-python-4.11.3-35.el7.x86_64                         154/300 
+  验证中      : 1:NetworkManager-1.12.0-6.el7.x86_64                    155/300 
+  验证中      : 7:device-mapper-event-1.02.149-8.el7.x86_64             156/300 
+  验证中      : kernel-tools-3.10.0-957.el7.x86_64                      157/300 
+  验证中      : 1:grub2-pc-2.02-0.76.el7.centos.x86_64                  158/300 
+  验证中      : 1:grub2-pc-modules-2.02-0.76.el7.centos.noarch          159/300 
+  验证中      : 3:irqbalance-1.0.7-11.el7.x86_64                        160/300 
+  验证中      : 2:libpng-1.5.13-7.el7_2.x86_64                          161/300 
+  验证中      : acl-2.2.51-14.el7.x86_64                                162/300 
+  验证中      : libstdc++-4.8.5-36.el7.x86_64                           163/300 
+  验证中      : teamd-1.27-5.el7.x86_64                                 164/300 
+  验证中      : freetype-2.8-12.el7.x86_64                              165/300 
+  验证中      : cryptsetup-libs-2.0.3-3.el7.x86_64                      166/300 
+  验证中      : alsa-lib-1.1.6-2.el7.x86_64                             167/300 
+  验证中      : virt-what-1.18-4.el7.x86_64                             168/300 
+  验证中      : GeoIP-1.5.0-13.el7.x86_64                               169/300 
+  验证中      : gettext-0.19.8.1-2.el7.x86_64                           170/300 
+  验证中      : zlib-1.2.7-18.el7.x86_64                                171/300 
+  验证中      : 2:postfix-2.10.1-7.el7.x86_64                           172/300 
+  验证中      : iwl6000g2a-firmware-17.168.5.3-69.el7.noarch            173/300 
+  验证中      : 1:dmidecode-3.1-2.el7.x86_64                            174/300 
+  验证中      : libdb-5.3.21-24.el7.x86_64                              175/300 
+  验证中      : 1:grub2-tools-extra-2.02-0.76.el7.centos.x86_64         176/300 
+  验证中      : 2:microcode_ctl-2.1-47.el7.x86_64                       177/300 
+  验证中      : file-5.11-35.el7.x86_64                                 178/300 
+  验证中      : 1:NetworkManager-wifi-1.12.0-6.el7.x86_64               179/300 
+  验证中      : 2:shadow-utils-4.1.5.1-25.el7.x86_64                    180/300 
+  验证中      : libss-1.42.9-13.el7.x86_64                              181/300 
+  验证中      : logrotate-3.8.6-17.el7.x86_64                           182/300 
+  验证中      : iwl2000-firmware-18.168.6.1-69.el7.noarch               183/300 
+  验证中      : 1:NetworkManager-team-1.12.0-6.el7.x86_64               184/300 
+  验证中      : e2fsprogs-libs-1.42.9-13.el7.x86_64                     185/300 
+  验证中      : krb5-libs-1.15.1-34.el7.x86_64                          186/300 
+  验证中      : openssh-7.4p1-16.el7.x86_64                             187/300 
+  验证中      : libffi-3.0.13-18.el7.x86_64                             188/300 
+  验证中      : firewalld-0.5.3-5.el7.noarch                            189/300 
+  验证中      : readline-6.2-10.el7.x86_64                              190/300 
+  验证中      : chkconfig-1.7.4-1.el7.x86_64                            191/300 
+  验证中      : 7:device-mapper-libs-1.02.149-8.el7.x86_64              192/300 
+  验证中      : rpm-build-libs-4.11.3-35.el7.x86_64                     193/300 
+  验证中      : setup-2.8.71-10.el7.noarch                              194/300 
+  验证中      : plymouth-0.8.9-0.31.20140113.el7.centos.x86_64          195/300 
+  验证中      : 7:device-mapper-event-libs-1.02.149-8.el7.x86_64        196/300 
+  验证中      : rsyslog-8.24.0-34.el7.x86_64                            197/300 
+  验证中      : iwl6050-firmware-41.28.5.1-69.el7.noarch                198/300 
+  验证中      : rpm-libs-4.11.3-35.el7.x86_64                           199/300 
+  验证中      : 1:wpa_supplicant-2.6-12.el7.x86_64                      200/300 
+  验证中      : openssh-server-7.4p1-16.el7.x86_64                      201/300 
+  验证中      : kbd-misc-1.15.5-15.el7.noarch                           202/300 
+  验证中      : initscripts-9.49.46-1.el7.x86_64                        203/300 
+  验证中      : kernel-tools-libs-3.10.0-957.el7.x86_64                 204/300 
+  验证中      : 7:lvm2-libs-2.02.180-8.el7.x86_64                       205/300 
+  验证中      : hwdata-0.252-9.1.el7.x86_64                             206/300 
+  验证中      : cpio-2.11-27.el7.x86_64                                 207/300 
+  验证中      : iwl7265-firmware-22.0.7.0-69.el7.noarch                 208/300 
+  验证中      : passwd-0.79-4.el7.x86_64                                209/300 
+  验证中      : iwl3945-firmware-15.32.2.9-69.el7.noarch                210/300 
+  验证中      : coreutils-8.22-23.el7.x86_64                            211/300 
+  验证中      : elfutils-libelf-0.172-2.el7.x86_64                      212/300 
+  验证中      : iwl105-firmware-18.168.6.1-69.el7.noarch                213/300 
+  验证中      : lz4-1.7.5-2.el7.x86_64                                  214/300 
+  验证中      : elfutils-libs-0.172-2.el7.x86_64                        215/300 
+  验证中      : iwl3160-firmware-22.0.7.0-69.el7.noarch                 216/300 
+  验证中      : 1:NetworkManager-tui-1.12.0-6.el7.x86_64                217/300 
+  验证中      : kmod-20-23.el7.x86_64                                   218/300 
+  验证中      : ca-certificates-2018.2.22-70.0.el7_5.noarch             219/300 
+  验证中      : libacl-2.2.51-14.el7.x86_64                             220/300 
+  验证中      : sqlite-3.7.17-8.el7.x86_64                              221/300 
+  验证中      : iwl6000g2b-firmware-17.168.5.2-69.el7.noarch            222/300 
+  验证中      : kexec-tools-2.0.15-21.el7.x86_64                        223/300 
+  验证中      : 1:dbus-1.10.24-12.el7.x86_64                            224/300 
+  验证中      : 1:grub2-2.02-0.76.el7.centos.x86_64                     225/300 
+  验证中      : shared-mime-info-1.8-4.el7.x86_64                       226/300 
+  验证中      : 1:grub2-common-2.02-0.76.el7.centos.noarch              227/300 
+  验证中      : libcom_err-1.42.9-13.el7.x86_64                         228/300 
+  验证中      : yum-3.4.3-161.el7.centos.noarch                         229/300 
+  验证中      : libndp-1.2-7.el7.x86_64                                 230/300 
+  验证中      : libxml2-2.9.1-6.el7_2.3.x86_64                          231/300 
+  验证中      : iwl7260-firmware-22.0.7.0-69.el7.noarch                 232/300 
+  验证中      : grubby-8.28-25.el7.x86_64                               233/300 
+  验证中      : firewalld-filesystem-0.5.3-5.el7.noarch                 234/300 
+  验证中      : 1:iwl1000-firmware-39.31.5.1-69.el7.noarch              235/300 
+  验证中      : iwl6000-firmware-9.221.4.1-69.el7.noarch                236/300 
+  验证中      : gzip-1.5-10.el7.x86_64                                  237/300 
+  验证中      : libdb-utils-5.3.21-24.el7.x86_64                        238/300 
+  验证中      : 1:mariadb-libs-5.5.60-1.el7_5.x86_64                    239/300 
+  验证中      : 1:grub2-tools-minimal-2.02-0.76.el7.centos.x86_64       240/300 
+  验证中      : file-libs-5.11-35.el7.x86_64                            241/300 
+  验证中      : plymouth-core-libs-0.8.9-0.31.20140113.el7.centos.x86   242/300 
+  验证中      : iwl5150-firmware-8.24.2.2-69.el7.noarch                 243/300 
+  验证中      : dracut-033-554.el7.x86_64                               244/300 
+  验证中      : gettext-libs-0.19.8.1-2.el7.x86_64                      245/300 
+  验证中      : openldap-2.4.44-20.el7.x86_64                           246/300 
+  验证中      : python-urlgrabber-3.10-9.el7.noarch                     247/300 
+  验证中      : kmod-libs-20-23.el7.x86_64                              248/300 
+  验证中      : sudo-1.8.23-3.el7.x86_64                                249/300 
+  验证中      : glib2-2.56.1-2.el7.x86_64                               250/300 
+  验证中      : libcroco-0.6.12-4.el7.x86_64                            251/300 
+  验证中      : 7:device-mapper-1.02.149-8.el7.x86_64                   252/300 
+  验证中      : biosdevname-0.7.3-1.el7.x86_64                          253/300 
+  验证中      : rpm-4.11.3-35.el7.x86_64                                254/300 
+  验证中      : binutils-2.27-34.base.el7.x86_64                        255/300 
+  验证中      : selinux-policy-3.13.1-229.el7.noarch                    256/300 
+  验证中      : polkit-0.112-18.el7.x86_64                              257/300 
+  验证中      : 1:dbus-libs-1.10.24-12.el7.x86_64                       258/300 
+  验证中      : numactl-libs-2.0.9-7.el7.x86_64                         259/300 
+  验证中      : elfutils-default-yama-scope-0.172-2.el7.noarch          260/300 
+  验证中      : iwl5000-firmware-8.83.5.1_1-69.el7.noarch               261/300 
+  验证中      : python-firewall-0.5.3-5.el7.noarch                      262/300 
+  验证中      : python-linux-procfs-0.4.9-4.el7.noarch                  263/300 
+  验证中      : bash-4.2.46-31.el7.x86_64                               264/300 
+  验证中      : python-libs-2.7.5-76.el7.x86_64                         265/300 
+  验证中      : hostname-3.13-3.el7.x86_64                              266/300 
+  验证中      : libteam-1.27-5.el7.x86_64                               267/300 
+  验证中      : tuned-2.10.0-6.el7.noarch                               268/300 
+  验证中      : 1:grub2-tools-2.02-0.76.el7.centos.x86_64               269/300 
+  验证中      : expat-2.1.0-10.el7_3.x86_64                             270/300 
+  验证中      : e2fsprogs-1.42.9-13.el7.x86_64                          271/300 
+  验证中      : kpartx-0.4.9-123.el7.x86_64                             272/300 
+  验证中      : kbd-legacy-1.15.5-15.el7.noarch                         273/300 
+  验证中      : linux-firmware-20180911-69.git85c5d90.el7.noarch        274/300 
+  验证中      : iwl2030-firmware-18.168.6.1-69.el7.noarch               275/300 
+  验证中      : iwl100-firmware-39.31.5.1-69.el7.noarch                 276/300 
+  验证中      : python-perf-3.10.0-957.el7.x86_64                       277/300 
+  验证中      : plymouth-scripts-0.8.9-0.31.20140113.el7.centos.x86_6   278/300 
+  验证中      : iprutils-2.4.16.1-1.el7.x86_64                          279/300 
+  验证中      : 1:NetworkManager-libnm-1.12.0-6.el7.x86_64              280/300 
+  验证中      : procps-ng-3.3.10-23.el7.x86_64                          281/300 
+  验证中      : 2:vim-minimal-7.4.160-5.el7.x86_64                      282/300 
+  验证中      : xfsprogs-4.5.0-18.el7.x86_64                            283/300 
+  验证中      : iwl135-firmware-18.168.6.1-69.el7.noarch                284/300 
+  验证中      : nss-pem-1.0.3-5.el7.x86_64                              285/300 
+  验证中      : yum-plugin-fastestmirror-1.1.31-50.el7.noarch           286/300 
+  验证中      : selinux-policy-targeted-3.13.1-229.el7.noarch           287/300 
+  验证中      : parted-3.1-29.el7.x86_64                                288/300 
+  验证中      : centos-release-7-6.1810.2.el7.centos.x86_64             289/300 
+  验证中      : iwl4965-firmware-228.61.2.24-69.el7.noarch              290/300 
+  验证中      : 7:lvm2-2.02.180-8.el7.x86_64                            291/300 
+  验证中      : dracut-network-033-554.el7.x86_64                       292/300 
+  验证中      : libcap-2.22-9.el7.x86_64                                293/300 
+  验证中      : kbd-1.15.5-15.el7.x86_64                                294/300 
+  验证中      : libdrm-2.4.91-3.el7.x86_64                              295/300 
+  验证中      : tzdata-2018e-3.el7.noarch                               296/300 
+  验证中      : dracut-config-rescue-033-554.el7.x86_64                 297/300 
+  验证中      : openssh-clients-7.4p1-16.el7.x86_64                     298/300 
+  验证中      : cyrus-sasl-lib-2.1.26-23.el7.x86_64                     299/300 
+  验证中      : diffutils-3.3-4.el7.x86_64                              300/300 
+
+已安装:
+  iwl7260-firmware.noarch 0:25.30.13.0-82.el7_9                                 
+  kernel.x86_64 0:3.10.0-1160.108.1.el7                                         
+
+作为依赖被安装:
+  bc.x86_64 0:1.06.95-13.el7          geoipupdate.x86_64 0:2.5.0-2.el7         
+
+更新完毕:
+  GeoIP.x86_64 0:1.5.0-14.el7                                                   
+  NetworkManager.x86_64 1:1.18.8-2.el7_9                                        
+  NetworkManager-libnm.x86_64 1:1.18.8-2.el7_9                                  
+  NetworkManager-team.x86_64 1:1.18.8-2.el7_9                                   
+  NetworkManager-tui.x86_64 1:1.18.8-2.el7_9                                    
+  NetworkManager-wifi.x86_64 1:1.18.8-2.el7_9                                   
+  acl.x86_64 0:2.2.51-15.el7                                                    
+  alsa-lib.x86_64 0:1.1.8-1.el7                                                 
+  bash.x86_64 0:4.2.46-35.el7_9                                                 
+  binutils.x86_64 0:2.27-44.base.el7_9.1                                        
+  biosdevname.x86_64 0:0.7.3-2.el7                                              
+  ca-certificates.noarch 0:2023.2.60_v7.0.306-72.el7_9                          
+  centos-release.x86_64 0:7-9.2009.1.el7.centos                                 
+  chkconfig.x86_64 0:1.7.6-1.el7                                                
+  coreutils.x86_64 0:8.22-24.el7_9.2                                            
+  cpio.x86_64 0:2.11-28.el7                                                     
+  cryptsetup-libs.x86_64 0:2.0.3-6.el7                                          
+  cyrus-sasl-lib.x86_64 0:2.1.26-24.el7_9                                       
+  dbus.x86_64 1:1.10.24-15.el7                                                  
+  dbus-libs.x86_64 1:1.10.24-15.el7                                             
+  device-mapper.x86_64 7:1.02.170-6.el7_9.5                                     
+  device-mapper-event.x86_64 7:1.02.170-6.el7_9.5                               
+  device-mapper-event-libs.x86_64 7:1.02.170-6.el7_9.5                          
+  device-mapper-libs.x86_64 7:1.02.170-6.el7_9.5                                
+  device-mapper-persistent-data.x86_64 0:0.8.5-3.el7_9.2                        
+  diffutils.x86_64 0:3.3-6.el7_9                                                
+  dmidecode.x86_64 1:3.2-5.el7_9.1                                              
+  dracut.x86_64 0:033-572.el7                                                   
+  dracut-config-rescue.x86_64 0:033-572.el7                                     
+  dracut-network.x86_64 0:033-572.el7                                           
+  e2fsprogs.x86_64 0:1.42.9-19.el7                                              
+  e2fsprogs-libs.x86_64 0:1.42.9-19.el7                                         
+  elfutils-default-yama-scope.noarch 0:0.176-5.el7                              
+  elfutils-libelf.x86_64 0:0.176-5.el7                                          
+  elfutils-libs.x86_64 0:0.176-5.el7                                            
+  expat.x86_64 0:2.1.0-15.el7_9                                                 
+  file.x86_64 0:5.11-37.el7                                                     
+  file-libs.x86_64 0:5.11-37.el7                                                
+  firewalld.noarch 0:0.6.3-13.el7_9                                             
+  firewalld-filesystem.noarch 0:0.6.3-13.el7_9                                  
+  freetype.x86_64 0:2.8-14.el7_9.1                                              
+  gettext.x86_64 0:0.19.8.1-3.el7                                               
+  gettext-libs.x86_64 0:0.19.8.1-3.el7                                          
+  glib2.x86_64 0:2.56.1-9.el7_9                                                 
+  grub2.x86_64 1:2.02-0.87.0.2.el7.centos.11                                    
+  grub2-common.noarch 1:2.02-0.87.0.2.el7.centos.11                             
+  grub2-pc.x86_64 1:2.02-0.87.0.2.el7.centos.11                                 
+  grub2-pc-modules.noarch 1:2.02-0.87.0.2.el7.centos.11                         
+  grub2-tools.x86_64 1:2.02-0.87.0.2.el7.centos.11                              
+  grub2-tools-extra.x86_64 1:2.02-0.87.0.2.el7.centos.11                        
+  grub2-tools-minimal.x86_64 1:2.02-0.87.0.2.el7.centos.11                      
+  grubby.x86_64 0:8.28-26.el7                                                   
+  gzip.x86_64 0:1.5-11.el7_9                                                    
+  hostname.x86_64 0:3.13-3.el7_7.1                                              
+  hwdata.x86_64 0:0.252-9.7.el7                                                 
+  initscripts.x86_64 0:9.49.53-1.el7_9.1                                        
+  iprutils.x86_64 0:2.4.17.1-3.el7_7                                            
+  irqbalance.x86_64 3:1.0.7-12.el7                                              
+  iwl100-firmware.noarch 0:39.31.5.1-82.el7_9                                   
+  iwl1000-firmware.noarch 1:39.31.5.1-82.el7_9                                  
+  iwl105-firmware.noarch 0:18.168.6.1-82.el7_9                                  
+  iwl135-firmware.noarch 0:18.168.6.1-82.el7_9                                  
+  iwl2000-firmware.noarch 0:18.168.6.1-82.el7_9                                 
+  iwl2030-firmware.noarch 0:18.168.6.1-82.el7_9                                 
+  iwl3160-firmware.noarch 0:25.30.13.0-82.el7_9                                 
+  iwl3945-firmware.noarch 0:15.32.2.9-82.el7_9                                  
+  iwl4965-firmware.noarch 0:228.61.2.24-82.el7_9                                
+  iwl5000-firmware.noarch 0:8.83.5.1_1-82.el7_9                                 
+  iwl5150-firmware.noarch 0:8.24.2.2-82.el7_9                                   
+  iwl6000-firmware.noarch 0:9.221.4.1-82.el7_9                                  
+  iwl6000g2a-firmware.noarch 0:18.168.6.1-82.el7_9                              
+  iwl6000g2b-firmware.noarch 0:18.168.6.1-82.el7_9                              
+  iwl6050-firmware.noarch 0:41.28.5.1-82.el7_9                                  
+  kbd.x86_64 0:1.15.5-16.el7_9                                                  
+  kbd-legacy.noarch 0:1.15.5-16.el7_9                                           
+  kbd-misc.noarch 0:1.15.5-16.el7_9                                             
+  kernel-tools.x86_64 0:3.10.0-1160.108.1.el7                                   
+  kernel-tools-libs.x86_64 0:3.10.0-1160.108.1.el7                              
+  kexec-tools.x86_64 0:2.0.15-51.el7_9.3                                        
+  kmod.x86_64 0:20-28.el7                                                       
+  kmod-libs.x86_64 0:20-28.el7                                                  
+  kpartx.x86_64 0:0.4.9-136.el7_9                                               
+  krb5-libs.x86_64 0:1.15.1-55.el7_9                                            
+  libacl.x86_64 0:2.2.51-15.el7                                                 
+  libcap.x86_64 0:2.22-11.el7                                                   
+  libcom_err.x86_64 0:1.42.9-19.el7                                             
+  libcroco.x86_64 0:0.6.12-6.el7_9                                              
+  libdb.x86_64 0:5.3.21-25.el7                                                  
+  libdb-utils.x86_64 0:5.3.21-25.el7                                            
+  libdrm.x86_64 0:2.4.97-2.el7                                                  
+  libffi.x86_64 0:3.0.13-19.el7                                                 
+  libndp.x86_64 0:1.2-9.el7                                                     
+  libpng.x86_64 2:1.5.13-8.el7                                                  
+  libss.x86_64 0:1.42.9-19.el7                                                  
+  libstdc++.x86_64 0:4.8.5-44.el7                                               
+  libteam.x86_64 0:1.29-3.el7                                                   
+  libxml2.x86_64 0:2.9.1-6.el7_9.6                                              
+  linux-firmware.noarch 0:20200421-82.git78c0348.el7_9                          
+  logrotate.x86_64 0:3.8.6-19.el7                                               
+  lvm2.x86_64 7:2.02.187-6.el7_9.5                                              
+  lvm2-libs.x86_64 7:2.02.187-6.el7_9.5                                         
+  lz4.x86_64 0:1.8.3-1.el7                                                      
+  mariadb-libs.x86_64 1:5.5.68-1.el7                                            
+  microcode_ctl.x86_64 2:2.1-73.20.el7_9                                        
+  nss-pem.x86_64 0:1.0.3-7.el7_9.1                                              
+  numactl-libs.x86_64 0:2.0.12-5.el7                                            
+  openldap.x86_64 0:2.4.44-25.el7_9                                             
+  openssh.x86_64 0:7.4p1-23.el7_9                                               
+  openssh-clients.x86_64 0:7.4p1-23.el7_9                                       
+  openssh-server.x86_64 0:7.4p1-23.el7_9                                        
+  parted.x86_64 0:3.1-32.el7                                                    
+  passwd.x86_64 0:0.79-6.el7                                                    
+  plymouth.x86_64 0:0.8.9-0.34.20140113.el7.centos                              
+  plymouth-core-libs.x86_64 0:0.8.9-0.34.20140113.el7.centos                    
+  plymouth-scripts.x86_64 0:0.8.9-0.34.20140113.el7.centos                      
+  polkit.x86_64 0:0.112-26.el7_9.1                                              
+  postfix.x86_64 2:2.10.1-9.el7                                                 
+  procps-ng.x86_64 0:3.3.10-28.el7                                              
+  python.x86_64 0:2.7.5-94.el7_9                                                
+  python-firewall.noarch 0:0.6.3-13.el7_9                                       
+  python-libs.x86_64 0:2.7.5-94.el7_9                                           
+  python-linux-procfs.noarch 0:0.4.11-4.el7                                     
+  python-perf.x86_64 0:3.10.0-1160.108.1.el7                                    
+  python-urlgrabber.noarch 0:3.10-10.el7                                        
+  readline.x86_64 0:6.2-11.el7                                                  
+  rpm.x86_64 0:4.11.3-48.el7_9                                                  
+  rpm-build-libs.x86_64 0:4.11.3-48.el7_9                                       
+  rpm-libs.x86_64 0:4.11.3-48.el7_9                                             
+  rpm-python.x86_64 0:4.11.3-48.el7_9                                           
+  rsyslog.x86_64 0:8.24.0-57.el7_9.3                                            
+  selinux-policy.noarch 0:3.13.1-268.el7_9.2                                    
+  selinux-policy-targeted.noarch 0:3.13.1-268.el7_9.2                           
+  setup.noarch 0:2.8.71-11.el7                                                  
+  shadow-utils.x86_64 2:4.6-5.el7                                               
+  shared-mime-info.x86_64 0:1.8-5.el7                                           
+  sqlite.x86_64 0:3.7.17-8.el7_7.1                                              
+  sudo.x86_64 0:1.8.23-10.el7_9.3                                               
+  teamd.x86_64 0:1.29-3.el7                                                     
+  tuned.noarch 0:2.11.0-12.el7_9                                                
+  tzdata.noarch 0:2024a-1.el7                                                   
+  vim-minimal.x86_64 2:7.4.629-8.el7_9                                          
+  virt-what.x86_64 0:1.18-4.el7_9.1                                             
+  wpa_supplicant.x86_64 1:2.6-12.el7_9.2                                        
+  xfsprogs.x86_64 0:4.5.0-22.el7                                                
+  yum.noarch 0:3.4.3-168.el7.centos                                             
+  yum-plugin-fastestmirror.noarch 0:1.1.31-54.el7_8                             
+  zlib.x86_64 0:1.2.7-21.el7_9                                                  
+
+替代:
+  iwl7265-firmware.noarch 0:22.0.7.0-69.el7                                     
+
+完毕！
+安装sudo工具
+command -v sudo
+/usr/bin/sudo
+安装curl工具
+command -v curl
+/usr/bin/curl
+安装wget工具
+command -v wget
+/usr/bin/wget
+安装ping工具
+command -v ping
+/usr/bin/ping
+安装unzip工具
+command -v unzip
+/usr/bin/unzip
+安装cron工具
+command -v cron
+
+yum install -y cron
+已加载插件：copr, fastestmirror
+Loading mirror speeds from cached hostfile
+没有可用软件包 cron。
+安装lsof工具
+command -v lsof
+/usr/sbin/lsof
+安装systemd工具
+command -v systemd
+
+yum install -y systemd
+已加载插件：copr, fastestmirror
+Loading mirror speeds from cached hostfile
+软件包 systemd-219-78.el7_9.9.x86_64 已安装并且是最新版本
+无须任何处理
+3. 配置防火墙
+释放被占用的端口
+lsof -n -P -i :80 | grep LISTEN
+caddy   5265 root   10u  IPv6 1164019      0t0  TCP *:80 (LISTEN)
+systemctl stop caddy
+
+systemctl disable caddy
+
+pkill caddy
+
+lsof -n -P -i :443 | grep LISTEN
+
+lsof -n -P -i :5001 | grep LISTEN
+
+lsof -n -P -i :5002 | grep LISTEN
+
+lsof -n -P -i :6001 | grep LISTEN
+
+lsof -n -P -i :6002 | grep LISTEN
+
+lsof -n -P -i :4001 | grep LISTEN
+
+lsof -n -P -i :5003 | grep LISTEN
+
+开放需要的端口
+command -v firewall-cmd
+/usr/bin/firewall-cmd
+firewall-cmd --state
+
+systemctl restart firewalld
+
+firewall-cmd --add-port=22/tcp --permanent
+
+firewall-cmd --add-port=80/tcp --permanent
+
+firewall-cmd --add-port=80/udp --permanent
+
+firewall-cmd --add-port=443/tcp --permanent
+
+firewall-cmd --add-port=443/udp --permanent
+
+firewall-cmd --add-port=5001/tcp --permanent
+
+firewall-cmd --add-port=5001/udp --permanent
+
+firewall-cmd --add-port=5002/tcp --permanent
+
+firewall-cmd --add-port=5002/udp --permanent
+
+firewall-cmd --add-port=6001/tcp --permanent
+
+firewall-cmd --add-port=6001/udp --permanent
+
+firewall-cmd --add-port=6002/tcp --permanent
+
+firewall-cmd --add-port=6002/udp --permanent
+
+firewall-cmd --add-port=4001/tcp --permanent
+
+firewall-cmd --add-port=4001/udp --permanent
+
+firewall-cmd --add-port=5003/tcp --permanent
+
+firewall-cmd --add-port=5003/udp --permanent
+
+yes | firewall-cmd --reload
+
+4. 检测网络环境
+检测IPv4
+curl -4 ip.sb
+103.117.138.122
+IPv4地址为103.117.138.122
+5. 同步系统和本地时间
+rm -f /etc/localtime
+
+ln -s /usr/share/zoneinfo/UTC /etc/localtime
+
+date +%s
+1710223320
+5. 安装Caddy服务器
+rm -rf caddy.tar.gz
+
+rm -rf /etc/caddy
+
+rm -rf /usr/share/caddy
+
+wget -O caddy.tar.gz https://github.com/caddyserver/caddy/releases/download/v2.4.3/caddy_2.4.3_linux_amd64.tar.gz
+
+mkdir /etc/caddy
+
+tar -zxvf caddy.tar.gz -C /etc/caddy
+LICENSE
+README.md
+caddy
+cp -rf /etc/caddy/caddy /usr/bin
+
+systemctl daemon-reload
+
+systemctl enable caddy
+
+mkdir /usr/share/caddy
+
+chmod 775 /usr/share/caddy
+
+if [[ -f /usr/bin/caddy ]];then echo '1';else echo '0'; fi
+1
+6. 安装Xray-Core
+开始安装Xray-Core
+bash -c "$(curl -L https://github.com/XTLS/Xray-install/raw/main/install-release.sh)" @ install
+info: Installing Xray v1.8.9 for x86_64
+Downloading Xray archive: https://github.com/XTLS/Xray-core/releases/download/v1.8.9/Xray-linux-64.zip
+ok.
+Downloading verification file for Xray archive: https://github.com/XTLS/Xray-core/releases/download/v1.8.9/Xray-linux-64.zip.dgst
+ok.
+info: Extract the Xray package to /tmp/tmp.bGgfSI73X4 and prepare it for installation.
+info: Systemd service files have been installed successfully!
+warning: The following are the actual parameters for the xray service startup.
+warning: Please make sure the configuration file path is correctly set.
+~~~~~~~~~~~~~~~~
+[Unit]
+Description=Xray Service
+Documentation=https://github.com/xtls
+After=network.target nss-lookup.target
+
+[Service]
+User=nobody
+CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
+AmbientCapabilities=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
+NoNewPrivileges=true
+ExecStart=/usr/local/bin/xray run -config /usr/local/etc/xray/config.json
+Restart=on-failure
+RestartPreventExitStatus=23
+LimitNPROC=10000
+LimitNOFILE=1000000
+
+[Install]
+WantedBy=multi-user.target
+# In case you have a good reason to do so, duplicate this file in the same directory and make your customizes there.
+# Or all changes you made will be lost!  # Refer: https://www.freedesktop.org/software/systemd/man/systemd.unit.html
+[Service]
+ExecStart=
+ExecStart=/usr/local/bin/xray run -config /usr/local/etc/xray/config.json
+~~~~~~~~~~~~~~~~
+warning: The systemd version on the current operating system is too low.
+warning: Please consider to upgrade the systemd or the operating system.
+
+installed: /usr/local/bin/xray
+installed: /usr/local/share/xray/geoip.dat
+installed: /usr/local/share/xray/geosite.dat
+installed: /usr/local/etc/xray/config.json
+installed: /var/log/xray/
+installed: /var/log/xray/access.log
+installed: /var/log/xray/error.log
+installed: /etc/systemd/system/xray.service
+installed: /etc/systemd/system/xray@.service
+removed: /tmp/tmp.bGgfSI73X4
+info: Xray v1.8.9 is installed.
+You may need to execute a command to remove dependent software: yum remove curl unzip
+info: Enable and start the Xray service
+if [[ -f /usr/local/bin/xray ]];then echo '1';else echo '0'; fi
+1
+设置Xray-core权限
+sed -i 's/User=nobody/User=root/g' /etc/systemd/system/xray.service
+
+sed -i 's/CapabilityBoundingSet=/#CapabilityBoundingSet=/g' /etc/systemd/system/xray.service
+
+sed -i 's/AmbientCapabilities=/#AmbientCapabilities=/g' /etc/systemd/system/xray.service
+
+systemctl daemon-reload
+
+if [[ -f /usr/local/etc/xray/config.json ]];then echo '1';else echo '0'; fi
+1
+mv /usr/local/etc/xray/config.json /usr/local/etc/xray/config.json.1
+
+生成Xray服务器配置文件
+7. 上传Web服务器配置
+if [[ -f /etc/caddy/Caddyfile ]];then echo '1';else echo '0'; fi
+1
+mv /etc/caddy/Caddyfile /etc/caddy/Caddyfile.back
+
+8. 启动BBR
+检查系统是否满足启动BBR条件
+uname -r
+3.10.0-957.el7.x86_64
+sysctl net.ipv4.tcp_congestion_control | grep bbr
+
+系统不满足启用BBR条件，启动失败。
+重启Xray服务
+systemctl restart caddy
+
+systemctl restart xray
+
+安装成功
+
+安装成功，请上传您的 TLS 证书。
+sed -i 's/echo/#echo/g' ~/.bashrc
+
+sed -i 's/echo/#echo/g' ~/.profile
+
+id -u
+0
+上传自有证书
+检测系统环境
+检测CPU架构
+uname -m
+x86_64
+检测系统安装命令
+检测Systemctl
+command -v systemctl
+/usr/bin/systemctl
+检测SELinux
+command -v getenforce
+/usr/sbin/getenforce
+getenforce
+Disabled
+正在上传文件
+mv /usr/local/etc/xray/ssl /usr/local/etc/xray/ssl_638458489716005043
+
+mkdir /usr/local/etc/xray/ssl
+
+unzip /usr/local/etc/xray/ssl/ssl.zip -d /usr/local/etc/xray/ssl
+Archive:  /usr/local/etc/xray/ssl/ssl.zip
+  inflating: /usr/local/etc/xray/ssl/wendy-ip.com.crt  
+  inflating: /usr/local/etc/xray/ssl/wendy-ip.com.key  
+find /usr/local/etc/xray/ssl/*.crt
+/usr/local/etc/xray/ssl/wendy-ip.com.crt
+find /usr/local/etc/xray/ssl/*.key
+/usr/local/etc/xray/ssl/wendy-ip.com.key
+mv /usr/local/etc/xray/ssl/wendy-ip.com.crt /usr/local/etc/xray/ssl/xray_ssl.crt
+
+mv /usr/local/etc/xray/ssl/wendy-ip.com.key /usr/local/etc/xray/ssl/xray_ssl.key
+
+重启Xray服务
+systemctl restart xray
+
+上传证书完成
