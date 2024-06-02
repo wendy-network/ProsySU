@@ -1,0 +1,10 @@
+正在与服务器建立连接
+建立连接成功
+sed -i 's/echo/#echo/g' ~/.bashrc
+
+sed -i 's/echo/#echo/g' ~/.profile
+
+id -u
+0
+if [[ -f /usr/local/bin/xray ]];then echo '1';else echo '0'; fi
+1

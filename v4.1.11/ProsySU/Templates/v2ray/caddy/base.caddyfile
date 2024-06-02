@@ -1,0 +1,11 @@
+*.wendy-ip.com ,wendy-ip.com {
+    root * /usr/share/caddy
+    tls /usr/local/etc/v2ray/ssl/v2ray_ssl.crt  /usr/local/etc/v2ray/ssl/v2ray_ssl.key
+    file_server
+    reverse_proxy https://azure.microsoft.com {
+        header_up Host azure.microsoft.com
+    }
+}
+localhost:80 {
+    redir https://:6443{uri}
+}

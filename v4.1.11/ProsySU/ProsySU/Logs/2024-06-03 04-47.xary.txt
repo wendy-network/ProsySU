@@ -1,0 +1,299 @@
+正在与服务器建立连接
+建立连接成功
+sed -i 's/echo/#echo/g' ~/.bashrc
+
+sed -i 's/echo/#echo/g' ~/.profile
+
+id -u
+0
+1. 检测系统环境
+检测系统环境
+检测CPU架构
+uname -m
+x86_64
+检测系统安装命令
+command -v apt
+/usr/bin/apt
+检测Systemctl
+command -v systemctl
+/usr/bin/systemctl
+检测SELinux
+command -v getenforce
+
+2. 卸载Caddy服务
+关闭Caddy服务
+systemctl stop caddy
+
+systemctl disable caddy
+
+彻底删除Caddy文件
+rm -rf /etc/systemd/system/caddy.service
+
+rm -rf /usr/bin/caddy
+
+rm -rf /usr/share/caddy
+
+rm -rf /etc/caddy
+
+3. 卸载Xray服务
+关闭Xray服务
+systemctl stop xray
+
+systemctl disable xray
+
+卸载Xray
+bash -c "$(curl -L https://github.com/XTLS/Xray-install/raw/main/install-release.sh)" @ remove
+removed: /usr/local/bin/xray
+removed: /etc/systemd/system/xray.service
+removed: /etc/systemd/system/xray@.service
+removed: /etc/systemd/system/xray.service.d
+removed: /etc/systemd/system/xray@.service.d
+removed: /usr/local/share/xray
+You may need to execute a command to remove dependent software: apt purge curl unzip
+info: Xray has been removed.
+info: If necessary, manually delete the configuration and log files.
+info: e.g., /usr/local/etc/xray and /var/log/xray/ ...
+4. 卸载Acme证书申请服务
+卸载 acme.sh
+acme.sh --uninstall
+
+删除 acme.sh 相关文件
+rm -rf ~/.acme.sh
+
+5. 重置防火墙端口
+command -v firewall-cmd
+
+command -v ufw
+/usr/sbin/ufw
+ufw delete allow 80/tcp
+
+ufw delete allow 80/udp
+
+ufw delete allow 6443/tcp
+
+ufw delete allow 6443/udp
+
+yes | ufw reload
+Firewall reloaded
+卸载完成
+卸载完成
+sed -i 's/echo/#echo/g' ~/.bashrc
+
+sed -i 's/echo/#echo/g' ~/.profile
+
+id -u
+0
+if [[ -f /usr/local/bin/xray ]];then echo '1';else echo '0'; fi
+0
+1. 检测系统环境
+检测CPU架构
+uname -m
+x86_64
+检测系统安装命令
+检测Systemctl
+command -v systemctl
+/usr/bin/systemctl
+检测SELinux
+command -v getenforce
+
+2. 安装必要的系统工具
+更新安装包
+apt update -y
+Hit:1 https://download.docker.com/linux/debian bookworm InRelease
+Hit:2 http://mirrors.aliyun.com/debian bookworm InRelease
+Reading package lists...
+Building dependency tree...
+Reading state information...
+1 package can be upgraded. Run 'apt list --upgradable' to see it.
+安装sudo工具
+command -v sudo
+/usr/bin/sudo
+安装curl工具
+command -v curl
+/usr/bin/curl
+安装wget工具
+command -v wget
+/usr/bin/wget
+安装ping工具
+command -v ping
+/usr/bin/ping
+安装unzip工具
+command -v unzip
+/usr/bin/unzip
+安装cron工具
+command -v cron
+/usr/sbin/cron
+安装lsof工具
+command -v lsof
+/usr/bin/lsof
+安装systemd工具
+command -v systemd
+/usr/bin/systemd
+3. 配置防火墙
+释放被占用的端口
+lsof -n -P -i :80 | grep LISTEN
+
+lsof -n -P -i :6443 | grep LISTEN
+
+开放需要的端口
+command -v firewall-cmd
+
+command -v ufw
+/usr/sbin/ufw
+ufw allow 22/tcp
+Skipping adding existing rule
+Skipping adding existing rule (v6)
+ufw allow 80/tcp
+Rule added
+Skipping adding existing rule (v6)
+ufw allow 80/udp
+Rule added
+Skipping adding existing rule (v6)
+ufw allow 6443/tcp
+Rule added
+Skipping adding existing rule (v6)
+ufw allow 6443/udp
+Rule added
+Skipping adding existing rule (v6)
+yes | ufw reload
+Firewall reloaded
+4. 检测网络环境
+检测IPv4
+curl -4 ip.sb
+8.222.181.119
+IPv4地址为8.222.181.119
+5. 同步系统和本地时间
+rm -f /etc/localtime
+
+ln -s /usr/share/zoneinfo/UTC /etc/localtime
+
+date +%s
+1717361133
+5. 安装Caddy服务器
+rm -rf caddy.tar.gz
+
+rm -rf /etc/caddy
+
+rm -rf /usr/share/caddy
+
+wget -O caddy.tar.gz https://github.com/caddyserver/caddy/releases/download/v2.4.3/caddy_2.4.3_linux_amd64.tar.gz
+
+mkdir /etc/caddy
+
+tar -zxvf caddy.tar.gz -C /etc/caddy
+LICENSE
+README.md
+caddy
+cp -rf /etc/caddy/caddy /usr/bin
+
+systemctl daemon-reload
+
+systemctl enable caddy
+
+mkdir /usr/share/caddy
+
+chmod 775 /usr/share/caddy
+
+if [[ -f /usr/bin/caddy ]];then echo '1';else echo '0'; fi
+1
+6. 安装Xray-Core
+开始安装Xray-Core
+bash -c "$(curl -L https://github.com/XTLS/Xray-install/raw/main/install-release.sh)" @ install
+info: Installing Xray v1.8.13 for x86_64
+Downloading Xray archive: https://github.com/XTLS/Xray-core/releases/download/v1.8.13/Xray-linux-64.zip
+ok.
+Downloading verification file for Xray archive: https://github.com/XTLS/Xray-core/releases/download/v1.8.13/Xray-linux-64.zip.dgst
+ok.
+info: Extract the Xray package to /tmp/tmp.XZ82ve7APz and prepare it for installation.
+info: Systemd service files have been installed successfully!
+warning: The following are the actual parameters for the xray service startup.
+warning: Please make sure the configuration file path is correctly set.
+# /etc/systemd/system/xray.service
+[Unit]
+Description=Xray Service
+Documentation=https://github.com/xtls
+After=network.target nss-lookup.target
+
+[Service]
+User=nobody
+CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
+AmbientCapabilities=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
+NoNewPrivileges=true
+ExecStart=/usr/local/bin/xray run -config /usr/local/etc/xray/config.json
+Restart=on-failure
+RestartPreventExitStatus=23
+LimitNPROC=10000
+LimitNOFILE=1000000
+
+[Install]
+WantedBy=multi-user.target
+
+# /etc/systemd/system/xray.service.d/10-donot_touch_single_conf.conf
+# In case you have a good reason to do so, duplicate this file in the same directory and make your customizes there.
+# Or all changes you made will be lost!  # Refer: https://www.freedesktop.org/software/systemd/man/systemd.unit.html
+[Service]
+ExecStart=
+ExecStart=/usr/local/bin/xray run -config /usr/local/etc/xray/config.json
+
+installed: /usr/local/bin/xray
+installed: /usr/local/share/xray/geoip.dat
+installed: /usr/local/share/xray/geosite.dat
+installed: /etc/systemd/system/xray.service
+installed: /etc/systemd/system/xray@.service
+removed: /tmp/tmp.XZ82ve7APz
+info: Xray v1.8.13 is installed.
+You may need to execute a command to remove dependent software: apt purge curl unzip
+warning: Failed to enable and start the Xray service
+if [[ -f /usr/local/bin/xray ]];then echo '1';else echo '0'; fi
+1
+设置Xray-core权限
+sed -i 's/User=nobody/User=root/g' /etc/systemd/system/xray.service
+
+sed -i 's/CapabilityBoundingSet=/#CapabilityBoundingSet=/g' /etc/systemd/system/xray.service
+
+sed -i 's/AmbientCapabilities=/#AmbientCapabilities=/g' /etc/systemd/system/xray.service
+
+systemctl daemon-reload
+
+if [[ -f /usr/local/etc/xray/config.json ]];then echo '1';else echo '0'; fi
+0
+生成Xray服务器配置文件
+sed -i 's/echo/#echo/g' ~/.bashrc
+
+sed -i 's/echo/#echo/g' ~/.profile
+
+id -u
+0
+上传自有证书
+检测系统环境
+检测CPU架构
+uname -m
+x86_64
+检测系统安装命令
+检测Systemctl
+command -v systemctl
+/usr/bin/systemctl
+检测SELinux
+command -v getenforce
+
+正在上传文件
+mv /usr/local/etc/xray/ssl /usr/local/etc/xray/ssl_638529868385237279
+
+mkdir /usr/local/etc/xray/ssl
+
+unzip /usr/local/etc/xray/ssl/ssl.zip -d /usr/local/etc/xray/ssl
+Archive:  /usr/local/etc/xray/ssl/ssl.zip
+  inflating: /usr/local/etc/xray/ssl/wendy-ip.com.crt  
+  inflating: /usr/local/etc/xray/ssl/wendy-ip.com.key  
+find /usr/local/etc/xray/ssl/*.crt
+/usr/local/etc/xray/ssl/wendy-ip.com.crt
+find /usr/local/etc/xray/ssl/*.key
+/usr/local/etc/xray/ssl/wendy-ip.com.key
+mv /usr/local/etc/xray/ssl/wendy-ip.com.crt /usr/local/etc/xray/ssl/xray_ssl.crt
+
+mv /usr/local/etc/xray/ssl/wendy-ip.com.key /usr/local/etc/xray/ssl/xray_ssl.key
+
+重启Xray服务
+systemctl restart xray
+
+上传证书完成
