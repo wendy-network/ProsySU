@@ -6,6 +6,6 @@
         header_up Host azure.microsoft.com
     }
 }
-localhost:80 {
-    redir https://:443{uri}
+localhost:8080 {
+    redir https://:8443{uri}
 }

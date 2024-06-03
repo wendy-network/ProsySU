@@ -1,0 +1,49 @@
+正在与服务器建立连接
+建立连接成功
+sed -i 's/echo/#echo/g' ~/.bashrc
+
+sed -i 's/echo/#echo/g' ~/.profile
+
+id -u
+0
+上传自有证书
+检测系统环境
+检测CPU架构
+uname -m
+x86_64
+检测系统安装命令
+command -v apt
+
+command -v dnf
+
+command -v yum
+/usr/bin/yum
+检测Systemctl
+command -v systemctl
+/usr/bin/systemctl
+检测SELinux
+command -v getenforce
+/usr/sbin/getenforce
+getenforce
+Disabled
+正在上传文件
+mv /usr/local/etc/xray/ssl /usr/local/etc/xray/ssl_638530539899201506
+
+mkdir /usr/local/etc/xray/ssl
+
+unzip /usr/local/etc/xray/ssl/ssl.zip -d /usr/local/etc/xray/ssl
+Archive:  /usr/local/etc/xray/ssl/ssl.zip
+  inflating: /usr/local/etc/xray/ssl/wendy-ip.com.crt  
+  inflating: /usr/local/etc/xray/ssl/wendy-ip.com.key  
+find /usr/local/etc/xray/ssl/*.crt
+/usr/local/etc/xray/ssl/wendy-ip.com.crt
+find /usr/local/etc/xray/ssl/*.key
+/usr/local/etc/xray/ssl/wendy-ip.com.key
+mv /usr/local/etc/xray/ssl/wendy-ip.com.crt /usr/local/etc/xray/ssl/xray_ssl.crt
+
+mv /usr/local/etc/xray/ssl/wendy-ip.com.key /usr/local/etc/xray/ssl/xray_ssl.key
+
+重启Xray服务
+systemctl restart xray
+
+上传证书完成
