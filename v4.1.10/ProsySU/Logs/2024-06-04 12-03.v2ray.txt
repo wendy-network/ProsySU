@@ -1,0 +1,8 @@
+正在与服务器建立连接
+更新V2ray配置
+sed -i 's/echo/#echo/g' ~/.bashrc
+连接已断开
+sed -i 's/echo/#echo/g' ~/.profile
+连接已断开
+id -u
+连接已断开
