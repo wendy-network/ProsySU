@@ -1,0 +1,425 @@
+正在与服务器建立连接
+建立连接成功
+sed -i 's/echo/#echo/g' ~/.bashrc
+
+sed -i 's/echo/#echo/g' ~/.profile
+
+id -u
+sed -i 's/echo/#echo/g' ~/.bashrc
+0
+1. 检测系统环境
+检测系统环境
+检测CPU架构
+uname -m
+
+sed -i 's/echo/#echo/g' ~/.profile
+x86_64
+检测系统安装命令
+command -v apt
+
+id -u
+
+command -v dnf
+0
+1. 检测系统环境
+检测系统环境
+检测CPU架构
+uname -m
+
+command -v yum
+x86_64
+检测系统安装命令
+command -v apt
+/usr/bin/yum
+检测Systemctl
+command -v systemctl
+
+检测Systemctl
+command -v systemctl
+/usr/bin/systemctl
+检测SELinux
+command -v getenforce
+/usr/bin/systemctl
+检测SELinux
+command -v getenforce
+/usr/sbin/getenforce
+getenforce
+Disabled
+2. 卸载Caddy服务
+关闭Caddy服务
+systemctl stop caddy
+/usr/sbin/getenforce
+getenforce
+
+systemctl disable caddy
+Disabled
+2. 卸载Caddy服务
+关闭Caddy服务
+systemctl stop caddy
+
+systemctl disable caddy
+
+彻底删除Caddy文件
+rm -rf /etc/systemd/system/caddy.service
+
+彻底删除Caddy文件
+rm -rf /etc/systemd/system/caddy.service
+
+rm -rf /usr/bin/caddy
+
+rm -rf /usr/bin/caddy
+
+rm -rf /usr/share/caddy
+
+rm -rf /usr/share/caddy
+
+rm -rf /etc/caddy
+
+rm -rf /etc/caddy
+
+3. 卸载V2ray服务
+关闭V2ray服务
+systemctl stop v2ray
+
+3. 卸载V2ray服务
+关闭V2ray服务
+systemctl stop v2ray
+
+systemctl disable v2ray
+
+systemctl disable v2ray
+
+卸载V2ray
+bash <(curl -L https://raw.githubusercontent.com/v2fly/fhs-install-v2ray/master/install-release.sh) --remove
+
+卸载V2ray
+bash <(curl -L https://raw.githubusercontent.com/v2fly/fhs-install-v2ray/master/install-release.sh) --remove
+error: V2Ray is not installed.
+4. 卸载Acme证书申请服务
+卸载 acme.sh
+acme.sh --uninstall
+
+删除 acme.sh 相关文件
+rm -rf ~/.acme.sh
+error: V2Ray is not installed.
+4. 卸载Acme证书申请服务
+卸载 acme.sh
+acme.sh --uninstall
+
+5. 重置防火墙端口
+command -v firewall-cmd
+
+删除 acme.sh 相关文件
+rm -rf ~/.acme.sh
+/usr/bin/firewall-cmd
+firewall-cmd --state
+
+5. 重置防火墙端口
+command -v firewall-cmd
+running
+firewall-cmd --remove-port=80/tcp --permanent
+/usr/bin/firewall-cmd
+firewall-cmd --state
+running
+firewall-cmd --remove-port=80/tcp --permanent
+success
+firewall-cmd --remove-port=80/udp --permanent
+success
+firewall-cmd --remove-port=80/udp --permanent
+success
+firewall-cmd --remove-port=8443/tcp --permanent
+success
+firewall-cmd --remove-port=8443/tcp --permanent
+success
+firewall-cmd --remove-port=8443/udp --permanent
+success
+firewall-cmd --remove-port=8443/udp --permanent
+success
+firewall-cmd --remove-port=4001/tcp --permanent
+success
+firewall-cmd --remove-port=4001/tcp --permanent
+success
+firewall-cmd --remove-port=4001/udp --permanent
+success
+firewall-cmd --remove-port=4001/udp --permanent
+success
+yes | firewall-cmd --reload
+success
+卸载完成
+卸载完成
+success
+yes | firewall-cmd --reload
+success
+卸载完成
+卸载完成
+sed -i 's/echo/#echo/g' ~/.bashrc
+
+sed -i 's/echo/#echo/g' ~/.profile
+
+id -u
+0
+if [[ -f /usr/local/bin/v2ray ]];then echo '1';else echo '0'; fi
+0
+1. 检测系统环境
+检测CPU架构
+uname -m
+x86_64
+检测系统安装命令
+检测Systemctl
+command -v systemctl
+/usr/bin/systemctl
+检测SELinux
+command -v getenforce
+/usr/sbin/getenforce
+getenforce
+Disabled
+2. 安装必要的系统工具
+更新安装包
+yum update -y
+Loaded plugins: fastestmirror
+Loading mirror speeds from cached hostfile
+ * base: download.nus.edu.sg
+ * extras: download.nus.edu.sg
+ * updates: download.nus.edu.sg
+No packages marked for update
+安装sudo工具
+command -v sudo
+/usr/bin/sudo
+安装curl工具
+command -v curl
+/usr/bin/curl
+安装wget工具
+command -v wget
+/usr/bin/wget
+安装ping工具
+command -v ping
+/usr/bin/ping
+安装unzip工具
+command -v unzip
+/usr/bin/unzip
+安装cron工具
+command -v cron
+
+yum install -y cron
+Loaded plugins: fastestmirror
+Loading mirror speeds from cached hostfile
+ * base: download.nus.edu.sg
+ * extras: download.nus.edu.sg
+ * updates: download.nus.edu.sg
+No package cron available.
+安装lsof工具
+command -v lsof
+/usr/sbin/lsof
+安装systemd工具
+command -v systemd
+
+yum install -y systemd
+Loaded plugins: fastestmirror
+Loading mirror speeds from cached hostfile
+ * base: download.nus.edu.sg
+ * extras: download.nus.edu.sg
+ * updates: download.nus.edu.sg
+Package systemd-219-78.el7_9.9.x86_64 already installed and latest version
+Nothing to do
+3. 配置防火墙
+释放被占用的端口
+lsof -n -P -i :80 | grep LISTEN
+
+lsof -n -P -i :8443 | grep LISTEN
+
+lsof -n -P -i :4001 | grep LISTEN
+xray    11318 root    7u  IPv6  32194      0t0  TCP *:4001 (LISTEN)
+systemctl stop xray
+
+systemctl disable xray
+
+pkill xray
+
+开放需要的端口
+command -v firewall-cmd
+/usr/bin/firewall-cmd
+firewall-cmd --state
+running
+firewall-cmd --add-port=22/tcp --permanent
+success
+firewall-cmd --add-port=80/tcp --permanent
+success
+firewall-cmd --add-port=80/udp --permanent
+success
+firewall-cmd --add-port=8443/tcp --permanent
+success
+firewall-cmd --add-port=8443/udp --permanent
+success
+firewall-cmd --add-port=4001/tcp --permanent
+success
+firewall-cmd --add-port=4001/udp --permanent
+success
+yes | firewall-cmd --reload
+success
+4. 检测网络环境
+检测IPv4
+curl -4 ip.sb
+8.222.181.119
+IPv4地址为8.222.181.119
+5. 同步系统和本地时间
+rm -f /etc/localtime
+
+ln -s /usr/share/zoneinfo/UTC /etc/localtime
+
+date +%s
+1717430364
+5. 安装Caddy服务器
+rm -rf caddy.tar.gz
+
+rm -rf /etc/caddy
+
+rm -rf /usr/share/caddy
+
+wget -O caddy.tar.gz https://github.com/caddyserver/caddy/releases/download/v2.4.3/caddy_2.4.3_linux_amd64.tar.gz
+
+mkdir /etc/caddy
+
+tar -zxvf caddy.tar.gz -C /etc/caddy
+LICENSE
+README.md
+caddy
+cp -rf /etc/caddy/caddy /usr/bin
+
+systemctl daemon-reload
+
+systemctl enable caddy
+
+mkdir /usr/share/caddy
+
+chmod 775 /usr/share/caddy
+
+if [[ -f /usr/bin/caddy ]];then echo '1';else echo '0'; fi
+1
+6. 安装V2ray-Core
+开始安装V2ray-Core
+bash <(curl -L https://raw.githubusercontent.com/v2fly/fhs-install-v2ray/master/install-release.sh)
+info: Installing V2Ray v5.16.1 for x86_64
+Downloading V2Ray archive: https://github.com/v2fly/v2ray-core/releases/download/v5.16.1/v2ray-linux-64.zip
+Downloading verification file for V2Ray archive: https://github.com/v2fly/v2ray-core/releases/download/v5.16.1/v2ray-linux-64.zip.dgst
+info: Extract the V2Ray package to /tmp/tmp.O8fC1dKjIP and prepare it for installation.
+info: Systemd service files have been installed successfully!
+warning: The following are the actual parameters for the v2ray service startup.
+warning: Please make sure the configuration file path is correctly set.
+~~~~~~~~~~~~~~~~
+[Unit]
+Description=V2Ray Service
+Documentation=https://www.v2fly.org/
+After=network.target nss-lookup.target
+
+[Service]
+User=nobody
+CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
+AmbientCapabilities=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
+NoNewPrivileges=true
+ExecStart=/usr/local/bin/v2ray run -config /usr/local/etc/v2ray/config.json
+Restart=on-failure
+RestartPreventExitStatus=23
+
+[Install]
+WantedBy=multi-user.target
+# In case you have a good reason to do so, duplicate this file in the same directory and make your customizes there.
+# Or all changes you made will be lost!  # Refer: https://www.freedesktop.org/software/systemd/man/systemd.unit.html
+[Service]
+ExecStart=
+ExecStart=/usr/local/bin/v2ray run -config /usr/local/etc/v2ray/config.json
+~~~~~~~~~~~~~~~~
+warning: The systemd version on the current operating system is too low.
+warning: Please consider to upgrade the systemd or the operating system.
+
+installed: /usr/local/bin/v2ray
+installed: /usr/local/share/v2ray/geoip.dat
+installed: /usr/local/share/v2ray/geosite.dat
+installed: /usr/local/etc/v2ray/config.json
+installed: /var/log/v2ray/
+installed: /var/log/v2ray/access.log
+installed: /var/log/v2ray/error.log
+installed: /etc/systemd/system/v2ray.service
+installed: /etc/systemd/system/v2ray@.service
+removed: /tmp/tmp.O8fC1dKjIP
+info: V2Ray v5.16.1 is installed.
+You may need to execute a command to remove dependent software: yum remove curl unzip
+Please execute the command: systemctl enable v2ray; systemctl start v2ray
+if [[ -f /usr/local/bin/v2ray ]];then echo '1';else echo '0'; fi
+1
+设置V2ray-Core权限
+sed -i 's/User=nobody/User=root/g' /etc/systemd/system/v2ray.service
+
+sed -i 's/CapabilityBoundingSet=/#CapabilityBoundingSet=/g' /etc/systemd/system/v2ray.service
+
+sed -i 's/AmbientCapabilities=/#AmbientCapabilities=/g' /etc/systemd/system/v2ray.service
+
+systemctl daemon-reload
+
+systemctl enable v2ray
+
+if [[ -f /usr/local/etc/v2ray/config.json ]];then echo '1';else echo '0'; fi
+1
+mv /usr/local/etc/v2ray/config.json /usr/local/etc/v2ray/config.json.1
+
+生成v2ray服务器配置文件
+7. 上传Web服务器配置
+if [[ -f /etc/caddy/Caddyfile ]];then echo '1';else echo '0'; fi
+1
+mv /etc/caddy/Caddyfile /etc/caddy/Caddyfile.back
+
+8. 启动BBR
+检查系统是否满足启动BBR条件
+uname -r
+3.10.0-1160.118.1.el7.x86_64
+sysctl net.ipv4.tcp_congestion_control | grep bbr
+
+系统不满足启用BBR条件，启动失败。
+重启V2ray服务
+systemctl restart caddy
+
+systemctl restart v2ray
+
+安装成功
+
+安装成功，请上传您的 TLS 证书。
+sed -i 's/echo/#echo/g' ~/.bashrc
+
+sed -i 's/echo/#echo/g' ~/.profile
+
+id -u
+0
+上传自有证书
+检测系统环境
+检测CPU架构
+uname -m
+x86_64
+检测系统安装命令
+检测Systemctl
+command -v systemctl
+/usr/bin/systemctl
+检测SELinux
+command -v getenforce
+/usr/sbin/getenforce
+getenforce
+Disabled
+正在上传文件
+mv /usr/local/etc/v2ray/ssl /usr/local/etc/v2ray/ssl_638530560397353057
+
+mkdir /usr/local/etc/v2ray/ssl
+
+unzip /usr/local/etc/v2ray/ssl/ssl.zip -d /usr/local/etc/v2ray/ssl
+Archive:  /usr/local/etc/v2ray/ssl/ssl.zip
+  inflating: /usr/local/etc/v2ray/ssl/wendy-ip.com.crt  
+  inflating: /usr/local/etc/v2ray/ssl/wendy-ip.com.key  
+find /usr/local/etc/v2ray/ssl/*.crt
+/usr/local/etc/v2ray/ssl/wendy-ip.com.crt
+find /usr/local/etc/v2ray/ssl/*.key
+/usr/local/etc/v2ray/ssl/wendy-ip.com.key
+mv /usr/local/etc/v2ray/ssl/wendy-ip.com.crt /usr/local/etc/v2ray/ssl/v2ray_ssl.crt
+
+mv /usr/local/etc/v2ray/ssl/wendy-ip.com.key /usr/local/etc/v2ray/ssl/v2ray_ssl.key
+
+重启V2ray服务
+systemctl restart v2ray
+
+上传证书完成
